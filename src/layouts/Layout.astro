@@ -1,23 +1,48 @@
+---
+
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Nota Bene Sztuka</title>
 	</head>
-	<body>
+	<body id="top">
 		<slot />
 	</body>
 </html>
 
 <style>
-	html,
+	:root {
+		--container-max: 1100px;
+		--header-height: 72px;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: var(--header-height);
+	}
+
 	body {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		min-height: 100vh;
+		font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
+			sans-serif;
+		background: #fff;
+		color: #111;
+	}
+
+	.container {
+		max-width: var(--container-max);
+		margin: 0 auto;
+		padding: 0 16px;
 	}
 </style>

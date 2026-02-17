@@ -1,11 +1,244 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { initHeaderColor } from '../scripts/headerColor';
 ---
 
 <Layout>
-	<Welcome />
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="arrow-up" href="#top" aria-label="Przewiń na górę">↑</a>
+
+			<nav class="nav">
+				<a href="#Oferta">OFERTA</a>
+				<a href="#Opinie">OPINIE</a>
+				<a href="#Kontakt">KONTAKT</a>
+				<a href="#O-mnie">O MNIE</a>
+				<a href="#Webinary">WEBINARY</a>
+				<a class="arrow-down" href="#bottom" aria-label="Przewiń na dół">↓</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="section hero" id="hero" aria-label="Hero">
+			<div class="container">
+				<div class="hero-brand">
+					NOTA<br>BENE<br>SZTUKA
+				</div>
+				<h1>KOREPETYCJE Z HISTORII SZTUKI</h1>
+				<p>Placeholder hero. Tło/obraz i typografia będą w Issue #3.</p>
+				<div class="hero-socials">
+					<a class="social" href="#" rel="noreferrer" target="_blank">IG</a>
+					<a class="social" href="#" rel="noreferrer" target="_blank">FB</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="Oferta" class="section">
+			<div class="container">
+				<h2>Podobno interesujesz się historią sztuki?</h2>
+				<p>Placeholder treści.</p>
+			</div>
+		</section>
+
+		<section id="Opinie" class="section">
+			<div class="container">
+				<h2>Opinie moich uczniów</h2>
+				<p>Placeholder treści.</p>
+			</div>
+		</section>
+
+		<section id="Kontakt" class="section">
+			<div class="container">
+				<h2>FORMULARZ KONTAKTOWY</h2>
+				<p>Placeholder treści.</p>
+			</div>
+		</section>
+
+		<section id="O-mnie" class="section">
+			<div class="container">
+				<h2>O mnie</h2>
+				<p>Placeholder treści.</p>
+			</div>
+		</section>
+
+		<section id="Webinary" class="section bottom-section">
+			<div class="container">
+				<h2>Webinary</h2>
+				<p>Placeholder treści.</p>
+			</div>
+			<div id="bottom"></div>
+		</section>
+	</main>
 </Layout>
+
+<style>
+	.site-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		background: transparent;
+		border-bottom: none;
+		transition: background 0.3s ease, backdrop-filter 0.3s ease;
+	}
+
+	.site-header.light {
+		--text-color: #fff;
+	}
+
+	.site-header.dark {
+		--text-color: #000;
+		background: rgba(255, 255, 255, 0.85);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	main {
+		padding-top: 0;
+	}
+
+	.header-inner {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 32px;
+		padding: 0 40px;
+		box-sizing: border-box;
+	}
+
+	.arrow-up,
+	.arrow-down {
+		font-weight: 700;
+		text-decoration: none;
+		color: var(--text-color, #000);
+		font-size: 28px;
+		line-height: 1;
+		transition: color 0.3s ease, transform 0.2s ease;
+		display: inline-block;
+	}
+
+	.arrow-up:hover,
+	.arrow-down:hover {
+		transform: scale(1.2);
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		margin-left: auto;
+	}
+
+	.nav a {
+		text-decoration: none;
+		color: var(--text-color, #000);
+		font-size: 20px;
+		font-weight: 10;
+		font-family: 'Archivo Black', sans-serif;
+		transition: color 0.3s ease;
+	}
+
+	.nav a:hover {
+		text-decoration: underline;
+	}
+
+	.hero-brand {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 48px;
+		line-height: 1.1;
+		letter-spacing: 1px;
+		color: #fff;
+		margin-bottom: 32px;
+		font-weight: 10;
+	}
+
+	.hero-socials {
+		display: flex;
+		gap: 16px;
+		margin-top: 32px;
+	}
+
+	.hero-socials .social {
+		text-decoration: none;
+		color: inherit;
+		font-weight: 700;
+		font-size: 14px;
+	}
+
+	.hero-socials .social:hover {
+		text-decoration: underline;
+	}
+
+	.section {
+		padding: 72px 0;
+	}
+
+	.hero {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		background-color: #000;
+		background-image:
+			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+			url('/monalisa.png');
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		color: #fff;
+	}
+
+	.hero h1 {
+		color: #fff;
+	}
+
+	#bottom {
+		height: 1px;
+		visibility: hidden;
+	}
+
+	h1,
+	h2 {
+		margin: 0 0 12px 0;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.6;
+		max-width: 65ch;
+	}
+</style>
+<script is:inline>
+	// TypeScript types będą wykrywane automatycznie przez Astro/Vite
+	const header = document.querySelector('.site-header');
+	const hero = document.querySelector('.hero');
+
+	function updateHeaderColor() {
+		if (!header || !hero) return;
+
+		const heroRect = hero.getBoundingClientRect();
+		const heroBottom = heroRect.bottom;
+
+		// Jeśli hero jest widoczny na ekranie (jego dół jest poniżej top headera)
+		if (heroBottom > 0) {
+			header.classList.remove('dark');
+			header.classList.add('light');
+		} else {
+			header.classList.remove('light');
+			header.classList.add('dark');
+		}
+	}
+
+	// Sprawdzaj przy każdym scroll
+	window.addEventListener('scroll', updateHeaderColor);
+
+	// Sprawdzaj też na starcie
+	updateHeaderColor();
+</script>
+
