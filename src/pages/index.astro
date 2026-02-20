@@ -433,7 +433,7 @@ import Layout from '../layouts/Layout.astro';
 	/* ===== HERO ===== */
 
 	.hero {
-		height: 92vh;
+		height: 90vh;
 		background-color: #000;
 		background-image:
 			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -555,13 +555,13 @@ import Layout from '../layouts/Layout.astro';
 	.oferta-container {
 		max-width: 65rem;
 		margin: 0 auto;
-		padding: 4rem;
+		padding: 1rem 4rem 4rem 4rem;
 		background: #fffbf5;
 		border-radius: 0.5rem;
 	}
 
 	.oferta-header {
-		margin-bottom: 4rem;
+		margin-bottom: 1.25rem;
 	}
 
 	.oferta-title {
@@ -689,16 +689,17 @@ import Layout from '../layouts/Layout.astro';
 	.opinie-section {
 		background: #fffbf5;
 		padding: 3.5rem 0;
+		scroll-margin-top: calc(var(--header-height) - 8rem);
 	}
 
 	.opinie-container {
 		max-width: 65rem;
 		margin: 0 auto;
-		padding: 4rem;
+		padding: 1rem 4rem 4rem 4rem;
 	}
 
 	.opinie-header {
-		margin-bottom: 4rem;
+		margin-bottom: 1.25rem;
 	}
 
 	.opinie-title {
@@ -775,12 +776,13 @@ import Layout from '../layouts/Layout.astro';
 	.kontakt-section {
 		background: #fffbf5;
 		padding: 3.5rem 0;
+		scroll-margin-top: calc(var(--header-height) - 8rem);
 	}
 
 	.kontakt-container {
 		max-width: 65rem;
 		margin: 0 auto;
-		padding: 4rem;
+		padding: 1rem 4rem 4rem 4rem;
 		background-image: url('/vangogh.png');
 		background-position: center center;
 		background-size: cover;
@@ -910,11 +912,11 @@ import Layout from '../layouts/Layout.astro';
 	.omnie-container {
 		max-width: 65rem;
 		margin: 0 auto;
-		padding: 4rem;
+		padding: 1rem 4rem 4rem 4rem;
 	}
 
 	.omnie-header {
-		margin-bottom: 4rem;
+		margin-bottom: 1.25rem;
 	}
 
 	.omnie-title {
@@ -977,16 +979,17 @@ import Layout from '../layouts/Layout.astro';
 	.webinary-section {
 		background: #fffbf5;
 		padding: 2.1rem 0;
+		scroll-margin-top: calc(var(--header-height) - 8rem);
 	}
 
 	.webinary-container {
 		max-width: 65rem;
 		margin: 0 auto;
-		padding: 4rem;
+		padding: 1rem 4rem 4rem 4rem;
 	}
 
 	.webinary-header {
-		margin-bottom: 4rem;
+		margin-bottom: 1.25rem;
 	}
 
 	.webinary-title {
@@ -1273,7 +1276,7 @@ import Layout from '../layouts/Layout.astro';
 		.kontakt-container,
 		.omnie-container {
 			max-width: 85%;
-			padding: 3.75rem;
+			padding: 0.875rem 3.75rem 3.75rem 3.75rem;
 		}
 
 		.oferta-title,
@@ -1294,6 +1297,20 @@ import Layout from '../layouts/Layout.astro';
 	/* ===== RESPONSIVE: 1024px ===== */
 
 	@media (max-width: 1024px) {
+		.oferta-section {
+			scroll-margin-top: calc(var(--header-height) - 5rem);
+		}
+
+		.omnie-section {
+			scroll-margin-top: calc(var(--header-height) - 3rem);
+		}
+
+		.opinie-section,
+		.kontakt-section,
+		.webinary-section {
+			scroll-margin-top: calc(var(--header-height) - 4rem);
+		}
+
 		.oferta-content,
 		.omnie-content {
 			grid-template-columns: 1fr;
@@ -1306,7 +1323,7 @@ import Layout from '../layouts/Layout.astro';
 		.omnie-container,
 		.webinary-container {
 			max-width: 90%;
-			padding: 3rem;
+			padding: 0.75rem 3rem 3rem 3rem;
 		}
 
 		.oferta-title,
@@ -1367,12 +1384,26 @@ import Layout from '../layouts/Layout.astro';
 	/* ===== RESPONSIVE: 768px ===== */
 
 	@media (max-width: 768px) {
+		.oferta-section {
+			scroll-margin-top: calc(var(--header-height) - 2rem);
+		}
+
+		.omnie-section {
+			scroll-margin-top: calc(var(--header-height) - 1rem);
+		}
+
+		.opinie-section,
+		.kontakt-section,
+		.webinary-section {
+			scroll-margin-top: calc(var(--header-height) - 2rem);
+		}
+
 		.oferta-container,
 		.opinie-container,
 		.kontakt-container,
 		.omnie-container,
 		.webinary-container {
-			padding: 2rem;
+			padding: 0.625rem 2rem 2rem 2rem;
 		}
 
 		.oferta-title,
