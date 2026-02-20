@@ -8,11 +8,11 @@ import Layout from '../layouts/Layout.astro';
 			<a class="nav-brand" href="#hero">NOTA<br>BENE<br>SZTUKA</a>
 
 			<nav class="nav">
-				<a href="#Oferta">OFERTA</a>
-				<a href="#Opinie">OPINIE</a>
-				<a href="#Kontakt">KONTAKT</a>
-				<a href="#O-mnie">O MNIE</a>
-				<a href="#Webinary">WEBINARY</a>
+				<a href="#oferta">OFERTA</a>
+				<a href="#opinie">OPINIE</a>
+				<a href="#kontakt">KONTAKT</a>
+				<a href="#o-mnie">O MNIE</a>
+				<a href="#webinary">WEBINARY</a>
 				<a class="arrow-down" href="#bottom" aria-label="Scroll to bottom">↓</a>
 			</nav>
 		</div>
@@ -38,7 +38,7 @@ import Layout from '../layouts/Layout.astro';
 					</a>
 				</div>
 
-				<a href="#Oferta" class="hero-scroll-down" aria-label="Scroll to offer">
+				<a href="#oferta" class="hero-scroll-down" aria-label="Scroll to offer">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<polyline points="6 9 12 15 18 9"></polyline>
 					</svg>
@@ -46,7 +46,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="Oferta" class="section oferta-section">
+		<section id="oferta" class="section oferta-section">
 			<div class="oferta-container">
 				<div class="oferta-header">
 					<h2 class="oferta-title">Podobno interesujesz się historią sztuki?</h2>
@@ -62,7 +62,7 @@ import Layout from '../layouts/Layout.astro';
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 						</p>
-						<a href="#Kontakt" class="cta-button">Zapisz się!</a>
+						<a href="#kontakt" class="cta-button">Zapisz się!</a>
 					</div>
 				</div>
 			</div>
@@ -104,7 +104,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="Opinie" class="section opinie-section">
+		<section id="opinie" class="section opinie-section">
 			<div class="opinie-container">
 				<div class="opinie-header">
 					<h2 class="opinie-title">Opinie moich uczniów</h2>
@@ -148,7 +148,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="Kontakt" class="section kontakt-section">
+		<section id="kontakt" class="section kontakt-section">
 			<div class="kontakt-container">
 				<div class="kontakt-inner">
 					<div class="kontakt-text">
@@ -164,7 +164,7 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 
 					<div class="kontakt-form-wrapper">
-						<form class="kontakt-form" action="/api/contact" method="POST">
+						<form class="kontakt-form" onsubmit="event.preventDefault(); alert('Formularz będzie dostępny wkrótce.');">
 							<div class="form-group">
 								<label for="name">Imię i nazwisko</label>
 								<input type="text" id="name" name="name" autocomplete="name" required />
@@ -192,7 +192,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="O-mnie" class="section omnie-section">
+		<section id="o-mnie" class="section omnie-section">
 			<div class="omnie-container">
 				<div class="omnie-header">
 					<h2 class="omnie-title">O mnie</h2>
@@ -230,7 +230,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="Webinary" class="section webinary-section">
+		<section id="webinary" class="section webinary-section">
 			<div class="webinary-container">
 				<div class="webinary-header">
 					<h2 class="webinary-title">Webinary</h2>
@@ -904,7 +904,7 @@ import Layout from '../layouts/Layout.astro';
 	.omnie-section {
 		background: #fffbf5;
 		padding: 0.5rem 0;
-		scroll-margin-top: calc(var(--header-height) - 8rem);
+		scroll-margin-top: calc(var(--header-height) - 6rem);
 	}
 
 	.omnie-container {
