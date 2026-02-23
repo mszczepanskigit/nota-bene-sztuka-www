@@ -55,12 +55,18 @@ import Layout from '../layouts/Layout.astro';
 
 				<div class="oferta-content">
 					<div class="oferta-image">
-						<img src="/placeholder.jpg" alt="Historia sztuki" />
+						<img src="/pisa.jpg" alt="Historia sztuki" />
 					</div>
 
 					<div class="oferta-text">
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+							Jeśli tak – to idealnie trafiłeś/trafiłaś!<br>
+							Tu Marta, Twoja (już wkrótce) ulubiona<br>
+							historyczka sztuki.<br><br>
+							Pomagam uczniom ogarnąć<br>
+							przygotowania do matury z historii<br>
+							sztuki (nawet jeśli zostały nam trzy<br>
+							miesiące do matury). Gotowy/a?
 						</p>
 						<a href="#kontakt" class="cta-button">Zapisz się!</a>
 					</div>
@@ -68,37 +74,37 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<div class="oferta-container oferta-cards-container">
-				<h2 class="oferta-cards-title">Co zyskujesz?</h2>
+				<h2 class="oferta-cards-title">Jak wyglądają zajęcia?</h2>
 
 				<div class="oferta-cards-grid">
 					<div class="oferta-card">
-						<h3>Indywidualne podejście</h3>
-						<p>Program dostosowany do Twoich potrzeb i poziomu zaawansowania.</p>
+						<h3>Epoki i kontekst</h3>
+						<p>Przerabiamy epoki w oparciu o kontekst historyczny i kulturowy (tak, on naprawdę robi różnicę). Dzieła z kanonu omawiamy na podstawie moich autorskich prezentacji, więc nie potrzebujesz dodatkowych książek – wszystko już przygotowałam.</p>
 					</div>
 
 					<div class="oferta-card">
-						<h3>Przygotowanie do egzaminów</h3>
-						<p>Skuteczna pomoc w przygotowaniu do matury i egzaminów wstępnych.</p>
+						<h3>Analiza formalna</h3>
+						<p>Analizy nie da się nauczyć na pamięć – dlatego uczymy się jej praktycznie. Tak, żebyś potrafił/potrafiła samodzielnie przeanalizować każde dzieło, nawet takie, którego wcześniej nie widziałeś/aś.</p>
 					</div>
 
 					<div class="oferta-card">
-						<h3>Elastyczne godziny</h3>
-						<p>Zajęcia dostosowane do Twojego harmonogramu, online lub stacjonarnie.</p>
+						<h3>Zadania maturalne</h3>
+						<p>Ćwiczymy realne zadania maturalne. Dostajesz konkretne tipy egzaminacyjne i pracujesz na kartach pracy zgodnych z CKE, dzięki czemu wiesz, jak pisać, żeby zdobywać punkty.</p>
 					</div>
 
 					<div class="oferta-card">
-						<h3>Doświadczenie</h3>
-						<p>Wieloletnie doświadczenie w nauczaniu historii sztuki.</p>
+						<h3>Wypracowanie maturalne</h3>
+						<p>Uczymy się pisać wypracowanie krok po kroku. Pokazuję, jak sprawdza je egzaminator, co musi się w nim znaleźć i jak nie tracić punktów – a to aż ⅓ wyniku z matury.</p>
 					</div>
 
 					<div class="oferta-card">
-						<h3>Materiały edukacyjne</h3>
-						<p>Dostęp do profesjonalnych materiałów i prezentacji multimedialnych.</p>
+						<h3>Forma zajęć</h3>
+						<p>Zajęcia prowadzę indywidualnie (1:1) lub w małych grupach online. Pracujemy w Twoim tempie i robimy tyle powtórek, ile naprawdę potrzebujesz – bez presji. Plan zależy od czasu jaki pozostał nam do matury.</p>
 					</div>
 
 					<div class="oferta-card">
-						<h3>Wsparcie 24/7</h3>
-						<p>Możliwość kontaktu i zadawania pytań poza zajęciami.</p>
+						<h3>Webinary i wyjścia do muzeów</h3>
+						<p>Regularnie organizuję webinary maturalne oraz wspólne wyjścia do muzeów – bo historia sztuki najlepiej działa wtedy, gdy oglądamy dzieła na żywo 😉</p>
 					</div>
 				</div>
 			</div>
@@ -111,39 +117,101 @@ import Layout from '../layouts/Layout.astro';
 					<div class="opinie-line"></div>
 				</div>
 
-				<div class="opinie-cards-grid">
-					<div class="opinie-card">
-						<p class="opinie-text">
-							Zajęcia z historii sztuki to była najlepsza decyzja! Dzięki indywidualnemu podejściu
-							i świetnym materiałom zdałam maturę rozszerzoną na 98%. Polecam każdemu, kto chce
-							naprawdę zrozumieć sztukę, a nie tylko kuć na pamięć.
-						</p>
-						<div class="opinie-card-line"></div>
-						<p class="opinie-author">Anna Kowalska</p>
-						<p class="opinie-role">Maturzystka 2025</p>
+				<div class="opinie-carousel-wrapper">
+					<button class="opinie-nav opinie-nav-left" aria-label="Previous testimonial">‹</button>
+					<button class="opinie-nav opinie-nav-right" aria-label="Next testimonial">›</button>
+
+					<div class="opinie-carousel">
+						<div class="opinie-cards-track">
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Pani Marta to doskonała
+									korepetytorka, która potrafi
+									idealnie dopasować materiał do
+									wymogów egzaminu. Z ogromną
+									pasją i zaangażowaniem
+									przygotowała córkę do
+									egzaminu wstępnego do
+									Liceum Plastycznego. Córka
+									zaliczyła egzamin teoretyczny z
+									historii sztuki i wiedzy o sztuce
+									z maksymalną liczbą punktów!
+									Gorąco polecam.
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Mama Dominiki</p>
+							</div>
+
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Bardzo dobre zajęcia
+									indywidualne –
+									wszystko było jasno
+									wytłumaczone i
+									pomogło mi przy
+									wypracowaniu. Webinar
+									też był super, ciekawy i
+									dobrze poprowadzony.
+									Polecam!
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Julia</p>
+								<p class="opinie-role">Maturzystka 2025</p>
+							</div>
+
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Naukę z historii sztuki zaczęłam
+									chwilę tuż przy rozpoczęciu klasy
+									maturalnej, czasu było mało by wpoić
+									tak dużą dawkę wiedzy ale maturę
+									udało mi się zdac na wynik
+									zadawalający! Pani Marta świetnie
+									umie dopasować harmonogram i
+									rozłożyć materiał tak by każdemu
+									nauka przychodziła bez wiekszego
+									stresu. Zajęcia są urozmaicone o
+									prezentację, dostęp do przeróżnych
+									testów czy sprawdzenia z
+									wypracowań. Z całego serduszka
+									polecam!!
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Klaudia</p>
+								<p class="opinie-role">Maturzystka 2024</p>
+							</div>
+
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Pani Marta prowadzi lekcje w bardzo przyjemnej, profesjonalniej atmosferze. Zajęcia są ciekawe i zawsze dużo się z nich wynosi. Dzięki tym korepetycjom nauka stała się bardzo przyjemna i skuteczna.
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Klaudia</p>
+								<p class="opinie-role">Maturzystka 2025</p>
+							</div>
+
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Bardzo polecam! Oprócz przekazania wiedzy Marta umie zarazić entuzjazmem i uśmiechem co sprawia, że lekcje to sama przyjemność
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Maciej</p>
+								<p class="opinie-role">Maturzysta 2025</p>
+							</div>
+						</div>
 					</div>
 
-					<div class="opinie-card">
-						<p class="opinie-text">
-							Wspaniała nauczycielka! Każde zajęcie to była przygoda. Materiały były zawsze
-							dopasowane do moich potrzeb, a elastyczne godziny pozwoliły mi pogodzić naukę
-							ze sportem. Zdałem egzamin do ASP za pierwszym razem!
-						</p>
-						<div class="opinie-card-line"></div>
-						<p class="opinie-author">Michał Nowak</p>
-						<p class="opinie-role">Student ASP</p>
+					<div class="opinie-dots">
+						<button class="opinie-dot active" data-index="0" aria-label="Go to testimonial 1"></button>
+						<button class="opinie-dot" data-index="1" aria-label="Go to testimonial 2"></button>
+						<button class="opinie-dot" data-index="2" aria-label="Go to testimonial 3"></button>
+						<button class="opinie-dot" data-index="3" aria-label="Go to testimonial 4"></button>
+						<button class="opinie-dot" data-index="4" aria-label="Go to testimonial 5"></button>
 					</div>
 
-					<div class="opinie-card">
-						<p class="opinie-text">
-							Historia sztuki stała się moją pasją dzięki tym zajęciom. Wszystko jest wytłumaczone
-							w przystępny sposób, z mnóstwem ciekawostek. Mogę zadawać pytania w każdej chwili,
-							co bardzo pomaga w nauce.
-						</p>
-						<div class="opinie-card-line"></div>
-						<p class="opinie-author">Zofia Wiśniewska</p>
-						<p class="opinie-role">Uczennica liceum</p>
-					</div>
+					<p class="opinie-more">
+						Więcej opinii tutaj: <a href="#" aria-label="More testimonials">link</a>
+					</p>
 				</div>
 			</div>
 		</section>
@@ -158,13 +226,29 @@ import Layout from '../layouts/Layout.astro';
 							Wypełnij formularz, a odezwę się do Ciebie najszybciej jak to możliwe.
 						</p>
 						<p>
-							Odpowiadam zwykle w ciągu 24 godzin. Jestem dostępna zarówno online,
-							jak i stacjonarnie w Warszawie.
+							Ewentualnie napisz do mnie na poniższy adres e-mail!
 						</p>
+						<p class="kontakt-email">
+							<a href="mailto:kontakt@example.com">kontakt@example.com</a>
+						</p>
+						<div class="kontakt-socials">
+							<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+									<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+									<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+								</svg>
+							</a>
+							<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+								</svg>
+							</a>
+						</div>
 					</div>
 
 					<div class="kontakt-form-wrapper">
-						<form class="kontakt-form" onsubmit="event.preventDefault(); alert('Formularz będzie dostępny wkrótce.');">
+						<form id="kontakt-form" class="kontakt-form">
 							<div class="form-group">
 								<label for="name">Imię i nazwisko</label>
 								<input type="text" id="name" name="name" autocomplete="name" required />
@@ -201,29 +285,21 @@ import Layout from '../layouts/Layout.astro';
 
 				<div class="omnie-content">
 					<div class="omnie-image">
-						<img src="/monalisa.png" alt="O mnie" />
+						<img src="/orange.png" alt="O mnie" />
 					</div>
 
 					<div class="omnie-text-wrapper">
 						<p>
-							Jestem absolwentką historii sztuki z wieloletnim doświadczeniem w nauczaniu.
-							Moją pasją jest odkrywanie przed uczniami fascynującego świata sztuki - od starożytności
-							po czasy współczesne.
+							Pomagam uczniom przygotować się do matury i olimpiady z historii sztuki, a także do egzaminów wstępnych do szkół plastycznych i uczelni artystycznych. Wspieram również pasjonatów, którzy chcą poszerzyć swoją wiedzę o sztuce — dzielę się nią także na Instagramie, gdzie popularyzuję historię sztuki w przystępny sposób.
 						</p>
 						<p>
-							Prowadzę zajęcia zarówno dla maturzystów, jak i osób przygotowujących się do egzaminów
-							na uczelnie artystyczne. Moje podejście łączy solidną wiedzę merytoryczną z umiejętnością
-							przekazywania jej w przystępny i angażujący sposób.
+							Nazywam się Marta i jestem historyczką sztuki oraz nauczycielką z przygotowaniem pedagogicznym. Od 5 lat edukuję, popularyzuję wiedzę o sztuce oraz przygotowuję uczniów do matur, olimpiad i egzaminów wstępnych, pomagając im uporządkować materiał i nauczyć się analizy dzieł w sposób wymagany na egzaminach.
 						</p>
 						<p>
-							Wierzę, że historia sztuki to nie tylko daty i nazwiska, ale przede wszystkim zrozumienie
-							kontekstu historycznego, społecznego i kulturowego. Podczas zajęć korzystam z bogatego
-							materiału wizualnego i multimedialnego, dzięki czemu nauka staje się prawdziwą przyjemnością.
+							Moje zajęcia wyróżniają się nie tylko skutecznym przygotowaniem merytorycznym, ale także zarażaniem pasją do sztuki. Oprócz regularnych lekcji organizuję webinary oraz cykliczne wyjścia do muzeów, które pozwalają zobaczyć omawiane dzieła na żywo i lepiej je zrozumieć.
 						</p>
 						<p>
-							Współpracowałam z wieloma uczniami, którzy z sukcesem zdali maturę rozszerzoną oraz
-							dostali się na wymarzone kierunki studiów. Każde zajęcia dostosowuję do indywidualnych
-							potrzeb i tempa nauki.
+							Sprawdź aktualną ofertę zajęć i wybierz formę przygotowań dopasowaną do Twojego celu.
 						</p>
 					</div>
 				</div>
@@ -313,7 +389,7 @@ import Layout from '../layouts/Layout.astro';
 
 			<div class="footer-bottom-info">
 				<p class="footer-copyright">© 2026 Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
-				<p class="footer-nip">NIP: 0000000000</p>
+				<p class="footer-nip">NIP: 8982329532</p>
 			</div>
 		</div>
 	</footer>
@@ -633,7 +709,7 @@ import Layout from '../layouts/Layout.astro';
 
 	.oferta-text p {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 		line-height: 1.8;
 		color: #222;
 		max-width: 100%;
@@ -694,7 +770,7 @@ import Layout from '../layouts/Layout.astro';
 
 	.oferta-card h3 {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.5rem;
+		font-size: 1.75rem;
 		font-weight: 600;
 		color: #111;
 		margin: 0 0 1rem 0;
@@ -702,11 +778,15 @@ import Layout from '../layouts/Layout.astro';
 
 	.oferta-card p {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1rem;
+		font-size: 1.15rem;
 		line-height: 1.6;
 		color: #555;
 		margin: 0;
 		max-width: 100%;
+		text-align: justify;
+		hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
 	}
 
 	/* ===== OPINIE ===== */
@@ -718,13 +798,13 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.opinie-container {
-		max-width: 65rem;
+		max-width: 90rem;
 		margin: 0 auto;
 		padding: 1rem 4rem 4rem 4rem;
 	}
 
 	.opinie-header {
-		margin-bottom: 1.25rem;
+		margin-bottom: 2.5rem;
 	}
 
 	.opinie-title {
@@ -741,20 +821,53 @@ import Layout from '../layouts/Layout.astro';
 		background: #111;
 	}
 
-	.opinie-cards-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2.5rem;
+	.opinie-carousel-wrapper {
+		position: relative;
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.opinie-carousel {
+		--fade-size: 120px;
+		overflow: hidden;
+		position: relative;
+		margin-bottom: 3rem;
+		mask-image: linear-gradient(
+			to right,
+			transparent 0,
+			black var(--fade-size),
+			black calc(100% - var(--fade-size)),
+			transparent 100%
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent 0,
+			black var(--fade-size),
+			black calc(100% - var(--fade-size)),
+			transparent 100%
+		);
+	}
+
+	.opinie-cards-track {
+		display: flex;
+		gap: 1.5rem;
+		padding: 2rem 0;
 	}
 
 	.opinie-card {
 		background: #fff;
-		padding: 2.5rem;
-		border-radius: 0.5rem;
-		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		padding: 2.5rem 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
+		width: 320px;
+		min-width: 320px;
+		max-width: 320px;
+		flex-shrink: 0;
+		min-height: 420px;
 	}
 
 	.opinie-card:hover {
@@ -796,7 +909,91 @@ import Layout from '../layouts/Layout.astro';
 		font-style: italic;
 	}
 
-	/* ===== KONTAKT ===== */
+	.opinie-nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: rgba(255, 255, 255, 0.95);
+		color: #111;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		width: 3rem;
+		height: 3rem;
+		border-radius: 0.5rem;
+		font-size: 1.5rem;
+		font-weight: 300;
+		line-height: 1;
+		cursor: pointer;
+		z-index: 10;
+		transition: all 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	.opinie-nav:hover {
+		background: #111;
+		color: #fff;
+		border-color: #111;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	}
+
+	.opinie-nav-left {
+		left: 0.5rem;
+	}
+
+	.opinie-nav-right {
+		right: 0.5rem;
+	}
+
+	/* Dot navigation */
+	.opinie-dots {
+		display: flex;
+		justify-content: center;
+		gap: 0.75rem;
+		margin-top: 1.5rem;
+	}
+
+	.opinie-dot {
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 50%;
+		background: #ddd;
+		border: none;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		padding: 0;
+	}
+
+	.opinie-dot:hover {
+		background: #999;
+		transform: scale(1.2);
+	}
+
+	.opinie-dot.active {
+		background: #111;
+		width: 2rem;
+		border-radius: 0.3125rem;
+	}
+
+	.opinie-more {
+		margin-top: 1.5rem;
+		text-align: center;
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		color: #555;
+	}
+
+	.opinie-more a {
+		color: #111;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.opinie-more a:hover {
+		color: #333;
+	}
 
 	.kontakt-section {
 		background: #fffbf5;
@@ -835,11 +1032,14 @@ import Layout from '../layouts/Layout.astro';
 
 	.kontakt-text {
 		color: #fff;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 
 	.kontakt-title {
 		font-family: 'Outfit', sans-serif;
-		font-size: 3rem;
+		font-size: 3.5rem;
 		font-weight: 600;
 		margin: 0 0 2rem 0;
 		color: #fff;
@@ -847,11 +1047,53 @@ import Layout from '../layouts/Layout.astro';
 
 	.kontakt-text p {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.125rem;
-		line-height: 1.7;
+		font-size: 1.5rem;
+		line-height: 1.8;
 		color: #fff;
 		margin: 0 0 1.5rem 0;
 		max-width: 100%;
+	}
+
+	.kontakt-email {
+		margin: 1.5rem 0 0 0;
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+	}
+
+	.kontakt-email a {
+		color: #fff;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.kontakt-email a:hover {
+		opacity: 0.8;
+	}
+
+	.kontakt-socials {
+		display: flex;
+		gap: 1rem;
+		margin-top: auto;
+		padding-top: 2rem;
+	}
+
+	.kontakt-socials a {
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: opacity 0.3s ease, transform 0.3s ease;
+	}
+
+	.kontakt-socials a:hover {
+		opacity: 0.7;
+		transform: translateY(-0.125rem);
+	}
+
+	.kontakt-socials svg {
+		width: 1.75rem;
+		height: 1.75rem;
+		stroke: #fff;
 	}
 
 	.kontakt-form-wrapper {
@@ -960,14 +1202,14 @@ import Layout from '../layouts/Layout.astro';
 
 	.omnie-content {
 		display: grid;
-		grid-template-columns: 1fr 1.5fr;
+		grid-template-columns: 1.0fr 1.3fr;
 		gap: 4rem;
 		align-items: center;
 	}
 
 	.omnie-image {
 		width: 100%;
-		aspect-ratio: 1 / 1;
+		aspect-ratio: 4 / 5;
 		overflow: hidden;
 		border-radius: 0.5rem;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -980,7 +1222,7 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.omnie-text-wrapper {
-		background: #f5ece3;
+		background: #ec5538;
 		padding: 3rem;
 		border-radius: 0.5rem;
 		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -990,9 +1232,13 @@ import Layout from '../layouts/Layout.astro';
 		font-family: 'Outfit', sans-serif;
 		font-size: 1.125rem;
 		line-height: 1.8;
-		color: #111;
+		color: #fff;
 		margin: 0 0 1.5rem 0;
 		max-width: 100%;
+		text-align: justify;
+		hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
 	}
 
 	.omnie-text-wrapper p:last-child {
@@ -1101,9 +1347,16 @@ import Layout from '../layouts/Layout.astro';
 	/* ===== FOOTER ===== */
 
 	.site-footer {
-		background: #3a3a3a;
+		background-color: #3a3a3a;
+		background-image:
+			linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+			url('/museum.jpeg');
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
 		color: #fff;
 		padding: 6rem 0 3rem 0;
+		position: relative;
 	}
 
 	.footer-container {
@@ -1310,12 +1563,16 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 3rem;
 		}
 
+		.kontakt-title {
+			font-size: 3rem;
+		}
+
 		.oferta-text p {
 			font-size: 1.125rem;
 		}
 
-		.kontakt-title {
-			font-size: 2.5rem;
+		.kontakt-text p {
+			font-size: 1.125rem;
 		}
 	}
 
@@ -1450,6 +1707,10 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 1rem;
 		}
 
+		.kontakt-text p {
+			font-size: 1rem;
+		}
+
 		.cta-button {
 			padding: 1rem 2.25rem;
 			font-size: 1.125rem;
@@ -1512,7 +1773,7 @@ import Layout from '../layouts/Layout.astro';
 			margin-left: 0;
 		}
 
-		.footer-bottom-info {
+		.footer-bottom_info {
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 1rem;
@@ -1522,6 +1783,11 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
 	import { initHeaderColor } from '../scripts/headerColor';
+	import { initTestimonialCarousel } from '../scripts/testimonialCarousel';
+	import { initContactForm } from '../scripts/contactForm';
+
 	initHeaderColor();
+	initTestimonialCarousel();
+	initContactForm();
 </script>
 
