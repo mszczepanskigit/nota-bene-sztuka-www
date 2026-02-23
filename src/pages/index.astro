@@ -1,11 +1,1527 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="nav-brand" href="#hero">NOTA<br>BENE<br>SZTUKA</a>
+
+			<nav class="nav">
+				<a href="#oferta">OFERTA</a>
+				<a href="#opinie">OPINIE</a>
+				<a href="#kontakt">KONTAKT</a>
+				<a href="#o-mnie">O MNIE</a>
+				<a href="#webinary">WEBINARY</a>
+				<a class="arrow-down" href="#bottom" aria-label="Scroll to bottom">↓</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<section class="section hero" id="hero" aria-label="Hero">
+			<div class="hero-content">
+				<h1 class="hero-title">KOREPETYCJE Z<br>HISTORII SZTUKI</h1>
+
+				<div class="hero-socials">
+					<a class="social" href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+						<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+						</svg>
+					</a>
+					<a class="social" href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
+						<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+						</svg>
+					</a>
+				</div>
+
+				<a href="#oferta" class="hero-scroll-down" aria-label="Scroll to offer">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="6 9 12 15 18 9"></polyline>
+					</svg>
+				</a>
+			</div>
+		</section>
+
+		<section id="oferta" class="section oferta-section">
+			<div class="oferta-container">
+				<div class="oferta-header">
+					<h2 class="oferta-title">Podobno interesujesz się historią sztuki?</h2>
+					<div class="oferta-line"></div>
+				</div>
+
+				<div class="oferta-content">
+					<div class="oferta-image">
+						<img src="/placeholder.jpg" alt="Historia sztuki" />
+					</div>
+
+					<div class="oferta-text">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						</p>
+						<a href="#kontakt" class="cta-button">Zapisz się!</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="oferta-container oferta-cards-container">
+				<h2 class="oferta-cards-title">Co zyskujesz?</h2>
+
+				<div class="oferta-cards-grid">
+					<div class="oferta-card">
+						<h3>Indywidualne podejście</h3>
+						<p>Program dostosowany do Twoich potrzeb i poziomu zaawansowania.</p>
+					</div>
+
+					<div class="oferta-card">
+						<h3>Przygotowanie do egzaminów</h3>
+						<p>Skuteczna pomoc w przygotowaniu do matury i egzaminów wstępnych.</p>
+					</div>
+
+					<div class="oferta-card">
+						<h3>Elastyczne godziny</h3>
+						<p>Zajęcia dostosowane do Twojego harmonogramu, online lub stacjonarnie.</p>
+					</div>
+
+					<div class="oferta-card">
+						<h3>Doświadczenie</h3>
+						<p>Wieloletnie doświadczenie w nauczaniu historii sztuki.</p>
+					</div>
+
+					<div class="oferta-card">
+						<h3>Materiały edukacyjne</h3>
+						<p>Dostęp do profesjonalnych materiałów i prezentacji multimedialnych.</p>
+					</div>
+
+					<div class="oferta-card">
+						<h3>Wsparcie 24/7</h3>
+						<p>Możliwość kontaktu i zadawania pytań poza zajęciami.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="opinie" class="section opinie-section">
+			<div class="opinie-container">
+				<div class="opinie-header">
+					<h2 class="opinie-title">Opinie moich uczniów</h2>
+					<div class="opinie-line"></div>
+				</div>
+
+				<div class="opinie-cards-grid">
+					<div class="opinie-card">
+						<p class="opinie-text">
+							Zajęcia z historii sztuki to była najlepsza decyzja! Dzięki indywidualnemu podejściu
+							i świetnym materiałom zdałam maturę rozszerzoną na 98%. Polecam każdemu, kto chce
+							naprawdę zrozumieć sztukę, a nie tylko kuć na pamięć.
+						</p>
+						<div class="opinie-card-line"></div>
+						<p class="opinie-author">Anna Kowalska</p>
+						<p class="opinie-role">Maturzystka 2025</p>
+					</div>
+
+					<div class="opinie-card">
+						<p class="opinie-text">
+							Wspaniała nauczycielka! Każde zajęcie to była przygoda. Materiały były zawsze
+							dopasowane do moich potrzeb, a elastyczne godziny pozwoliły mi pogodzić naukę
+							ze sportem. Zdałem egzamin do ASP za pierwszym razem!
+						</p>
+						<div class="opinie-card-line"></div>
+						<p class="opinie-author">Michał Nowak</p>
+						<p class="opinie-role">Student ASP</p>
+					</div>
+
+					<div class="opinie-card">
+						<p class="opinie-text">
+							Historia sztuki stała się moją pasją dzięki tym zajęciom. Wszystko jest wytłumaczone
+							w przystępny sposób, z mnóstwem ciekawostek. Mogę zadawać pytania w każdej chwili,
+							co bardzo pomaga w nauce.
+						</p>
+						<div class="opinie-card-line"></div>
+						<p class="opinie-author">Zofia Wiśniewska</p>
+						<p class="opinie-role">Uczennica liceum</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="kontakt" class="section kontakt-section">
+			<div class="kontakt-container">
+				<div class="kontakt-inner">
+					<div class="kontakt-text">
+						<h2 class="kontakt-title">Skontaktuj się ze mną</h2>
+						<p>
+							Masz pytania dotyczące zajęć? Chcesz umówić się na pierwsze spotkanie?
+							Wypełnij formularz, a odezwę się do Ciebie najszybciej jak to możliwe.
+						</p>
+						<p>
+							Odpowiadam zwykle w ciągu 24 godzin. Jestem dostępna zarówno online,
+							jak i stacjonarnie w Warszawie.
+						</p>
+					</div>
+
+					<div class="kontakt-form-wrapper">
+						<form class="kontakt-form" onsubmit="event.preventDefault(); alert('Formularz będzie dostępny wkrótce.');">
+							<div class="form-group">
+								<label for="name">Imię i nazwisko</label>
+								<input type="text" id="name" name="name" autocomplete="name" required />
+							</div>
+
+							<div class="form-group">
+								<label for="email">E-mail</label>
+								<input type="email" id="email" name="email" autocomplete="email" required />
+							</div>
+
+							<div class="form-group">
+								<label for="phone">Telefon (opcjonalnie)</label>
+								<input type="tel" id="phone" name="phone" autocomplete="tel" />
+							</div>
+
+							<div class="form-group">
+								<label for="message">Wiadomość</label>
+								<textarea id="message" name="message" rows="5" required></textarea>
+							</div>
+
+							<button type="submit" class="form-submit">Wyślij wiadomość</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="o-mnie" class="section omnie-section">
+			<div class="omnie-container">
+				<div class="omnie-header">
+					<h2 class="omnie-title">O mnie</h2>
+					<div class="omnie-line"></div>
+				</div>
+
+				<div class="omnie-content">
+					<div class="omnie-image">
+						<img src="/monalisa.png" alt="O mnie" />
+					</div>
+
+					<div class="omnie-text-wrapper">
+						<p>
+							Jestem absolwentką historii sztuki z wieloletnim doświadczeniem w nauczaniu.
+							Moją pasją jest odkrywanie przed uczniami fascynującego świata sztuki - od starożytności
+							po czasy współczesne.
+						</p>
+						<p>
+							Prowadzę zajęcia zarówno dla maturzystów, jak i osób przygotowujących się do egzaminów
+							na uczelnie artystyczne. Moje podejście łączy solidną wiedzę merytoryczną z umiejętnością
+							przekazywania jej w przystępny i angażujący sposób.
+						</p>
+						<p>
+							Wierzę, że historia sztuki to nie tylko daty i nazwiska, ale przede wszystkim zrozumienie
+							kontekstu historycznego, społecznego i kulturowego. Podczas zajęć korzystam z bogatego
+							materiału wizualnego i multimedialnego, dzięki czemu nauka staje się prawdziwą przyjemnością.
+						</p>
+						<p>
+							Współpracowałam z wieloma uczniami, którzy z sukcesem zdali maturę rozszerzoną oraz
+							dostali się na wymarzone kierunki studiów. Każde zajęcia dostosowuję do indywidualnych
+							potrzeb i tempa nauki.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="webinary" class="section webinary-section">
+			<div class="webinary-container">
+				<div class="webinary-header">
+					<h2 class="webinary-title">Webinary</h2>
+					<div class="webinary-line"></div>
+				</div>
+
+				<div class="webinary-cards-grid">
+					<div class="webinary-card">
+						<div class="webinary-card-content">
+							<p class="webinary-date">15 marca 2026</p>
+							<p class="webinary-time">18:00 - 19:30</p>
+						</div>
+						<a href="#" class="webinary-button">Zapisuję się</a>
+					</div>
+
+					<div class="webinary-card">
+						<div class="webinary-card-content">
+							<p class="webinary-date">22 marca 2026</p>
+							<p class="webinary-time">18:00 - 19:30</p>
+						</div>
+						<a href="#" class="webinary-button">Zapisuję się</a>
+					</div>
+
+					<div class="webinary-card">
+						<div class="webinary-card-content">
+							<p class="webinary-date">29 marca 2026</p>
+							<p class="webinary-time">18:00 - 19:30</p>
+						</div>
+						<a href="#" class="webinary-button">Zapisuję się</a>
+					</div>
+				</div>
+			</div>
+			<div id="bottom"></div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-top">
+				<div class="footer-brand">
+					<a href="#hero">NOTA<br>BENE<br>SZTUKA</a>
+				</div>
+
+				<div class="footer-contact">
+					<h3>Kontakt</h3>
+					<p><a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a></p>
+				</div>
+			</div>
+
+			<div class="footer-line"></div>
+
+			<div class="footer-bottom">
+				<div class="footer-social-section">
+					<p class="footer-social-title">Zaobserwuj mnie!</p>
+					<div class="footer-socials">
+						<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+								<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+							</svg>
+						</a>
+						<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<div class="footer-links">
+					<a href="#">Regulamin</a>
+					<a href="#">Polityka prywatności</a>
+				</div>
+
+				<div class="footer-back-to-top">
+					<a href="#hero" aria-label="Back to top">↑ Powrót do góry</a>
+				</div>
+			</div>
+
+			<div class="footer-bottom-info">
+				<p class="footer-copyright">© 2026 Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
+				<p class="footer-nip">NIP: 0000000000</p>
+			</div>
+		</div>
+	</footer>
 </Layout>
+
+<style>
+	/* ===== HEADER ===== */
+
+	.site-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		background: #fffbf5;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		transition: background 0.3s ease;
+	}
+
+	.site-header.light {
+		--text-color: #fff;
+		background: transparent;
+		border-bottom: none;
+	}
+
+	.site-header.dark {
+		--text-color: #000;
+		background: #fffbf5;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	.header-inner {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		padding: 0 2.5rem;
+		box-sizing: border-box;
+	}
+
+	.nav-brand {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.875rem;
+		line-height: 1.1;
+		letter-spacing: 0.05em;
+		text-align: left;
+		font-weight: 900;
+		text-decoration: none;
+		color: var(--text-color, #000);
+		transition: color 0.3s ease, opacity 0.3s ease;
+		flex-shrink: 0;
+	}
+
+	.nav-brand:hover {
+		opacity: 0.8;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+		margin-left: auto;
+	}
+
+	.nav a {
+		text-decoration: none;
+		color: var(--text-color, #000);
+		font-size: 1.25rem;
+		font-weight: 700;
+		font-family: 'Archivo Black', sans-serif;
+		transition: color 0.3s ease;
+	}
+
+	.nav a:hover {
+		text-decoration: underline;
+	}
+
+	.arrow-down {
+		font-weight: 700;
+		text-decoration: none;
+		color: var(--text-color, #000);
+		font-size: 1.75rem;
+		line-height: 1;
+		transition: color 0.3s ease, transform 0.2s ease;
+		display: inline-block;
+	}
+
+	.arrow-down:hover {
+		transform: scale(1.2);
+	}
+
+	/* ===== SHARED ===== */
+
+	main {
+		padding-top: 0;
+	}
+
+	.section {
+		padding: 3rem 0;
+	}
+
+	h1,
+	h2 {
+		margin: 0 0 0.75rem 0;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.6;
+		max-width: 65ch;
+	}
+
+	/* ===== HERO ===== */
+
+	.hero {
+		height: 92vh;
+		background-color: #000;
+		background-image:
+			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+			url('/monalisa.png');
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		color: #fffbf5;
+		position: relative;
+	}
+
+	/* Responsive adjustments for different screen sizes */
+	@media (min-width: 1440px) and (max-width: 1919px) {
+		.hero {
+			height: 90vh;
+		}
+	}
+
+	@media (min-width: 1920px) and (max-width: 2559px) {
+		.hero {
+			height: 92vh;
+		}
+	}
+
+	@media (min-width: 2560px) and (max-width: 3839px) {
+		.hero {
+			height: 95vh;
+		}
+	}
+
+	@media (min-width: 3840px) {
+		.hero {
+			height: 96vh;
+		}
+	}
+
+	.hero-content {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+
+	.hero-title {
+		position: absolute;
+		bottom: 4rem;
+		left: 4rem;
+		font-family: 'Playfair Display', serif;
+		font-size: 6rem;
+		font-weight: 800;
+		color: #fffbf5;
+		margin: 0;
+		text-align: left;
+		line-height: 1.2;
+		letter-spacing: 0.05em;
+		text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+	}
+
+	.hero-socials {
+		position: absolute;
+		bottom: 2rem;
+		right: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.hero-socials .social {
+		text-decoration: none;
+		color: #fff;
+		transition: opacity 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+	}
+
+	.hero-socials .social svg {
+		width: 5rem;
+		height: 5rem;
+		stroke: #fff;
+		transition: transform 0.3s ease;
+	}
+
+	.hero-socials .social:hover {
+		opacity: 0.7;
+	}
+
+	.hero-socials .social:hover svg {
+		transform: scale(1.1);
+	}
+
+	.hero-scroll-down {
+		position: absolute;
+		bottom: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		color: #fff;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+		animation: bounce 2s infinite;
+		cursor: pointer;
+	}
+
+	.hero-scroll-down:hover {
+		opacity: 0.8;
+		animation: none;
+		transform: translateX(-50%) translateY(0.5rem);
+	}
+
+	.hero-scroll-down svg {
+		width: 3rem;
+		height: 3rem;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+	}
+
+	@keyframes bounce {
+		0%, 20%, 50%, 80%, 100% {
+			transform: translateX(-50%) translateY(0);
+		}
+		40% {
+			transform: translateX(-50%) translateY(-0.625rem);
+		}
+		60% {
+			transform: translateX(-50%) translateY(-0.3125rem);
+		}
+	}
+
+	#bottom {
+		height: 0.0625rem;
+		visibility: hidden;
+	}
+
+	/* ===== OFERTA ===== */
+
+	.oferta-section {
+		background: #fffbf5;
+		padding: 5rem 0;
+		scroll-margin-top: calc(var(--header-height) - 12rem);
+	}
+
+	.oferta-container {
+		max-width: 65rem;
+		margin: 0 auto;
+		padding: 1rem 4rem 4rem 4rem;
+		background: #fffbf5;
+		border-radius: 0.5rem;
+	}
+
+	.oferta-header {
+		margin-bottom: 1.25rem;
+	}
+
+	.oferta-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3.5rem;
+		font-weight: 600;
+		margin: 0 0 1.5rem 0;
+		color: #111;
+	}
+
+	.oferta-line {
+		width: 8.75rem;
+		height: 0.25rem;
+		background: #111;
+	}
+
+	.oferta-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+
+	.oferta-image {
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+		border-radius: 0.25rem;
+	}
+
+	.oferta-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.oferta-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.oferta-text p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.25rem;
+		line-height: 1.8;
+		color: #222;
+		max-width: 100%;
+	}
+
+	.cta-button {
+		display: inline-block;
+		padding: 1.25rem 3rem;
+		background: #111;
+		color: #fff;
+		text-decoration: none;
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 600;
+		border-radius: 0.25rem;
+		transition: background 0.3s ease, transform 0.2s ease;
+		margin-top: 0.75rem;
+	}
+
+	.cta-button:hover {
+		background: #333;
+		transform: translateY(-0.125rem);
+	}
+
+	/* Benefits cards */
+	.oferta-cards-container {
+		background: #ec5538;
+		margin-top: 3rem;
+	}
+
+	.oferta-cards-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3.5rem;
+		font-weight: 600;
+		text-align: center;
+		color: #fff;
+		margin: 0 0 3rem 0;
+	}
+
+	.oferta-cards-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+	}
+
+	.oferta-card {
+		background: #fff;
+		padding: 2rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.oferta-card:hover {
+		transform: translateY(-0.25rem);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+	}
+
+	.oferta-card h3 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #111;
+		margin: 0 0 1rem 0;
+	}
+
+	.oferta-card p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #555;
+		margin: 0;
+		max-width: 100%;
+	}
+
+	/* ===== OPINIE ===== */
+
+	.opinie-section {
+		background: #fffbf5;
+		padding: 3.5rem 0;
+		scroll-margin-top: calc(var(--header-height) - 8rem);
+	}
+
+	.opinie-container {
+		max-width: 65rem;
+		margin: 0 auto;
+		padding: 1rem 4rem 4rem 4rem;
+	}
+
+	.opinie-header {
+		margin-bottom: 1.25rem;
+	}
+
+	.opinie-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3.5rem;
+		font-weight: 600;
+		margin: 0 0 1.5rem 0;
+		color: #111;
+	}
+
+	.opinie-line {
+		width: 8.75rem;
+		height: 0.25rem;
+		background: #111;
+	}
+
+	.opinie-cards-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2.5rem;
+	}
+
+	.opinie-card {
+		background: #fff;
+		padding: 2.5rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.opinie-card:hover {
+		transform: translateY(-0.25rem);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+	}
+
+	.opinie-text {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: #333;
+		margin: 0 0 1.5rem 0;
+		flex-grow: 1;
+		max-width: 100%;
+	}
+
+	.opinie-card-line {
+		width: 100%;
+		height: 0.125rem;
+		background: #ddd;
+		margin-bottom: 1.5rem;
+	}
+
+	.opinie-author {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: #111;
+		margin: 0 0 0.5rem 0;
+	}
+
+	.opinie-role {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: #666;
+		margin: 0;
+		font-style: italic;
+	}
+
+	/* ===== KONTAKT ===== */
+
+	.kontakt-section {
+		background: #fffbf5;
+		padding: 3.5rem 0;
+		scroll-margin-top: calc(var(--header-height) - 8rem);
+	}
+
+	.kontakt-container {
+		max-width: 65rem;
+		margin: 0 auto;
+		padding: 1rem 4rem 4rem 4rem;
+		background-image: url('/vangogh.png');
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 0.5rem;
+		position: relative;
+	}
+
+	.kontakt-container::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 0.5rem;
+	}
+
+	.kontakt-inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: 1fr 1.2fr;
+		gap: 4rem;
+		align-items: start;
+	}
+
+	.kontakt-text {
+		color: #fff;
+	}
+
+	.kontakt-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3rem;
+		font-weight: 600;
+		margin: 0 0 2rem 0;
+		color: #fff;
+	}
+
+	.kontakt-text p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: #fff;
+		margin: 0 0 1.5rem 0;
+		max-width: 100%;
+	}
+
+	.kontakt-form-wrapper {
+		background: rgba(255, 255, 255, 0.3);
+		padding: 2.5rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+	}
+
+	.kontakt-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.form-group label {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #fff;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.form-group input,
+	.form-group textarea {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		padding: 0.875rem 1rem;
+		border: 2px solid #ddd;
+		border-radius: 0.25rem;
+		background: #fff;
+		color: #333;
+		transition: border-color 0.3s ease;
+	}
+
+	.form-group input:focus,
+	.form-group textarea:focus {
+		outline: none;
+		border-color: #111;
+	}
+
+	.form-group textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+
+	.form-submit {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 600;
+		padding: 1rem 2.5rem;
+		background: #111;
+		color: #fff;
+		border: none;
+		border-radius: 0.25rem;
+		cursor: pointer;
+		transition: background 0.3s ease, transform 0.2s ease;
+		align-self: flex-start;
+	}
+
+	.form-submit:hover {
+		background: #333;
+		transform: translateY(-0.125rem);
+	}
+
+	/* ===== O MNIE ===== */
+
+	.omnie-section {
+		background: #fffbf5;
+		padding: 0.5rem 0;
+		scroll-margin-top: calc(var(--header-height) - 6rem);
+	}
+
+	.omnie-container {
+		max-width: 65rem;
+		margin: 0 auto;
+		padding: 1rem 4rem 4rem 4rem;
+	}
+
+	.omnie-header {
+		margin-bottom: 1.25rem;
+	}
+
+	.omnie-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3.5rem;
+		font-weight: 600;
+		margin: 0 0 1.5rem 0;
+		color: #111;
+	}
+
+	.omnie-line {
+		width: 8.75rem;
+		height: 0.25rem;
+		background: #111;
+	}
+
+	.omnie-content {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		gap: 4rem;
+		align-items: center;
+	}
+
+	.omnie-image {
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	.omnie-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.omnie-text-wrapper {
+		background: #f5ece3;
+		padding: 3rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	.omnie-text-wrapper p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		line-height: 1.8;
+		color: #111;
+		margin: 0 0 1.5rem 0;
+		max-width: 100%;
+	}
+
+	.omnie-text-wrapper p:last-child {
+		margin-bottom: 0;
+	}
+
+	/* ===== WEBINARY ===== */
+
+	.webinary-section {
+		background: #fffbf5;
+		padding: 2.1rem 0;
+		scroll-margin-top: calc(var(--header-height) - 8rem);
+	}
+
+	.webinary-container {
+		max-width: 65rem;
+		margin: 0 auto;
+		padding: 1rem 4rem 4rem 4rem;
+	}
+
+	.webinary-header {
+		margin-bottom: 1.25rem;
+	}
+
+	.webinary-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3.5rem;
+		font-weight: 600;
+		margin: 0 0 1.5rem 0;
+		color: #111;
+	}
+
+	.webinary-line {
+		width: 8.75rem;
+		height: 0.25rem;
+		background: #111;
+	}
+
+	.webinary-cards-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2.5rem;
+	}
+
+	.webinary-card {
+		background: rgba(255, 255, 255, 0.4);
+		padding: 3rem 2.5rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+	}
+
+	.webinary-card:hover {
+		transform: translateY(-0.25rem);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+	}
+
+	.webinary-card-content {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.webinary-date {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #111;
+		margin: 0;
+	}
+
+	.webinary-time {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 400;
+		color: #333;
+		margin: 0;
+	}
+
+	.webinary-button {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 600;
+		padding: 1rem 2rem;
+		background: #111;
+		color: #fff;
+		text-decoration: none;
+		text-align: center;
+		border-radius: 0.25rem;
+		transition: background 0.3s ease, transform 0.2s ease;
+		border-top: 2px solid #333;
+		display: block;
+	}
+
+	.webinary-button:hover {
+		background: #333;
+		transform: translateY(-0.125rem);
+	}
+
+	/* ===== FOOTER ===== */
+
+	.site-footer {
+		background: #3a3a3a;
+		color: #fff;
+		padding: 6rem 0 3rem 0;
+	}
+
+	.footer-container {
+		max-width: 100%;
+		margin: 0;
+		padding: 0 4rem;
+		box-sizing: border-box;
+	}
+
+	.footer-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 4rem;
+		gap: 4rem;
+	}
+
+	.footer-brand {
+		flex-shrink: 0;
+	}
+
+	.footer-brand a {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 1.5rem;
+		line-height: 1.2;
+		letter-spacing: 0.05em;
+		text-align: left;
+		font-weight: 900;
+		text-decoration: none;
+		color: #fff;
+		transition: opacity 0.3s ease;
+		display: inline-block;
+	}
+
+	.footer-brand a:hover {
+		opacity: 0.8;
+	}
+
+	.footer-contact {
+		flex-grow: 1;
+		text-align: right;
+		margin-right: 4rem;
+	}
+
+	.footer-contact h3 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 2rem;
+		font-weight: 600;
+		margin: 0 0 1rem 0;
+		color: #fff;
+	}
+
+	.footer-contact p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.375rem;
+		margin: 0;
+		max-width: 100%;
+	}
+
+	.footer-contact a {
+		color: #fff;
+		text-decoration: none;
+		transition: opacity 0.3s ease;
+	}
+
+	.footer-contact a:hover {
+		opacity: 0.7;
+		text-decoration: underline;
+	}
+
+	.footer-line {
+		width: 100%;
+		height: 0.125rem;
+		background: #fff;
+		margin-bottom: 3rem;
+	}
+
+	.footer-bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 4rem;
+		flex-wrap: wrap;
+	}
+
+	.footer-social-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.footer-social-title {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0;
+		color: #fff;
+	}
+
+	.footer-socials {
+		display: flex;
+		gap: 2.5rem;
+	}
+
+	.footer-socials a {
+		text-decoration: none;
+		color: #fff;
+		transition: opacity 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.footer-socials a svg {
+		width: 2rem;
+		height: 2rem;
+		stroke: #fff;
+		transition: transform 0.3s ease;
+	}
+
+	.footer-socials a:hover {
+		opacity: 0.7;
+	}
+
+	.footer-socials a:hover svg {
+		transform: scale(1.1);
+	}
+
+	.footer-links {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.footer-links a {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 400;
+		text-decoration: none;
+		color: #fff;
+		transition: opacity 0.3s ease;
+	}
+
+	.footer-links a:hover {
+		opacity: 0.7;
+		text-decoration: underline;
+	}
+
+	.footer-back-to-top {
+		margin-left: auto;
+	}
+
+	.footer-back-to-top a {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #fff;
+		transition: opacity 0.3s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.footer-back-to-top a:hover {
+		opacity: 0.7;
+		text-decoration: underline;
+	}
+
+	.footer-bottom-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.footer-copyright,
+	.footer-nip {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: rgba(255, 255, 255, 0.7);
+		margin: 0;
+	}
+
+	/* ===== RESPONSIVE: 1400px ===== */
+
+	@media (max-width: 1400px) {
+		.oferta-container,
+		.opinie-container,
+		.kontakt-container,
+		.omnie-container {
+			max-width: 85%;
+			padding: 0.875rem 3.75rem 3.75rem 3.75rem;
+		}
+
+		.oferta-title,
+		.opinie-title,
+		.omnie-title {
+			font-size: 3rem;
+		}
+
+		.oferta-text p {
+			font-size: 1.125rem;
+		}
+
+		.kontakt-title {
+			font-size: 2.5rem;
+		}
+	}
+
+	/* ===== RESPONSIVE: 1024px ===== */
+
+	@media (max-width: 1024px) {
+		.oferta-section {
+			scroll-margin-top: calc(var(--header-height) - 5rem);
+		}
+
+		.omnie-section {
+			scroll-margin-top: calc(var(--header-height) - 3rem);
+		}
+
+		.opinie-section,
+		.kontakt-section,
+		.webinary-section {
+			scroll-margin-top: calc(var(--header-height) - 4rem);
+		}
+
+		.oferta-content,
+		.omnie-content {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+
+		.oferta-container,
+		.opinie-container,
+		.kontakt-container,
+		.omnie-container,
+		.webinary-container {
+			max-width: 90%;
+			padding: 0.75rem 3rem 3rem 3rem;
+		}
+
+		.oferta-title,
+		.opinie-title,
+		.omnie-title,
+		.oferta-cards-title,
+		.webinary-title {
+			font-size: 2.5rem;
+		}
+
+		.oferta-cards-grid,
+		.opinie-cards-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.kontakt-inner {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+
+		.kontakt-title {
+			font-size: 2.5rem;
+		}
+
+		.nav a {
+			font-size: 1.125rem;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+			bottom: 1.5rem;
+			left: 1.5rem;
+		}
+
+		.hero-socials {
+			bottom: 1.5rem;
+			right: 1.5rem;
+		}
+
+		.hero-scroll-down {
+			bottom: 1.5rem;
+		}
+
+		.hero-scroll-down svg {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
+
+		.webinary-cards-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.footer-container {
+			padding: 0 3rem;
+		}
+	}
+
+	/* ===== RESPONSIVE: 768px ===== */
+
+	@media (max-width: 768px) {
+		.oferta-section {
+			scroll-margin-top: calc(var(--header-height) - 2rem);
+		}
+
+		.omnie-section {
+			scroll-margin-top: calc(var(--header-height) - 1rem);
+		}
+
+		.opinie-section,
+		.kontakt-section,
+		.webinary-section {
+			scroll-margin-top: calc(var(--header-height) - 2rem);
+		}
+
+		.oferta-container,
+		.opinie-container,
+		.kontakt-container,
+		.omnie-container,
+		.webinary-container {
+			padding: 0.625rem 2rem 2rem 2rem;
+		}
+
+		.oferta-title,
+		.opinie-title,
+		.omnie-title,
+		.kontakt-title,
+		.oferta-cards-title,
+		.webinary-title {
+			font-size: 2rem;
+		}
+
+		.oferta-cards-grid,
+		.opinie-cards-grid,
+		.webinary-cards-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.oferta-text p {
+			font-size: 1rem;
+		}
+
+		.cta-button {
+			padding: 1rem 2.25rem;
+			font-size: 1.125rem;
+		}
+
+		.kontakt-form-wrapper,
+		.omnie-text-wrapper {
+			padding: 2rem;
+		}
+
+		.nav a {
+			font-size: 1rem;
+		}
+
+		.header-inner {
+			padding: 0 1.5rem;
+		}
+
+		.hero-title {
+			font-size: 2rem;
+			bottom: 1rem;
+			left: 1rem;
+		}
+
+		.hero-socials {
+			bottom: 1rem;
+			right: 1rem;
+		}
+
+		.hero-scroll-down {
+			bottom: 1rem;
+		}
+
+		.hero-scroll-down svg {
+			width: 2rem;
+			height: 2rem;
+		}
+
+		.footer-container {
+			padding: 0 2rem;
+		}
+
+		.footer-top {
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.footer-contact {
+			text-align: left;
+			margin-right: 0;
+		}
+
+		.footer-bottom {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2rem;
+		}
+
+		.footer-back-to-top {
+			margin-left: 0;
+		}
+
+		.footer-bottom-info {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+		}
+	}
+</style>
+
+<script>
+	import { initHeaderColor } from '../scripts/headerColor';
+	initHeaderColor();
+</script>
+

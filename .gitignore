@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # Project plan files
 PROJECT_PLAN*.md
+
+# Website design files
+website_design_v1.pdf
