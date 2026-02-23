@@ -433,7 +433,7 @@ import Layout from '../layouts/Layout.astro';
 	/* ===== HERO ===== */
 
 	.hero {
-		height: 90vh;
+		height: 92vh;
 		background-color: #000;
 		background-image:
 			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -443,6 +443,31 @@ import Layout from '../layouts/Layout.astro';
 		background-repeat: no-repeat;
 		color: #fffbf5;
 		position: relative;
+	}
+
+	/* Responsive adjustments for different screen sizes */
+	@media (min-width: 1440px) and (max-width: 1919px) {
+		.hero {
+			height: 90vh;
+		}
+	}
+
+	@media (min-width: 1920px) and (max-width: 2559px) {
+		.hero {
+			height: 92vh;
+		}
+	}
+
+	@media (min-width: 2560px) and (max-width: 3839px) {
+		.hero {
+			height: 95vh;
+		}
+	}
+
+	@media (min-width: 3840px) {
+		.hero {
+			height: 96vh;
+		}
 	}
 
 	.hero-content {
