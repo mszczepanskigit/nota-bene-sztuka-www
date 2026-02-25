@@ -1,0 +1,263 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Polityka Prywatności — Nota Bene Sztuka" description="Polityka prywatności serwisu Nota Bene Sztuka.">
+	<div class="legal-page">
+		<header class="legal-header">
+			<a class="legal-brand" href="/">NOTA<br>BENE<br>SZTUKA</a>
+			<a class="legal-back" href="/">← Wróć do strony głównej</a>
+		</header>
+
+		<main class="legal-content">
+			<h1>Polityka Prywatności</h1>
+
+			<section>
+				<h2>§1 Administrator danych</h2>
+				<p>Administratorem danych osobowych jest:</p>
+				<p class="legal-address">
+					Marta Miller<br>
+					prowadząca działalność gospodarczą pod nazwą Nota Bene Sztuka,<br>
+					adres: Wrocław 50-203, ul. R. Dmowskiego 1B/2,<br>
+					e-mail: <a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a>
+				</p>
+				<p>W sprawach związanych z danymi osobowymi można kontaktować się pod powyższym adresem e-mail.</p>
+			</section>
+
+			<section>
+				<h2>§2 Zakres zbieranych danych</h2>
+				<p>Administrator może przetwarzać następujące dane osobowe:</p>
+				<ul>
+					<li>imię i nazwisko</li>
+					<li>adres e-mail</li>
+					<li>numer telefonu</li>
+					<li>klasa / poziom nauki</li>
+					<li>inne dane przekazane dobrowolnie w formularzu kontaktowym</li>
+				</ul>
+				<p>Podanie danych jest dobrowolne, ale niezbędne do kontaktu i realizacji usługi.</p>
+			</section>
+
+			<section>
+				<h2>§3 Cele przetwarzania danych</h2>
+				<p>Dane osobowe przetwarzane są w celu:</p>
+				<ul>
+					<li>kontaktu w sprawie zajęć,</li>
+					<li>realizacji usług korepetycji z historii sztuki,</li>
+					<li>obsługi zapisów,</li>
+					<li>wystawiania dokumentów księgowych,</li>
+					<li>ewentualnego dochodzenia roszczeń.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§4 Podstawa prawna przetwarzania</h2>
+				<p>Dane przetwarzane są na podstawie:</p>
+				<ul>
+					<li>art. 6 ust. 1 lit. b RODO — wykonanie umowy lub działania przed jej zawarciem,</li>
+					<li>art. 6 ust. 1 lit. a RODO — zgoda użytkownika (formularz kontaktowy),</li>
+					<li>art. 6 ust. 1 lit. c RODO — obowiązki prawne (np. księgowe).</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§5 Okres przechowywania danych</h2>
+				<p>Dane będą przechowywane:</p>
+				<ul>
+					<li>przez czas trwania współpracy,</li>
+					<li>przez okres wymagany przepisami prawa (np. dokumenty księgowe — 5 lat),</li>
+					<li>do czasu cofnięcia zgody — w przypadku danych przetwarzanych na podstawie zgody.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§6 Odbiorcy danych</h2>
+				<p>Dane mogą być przekazywane podmiotom wspierającym Administratora, w szczególności:</p>
+				<ul>
+					<li>biuru księgowemu,</li>
+					<li>dostawcy hostingu strony,</li>
+					<li>dostawcom narzędzi IT.</li>
+				</ul>
+				<p>Dane nie są przekazywane poza Europejski Obszar Gospodarczy, chyba że wynika to z użycia narzędzi takich jak Google lub Meta.</p>
+			</section>
+
+			<section>
+				<h2>§7 Prawa osoby, której dane dotyczą</h2>
+				<p>Użytkownik ma prawo do:</p>
+				<ul>
+					<li>dostępu do swoich danych,</li>
+					<li>sprostowania danych,</li>
+					<li>usunięcia danych,</li>
+					<li>ograniczenia przetwarzania,</li>
+					<li>sprzeciwu wobec przetwarzania,</li>
+					<li>wniesienia skargi do Prezesa UODO.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§8 Pliki cookies</h2>
+				<p>Strona może wykorzystywać pliki cookies w celu:</p>
+				<ul>
+					<li>prawidłowego działania strony,</li>
+					<li>analizy statystyk,</li>
+					<li>działań marketingowych.</li>
+				</ul>
+				<p>Użytkownik może samodzielnie zmienić ustawienia cookies w swojej przeglądarce.</p>
+			</section>
+		</main>
+
+		<footer class="legal-footer">
+			<p>© {new Date().getFullYear()} Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.legal-page {
+		max-width: 52rem;
+		margin: 0 auto;
+		padding: 3rem 2rem 4rem;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		background: #fffbf5;
+	}
+
+	.legal-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 3rem;
+		border-bottom: 2px solid #111;
+		margin-bottom: 3rem;
+	}
+
+	.legal-brand {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.875rem;
+		line-height: 1.1;
+		letter-spacing: 0.05em;
+		font-weight: 900;
+		text-decoration: none;
+		color: #111;
+		transition: opacity 0.3s ease;
+	}
+
+	.legal-brand:hover {
+		opacity: 0.7;
+	}
+
+	.legal-back {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #111;
+		padding: 0.75rem 1.5rem;
+		border: 2px solid #111;
+		border-radius: 0.25rem;
+		transition: background 0.3s ease, color 0.3s ease;
+	}
+
+	.legal-back:hover {
+		background: #111;
+		color: #fff;
+	}
+
+	.legal-content {
+		flex-grow: 1;
+	}
+
+	.legal-content h1 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3rem;
+		font-weight: 700;
+		color: #111;
+		margin: 0 0 3rem 0;
+	}
+
+	.legal-content section {
+		margin-bottom: 2.5rem;
+	}
+
+	.legal-content h2 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #111;
+		margin: 0 0 1rem 0;
+	}
+
+	.legal-content p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		line-height: 1.8;
+		color: #333;
+		margin: 0 0 1rem 0;
+		max-width: 100%;
+	}
+
+	.legal-address {
+		padding: 1.25rem 1.5rem;
+		background: rgba(0, 0, 0, 0.04);
+		border-left: 3px solid #ec5538;
+		border-radius: 0 0.25rem 0.25rem 0;
+	}
+
+	.legal-address a {
+		color: #ec5538;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.legal-address a:hover {
+		opacity: 0.8;
+	}
+
+	.legal-content ul {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		line-height: 1.8;
+		color: #333;
+		margin: 0 0 1rem 0;
+		padding-left: 1.5rem;
+	}
+
+	.legal-content li {
+		margin-bottom: 0.35rem;
+	}
+
+	.legal-footer {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(0, 0, 0, 0.15);
+	}
+
+	.legal-footer p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		color: rgba(0, 0, 0, 0.5);
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.legal-page {
+			padding: 2rem 1.5rem 3rem;
+		}
+
+		.legal-header {
+			flex-direction: column;
+			gap: 1.5rem;
+			align-items: flex-start;
+		}
+
+		.legal-content h1 {
+			font-size: 2rem;
+		}
+
+		.legal-content h2 {
+			font-size: 1.25rem;
+		}
+	}
+</style>
+
+

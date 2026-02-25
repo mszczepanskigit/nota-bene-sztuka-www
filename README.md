@@ -7,11 +7,11 @@ Główne technologie:
 - Astro (SSG)
 - TypeScript
 - Bun (runtime / package manager)
-- tbc: Vercel (hosting / deploy previews)
+- Vercel & OVH (hosting / deploy previews)
 - tbc: Vitest, ESLint, Prettier (testy i jakość kodu)
 
-Link produkcyjny: https://TODO-PRODUCTION-URL
+Link produkcyjny: https://notabenesztuka.pl
 
-Nota Bene Sztuka [Marta Miller](email-to-be-added@gmail.com)
+Nota Bene Sztuka [Marta Miller](mailto:kontakt@notabenesztuka.pl)
 
 Projekt i Development: [Mateusz Szczepański](mailto:mateusz.szczepanski.kontakt@gmail.com)

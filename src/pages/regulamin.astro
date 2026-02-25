@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Regulamin — Nota Bene Sztuka" description="Regulamin świadczenia usług Nota Bene Sztuka.">
+	<div class="legal-page">
+		<header class="legal-header">
+			<a class="legal-brand" href="/">NOTA<br>BENE<br>SZTUKA</a>
+			<a class="legal-back" href="/">← Wróć do strony głównej</a>
+		</header>
+
+		<main class="legal-content">
+			<h1>Regulamin Świadczenia Usług</h1>
+
+			<section>
+				<h2>§1 Informacje ogólne</h2>
+				<p>Usługodawcą jest:</p>
+				<p class="legal-address">
+					Marta Miller Nota Bene Sztuka<br>
+					e-mail: <a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a>
+				</p>
+				<p>Regulamin określa zasady korzystania z usług korepetycji z historii sztuki.</p>
+			</section>
+
+			<section>
+				<h2>§2 Zakres usług</h2>
+				<ul>
+					<li>Usługodawca prowadzi korepetycje z historii sztuki.</li>
+					<li>Zajęcia odbywają się w formie online (Google Meet).</li>
+					<li>Zajęcia prowadzone są indywidualnie (1:1) lub w małych grupach.</li>
+					<li>Standardowy czas trwania lekcji: 50 min.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§3 Zapisy na zajęcia</h2>
+				<ul>
+					<li>Zapisy odbywają się przez formularz kontaktowy, e-mail lub wiadomość prywatną.</li>
+					<li>Rezerwacja terminu następuje po potwierdzeniu przez Usługodawcę.</li>
+					<li>Podanie danych musi być zgodne z prawdą.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§4 Płatności</h2>
+				<ul>
+					<li>Cena za zajęcia wynosi <strong>120 zł / lekcja (1:1)</strong>, <strong>80 zł / lekcja (grupowe)</strong>.</li>
+					<li>Płatność dokonywana jest przelewem na konto firmowe.</li>
+					<li>Termin płatności: do 24h przed zajęciami.</li>
+					<li>Na życzenie klienta wystawiana jest faktura.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§5 Odwoływanie zajęć</h2>
+				<ul>
+					<li>Zajęcia można odwołać najpóźniej <strong>24 godziny</strong> przed terminem.</li>
+					<li>W przypadku późniejszego odwołania lub nieobecności ucznia zajęcia uznaje się za zrealizowane i podlegają opłacie.</li>
+					<li>W wyjątkowych sytuacjach Usługodawca może zaproponować inny termin.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§6 Spóźnienia</h2>
+				<ul>
+					<li>Spóźnienie ucznia nie powoduje wydłużenia zajęć.</li>
+					<li>Spóźnienie nie wpływa na cenę lekcji.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§7 Reklamacje</h2>
+				<ul>
+					<li>Reklamacje można zgłaszać mailowo na adres: <a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a>.</li>
+					<li>Reklamacja zostanie rozpatrzona w terminie 14 dni.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>§8 Postanowienia końcowe</h2>
+				<ul>
+					<li>Regulamin obowiązuje od dnia 02.02.2027.</li>
+					<li>Usługodawca zastrzega sobie prawo do wprowadzania zmian w regulaminie.</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer class="legal-footer">
+			<p>© {new Date().getFullYear()} Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.legal-page {
+		max-width: 52rem;
+		margin: 0 auto;
+		padding: 3rem 2rem 4rem;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		background: #fffbf5;
+	}
+
+	.legal-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 3rem;
+		border-bottom: 2px solid #111;
+		margin-bottom: 3rem;
+	}
+
+	.legal-brand {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.875rem;
+		line-height: 1.1;
+		letter-spacing: 0.05em;
+		font-weight: 900;
+		text-decoration: none;
+		color: #111;
+		transition: opacity 0.3s ease;
+	}
+
+	.legal-brand:hover {
+		opacity: 0.7;
+	}
+
+	.legal-back {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #111;
+		padding: 0.75rem 1.5rem;
+		border: 2px solid #111;
+		border-radius: 0.25rem;
+		transition: background 0.3s ease, color 0.3s ease;
+	}
+
+	.legal-back:hover {
+		background: #111;
+		color: #fff;
+	}
+
+	.legal-content {
+		flex-grow: 1;
+	}
+
+	.legal-content h1 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3rem;
+		font-weight: 700;
+		color: #111;
+		margin: 0 0 3rem 0;
+	}
+
+	.legal-content section {
+		margin-bottom: 2.5rem;
+	}
+
+	.legal-content h2 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #111;
+		margin: 0 0 1rem 0;
+	}
+
+	.legal-content p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		line-height: 1.8;
+		color: #333;
+		margin: 0 0 1rem 0;
+		max-width: 100%;
+	}
+
+	.legal-address {
+		padding: 1.25rem 1.5rem;
+		background: rgba(0, 0, 0, 0.04);
+		border-left: 3px solid #ec5538;
+		border-radius: 0 0.25rem 0.25rem 0;
+	}
+
+	.legal-address a {
+		color: #ec5538;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.legal-address a:hover {
+		opacity: 0.8;
+	}
+
+	.legal-content ul {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		line-height: 1.8;
+		color: #333;
+		margin: 0 0 1rem 0;
+		padding-left: 1.5rem;
+	}
+
+	.legal-content li {
+		margin-bottom: 0.35rem;
+	}
+
+	.legal-content li strong {
+		color: #111;
+	}
+
+	.legal-content li a {
+		color: #ec5538;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.legal-content li a:hover {
+		opacity: 0.8;
+	}
+
+	.legal-footer {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(0, 0, 0, 0.15);
+	}
+
+	.legal-footer p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		color: rgba(0, 0, 0, 0.5);
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.legal-page {
+			padding: 2rem 1.5rem 3rem;
+		}
+
+		.legal-header {
+			flex-direction: column;
+			gap: 1.5rem;
+			align-items: flex-start;
+		}
+
+		.legal-content h1 {
+			font-size: 2rem;
+		}
+
+		.legal-content h2 {
+			font-size: 1.25rem;
+		}
+	}
+</style>
+
+
