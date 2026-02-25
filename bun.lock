@@ -9,6 +9,9 @@
         "astro": "^5.17.1",
         "typescript": "^5.9.3",
       },
+      "devDependencies": {
+        "sharp": "^0.34.5",
+      },
     },
   },
   "packages": {

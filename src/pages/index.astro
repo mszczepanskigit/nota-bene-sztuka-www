@@ -1,5 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Import images for content (backgrounds are in CSS)
+import pisaImg from '../../public/pisa.jpg';
+import orangeImg from '../../public/orange.png';
+import webinarImg from '../../public/webinar1.png';
+
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const currentYear = new Date().getFullYear();
+const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms.example.com';
 ---
 
 <Layout>
@@ -21,29 +31,39 @@ import Layout from '../layouts/Layout.astro';
 	<main>
 		<section class="section hero" id="hero" aria-label="Hero">
 			<div class="hero-content">
-				<h1 class="hero-title">KOREPETYCJE Z<br>HISTORII SZTUKI</h1>
-
-				<div class="hero-socials">
-					<a class="social" href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
-						<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-						</svg>
-					</a>
-					<a class="social" href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
-						<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-						</svg>
-					</a>
+				<div class="hero-titles">
+					<h1 class="hero-title-primary">KOREPETYCJE Z<br>HISTORII SZTUKI</h1>
+					<h2 class="hero-title-secondary">MATURA <span id="current-year">{currentYear}</span><br>OLIMPIADA<br>EGZAMINY NA STUDIA<br>DLA PASJONATÓW</h2>
 				</div>
+				</div>
+
+			<div class="hero-socials">
+				<a class="social" href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+						<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+						<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+					</svg>
+				</a>
+				<a class="social fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+					</svg>
+					<span class="fb-tooltip">Już niedługo!</span>
+				</a>
+				<a class="social" href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10"></circle>
+						<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
+					</svg>
+				</a>
+			</div>
 
 				<a href="#oferta" class="hero-scroll-down" aria-label="Scroll to offer">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<polyline points="6 9 12 15 18 9"></polyline>
 					</svg>
 				</a>
-			</div>
 		</section>
 
 		<section id="oferta" class="section oferta-section">
@@ -55,7 +75,13 @@ import Layout from '../layouts/Layout.astro';
 
 				<div class="oferta-content">
 					<div class="oferta-image">
-						<img src="/pisa.jpg" alt="Historia sztuki" />
+						<Image
+							src={pisaImg}
+							alt="Historia sztuki"
+							quality={90}
+							format="webp"
+							loading="lazy"
+						/>
 					</div>
 
 					<div class="oferta-text">
@@ -210,7 +236,7 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 
 					<p class="opinie-more">
-						Więcej opinii tutaj: <a href="#" aria-label="More testimonials">link</a>
+						Więcej opinii tutaj: <a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="More testimonials">Superprof</a>
 					</p>
 				</div>
 			</div>
@@ -229,26 +255,37 @@ import Layout from '../layouts/Layout.astro';
 							Ewentualnie napisz do mnie na poniższy adres e-mail!
 						</p>
 						<p class="kontakt-email">
-							<a href="mailto:kontakt@example.com">kontakt@example.com</a>
+							<a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a>
 						</p>
 						<div class="kontakt-socials">
-							<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+							<a href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
 								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
 									<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
 									<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
 								</svg>
 							</a>
-							<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
+							<a class="fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
 								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+								</svg>
+								<span class="fb-tooltip">Już niedługo!</span>
+							</a>
+							<a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="12" cy="12" r="10"></circle>
+									<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
 								</svg>
 							</a>
 						</div>
 					</div>
 
 					<div class="kontakt-form-wrapper">
-						<form id="kontakt-form" class="kontakt-form">
+						<form id="kontakt-form" class="kontakt-form" action="https://api.web3forms.com/submit" method="POST">
+							<input type="hidden" name="access_key" value={web3formsKey} />
+							<input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+							<input type="hidden" name="subject" value="Nowe zapytanie z formularza kontaktowego - Nota Bene Sztuka" />
+							<input type="hidden" name="redirect" value="https://web3forms.com/success" />
 							<div class="form-group">
 								<label for="name">Imię i nazwisko</label>
 								<input type="text" id="name" name="name" autocomplete="name" required />
@@ -269,6 +306,20 @@ import Layout from '../layouts/Layout.astro';
 								<textarea id="message" name="message" rows="5" required></textarea>
 							</div>
 
+							<div class="form-group form-checkbox">
+								<label for="consent-combined">
+									<input
+										type="checkbox"
+										id="consent-combined"
+										name="consent_combined"
+										required
+									/>
+									<span>Akceptuję <a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">politykę prywatności</a> i <a href="/regulamin" target="_blank" rel="noopener noreferrer">regulamin</a>. Oświadczam, że ukończyłem 18 lat lub jestem pełnoprawnym opiekunem.</span>
+								</label>
+							</div>
+
+							<div id="form-status" class="form-status"></div>
+
 							<button type="submit" class="form-submit">Wyślij wiadomość</button>
 						</form>
 					</div>
@@ -283,26 +334,32 @@ import Layout from '../layouts/Layout.astro';
 					<div class="omnie-line"></div>
 				</div>
 
-				<div class="omnie-content">
+			<div class="omnie-content">
+				<div class="omnie-image-wrapper">
+					<div class="omnie-bg-rectangle"></div>
 					<div class="omnie-image">
-						<img src="/orange.png" alt="O mnie" />
-					</div>
-
-					<div class="omnie-text-wrapper">
-						<p>
-							Pomagam uczniom przygotować się do matury i olimpiady z historii sztuki, a także do egzaminów wstępnych do szkół plastycznych i uczelni artystycznych. Wspieram również pasjonatów, którzy chcą poszerzyć swoją wiedzę o sztuce — dzielę się nią także na Instagramie, gdzie popularyzuję historię sztuki w przystępny sposób.
-						</p>
-						<p>
-							Nazywam się Marta i jestem historyczką sztuki oraz nauczycielką z przygotowaniem pedagogicznym. Od 5 lat edukuję, popularyzuję wiedzę o sztuce oraz przygotowuję uczniów do matur, olimpiad i egzaminów wstępnych, pomagając im uporządkować materiał i nauczyć się analizy dzieł w sposób wymagany na egzaminach.
-						</p>
-						<p>
-							Moje zajęcia wyróżniają się nie tylko skutecznym przygotowaniem merytorycznym, ale także zarażaniem pasją do sztuki. Oprócz regularnych lekcji organizuję webinary oraz cykliczne wyjścia do muzeów, które pozwalają zobaczyć omawiane dzieła na żywo i lepiej je zrozumieć.
-						</p>
-						<p>
-							Sprawdź aktualną ofertę zajęć i wybierz formę przygotowań dopasowaną do Twojego celu.
-						</p>
+						<Image
+							src={orangeImg}
+							alt="O mnie"
+							quality={90}
+							format="webp"
+							loading="lazy"
+						/>
 					</div>
 				</div>
+
+				<div class="omnie-text-wrapper">
+					<p>
+						Nazywam się Marta i jestem historyczką sztuki oraz nauczycielką z przygotowaniem pedagogicznym. Od 5 lat edukuję, popularyzuję wiedzę o sztuce oraz przygotowuję uczniów do matur, olimpiad i egzaminów wstępnych, pomagając im uporządkować materiał i nauczyć się analizy dzieł w sposób wymagany na egzaminach.
+					</p>
+					<p>
+						Moje zajęcia wyróżniają się nie tylko skutecznym przygotowaniem merytorycznym, ale także zarażaniem pasją do sztuki. Oprócz regularnych lekcji organizuję webinary oraz cykliczne wyjścia do muzeów, które pozwalają zobaczyć omawiane dzieła na żywo i lepiej je zrozumieć.
+					</p>
+					<p>
+						Sprawdź aktualną ofertę zajęć i wybierz formę przygotowań dopasowaną do Twojego celu.
+					</p>
+				</div>
+			</div>
 			</div>
 		</section>
 
@@ -313,13 +370,24 @@ import Layout from '../layouts/Layout.astro';
 					<div class="webinary-line"></div>
 				</div>
 
+			<a href={webinarFormUrl} rel="noopener noreferrer" target="_blank" class="webinary-image-link">
+				<Image
+					src={webinarImg}
+					alt="Webinary - kliknij aby się zapisać"
+					quality={90}
+					format="webp"
+					loading="lazy"
+				/>
+			</a>
+
+				<!--
 				<div class="webinary-cards-grid">
 					<div class="webinary-card">
 						<div class="webinary-card-content">
 							<p class="webinary-date">15 marca 2026</p>
 							<p class="webinary-time">18:00 - 19:30</p>
 						</div>
-						<a href="#" class="webinary-button">Zapisuję się</a>
+						<a href="#kontakt" class="webinary-button">Zapisuję się</a>
 					</div>
 
 					<div class="webinary-card">
@@ -327,7 +395,7 @@ import Layout from '../layouts/Layout.astro';
 							<p class="webinary-date">22 marca 2026</p>
 							<p class="webinary-time">18:00 - 19:30</p>
 						</div>
-						<a href="#" class="webinary-button">Zapisuję się</a>
+						<a href="#kontakt" class="webinary-button">Zapisuję się</a>
 					</div>
 
 					<div class="webinary-card">
@@ -335,9 +403,10 @@ import Layout from '../layouts/Layout.astro';
 							<p class="webinary-date">29 marca 2026</p>
 							<p class="webinary-time">18:00 - 19:30</p>
 						</div>
-						<a href="#" class="webinary-button">Zapisuję się</a>
+						<a href="#kontakt" class="webinary-button">Zapisuję się</a>
 					</div>
 				</div>
+				-->
 			</div>
 			<div id="bottom"></div>
 		</section>
@@ -361,25 +430,32 @@ import Layout from '../layouts/Layout.astro';
 			<div class="footer-bottom">
 				<div class="footer-social-section">
 					<p class="footer-social-title">Zaobserwuj mnie!</p>
-					<div class="footer-socials">
-						<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-								<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-							</svg>
-						</a>
-						<a href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-							</svg>
-						</a>
-					</div>
+				<div class="footer-socials">
+					<a href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+						</svg>
+					</a>
+					<a class="fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+						</svg>
+						<span class="fb-tooltip">Już niedługo!</span>
+					</a>
+					<a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="12" r="10"></circle>
+							<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
+						</svg>
+					</a>
+				</div>
 				</div>
 
 				<div class="footer-links">
-					<a href="#">Regulamin</a>
-					<a href="#">Polityka prywatności</a>
+					<a href="/regulamin" target="_blank" rel="noopener noreferrer">Regulamin</a>
+					<a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>
 				</div>
 
 				<div class="footer-back-to-top">
@@ -388,7 +464,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<div class="footer-bottom-info">
-				<p class="footer-copyright">© 2026 Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
+				<p class="footer-copyright">© {currentYear} Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
 				<p class="footer-nip">NIP: 8982329532</p>
 			</div>
 		</div>
@@ -513,12 +589,21 @@ import Layout from '../layouts/Layout.astro';
 		background-color: #000;
 		background-image:
 			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-			url('/monalisa.png');
+			url('/monalisa.webp');
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
 		color: #fffbf5;
 		position: relative;
+	}
+
+	/* Fallback for browsers that don't support WebP */
+	@supports not (background-image: url('/monalisa.webp')) {
+		.hero {
+			background-image:
+				linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+				url('/monalisa.png');
+		}
 	}
 
 	/* Responsive adjustments for different screen sizes */
@@ -552,17 +637,35 @@ import Layout from '../layouts/Layout.astro';
 		position: relative;
 	}
 
-	.hero-title {
+	.hero-titles {
 		position: absolute;
 		bottom: 4rem;
 		left: 4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.hero-title-primary {
 		font-family: 'Playfair Display', serif;
-		font-size: 6rem;
+		font-size: 4.5rem;
 		font-weight: 800;
 		color: #fffbf5;
 		margin: 0;
 		text-align: left;
 		line-height: 1.2;
+		letter-spacing: 0.05em;
+		text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+	}
+
+	.hero-title-secondary {
+		font-family: 'Playfair Display', serif;
+		font-size: 2rem;
+		font-weight: 700;
+		color: #fffbf5;
+		margin: 0;
+		text-align: left;
+		line-height: 1.3;
 		letter-spacing: 0.05em;
 		text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 	}
@@ -599,6 +702,50 @@ import Layout from '../layouts/Layout.astro';
 
 	.hero-socials .social:hover svg {
 		transform: scale(1.1);
+	}
+
+	.fb-coming-soon {
+		position: relative;
+		cursor: not-allowed;
+		opacity: 0.7;
+	}
+
+	.fb-coming-soon:hover {
+		opacity: 1;
+	}
+
+	.fb-tooltip {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		background: rgba(0, 0, 0, 0.9);
+		color: #fff;
+		padding: 0.5rem 1rem;
+		border-radius: 0.25rem;
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		white-space: nowrap;
+		margin-bottom: 0.5rem;
+		display: none;
+		z-index: 100;
+		pointer-events: none;
+	}
+
+	.fb-coming-soon:hover .fb-tooltip {
+		display: block;
+		animation: fadeIn 0.2s ease;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateX(-50%) translateY(0.25rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0);
+		}
 	}
 
 	.hero-scroll-down {
@@ -1005,12 +1152,19 @@ import Layout from '../layouts/Layout.astro';
 		max-width: 65rem;
 		margin: 0 auto;
 		padding: 1rem 4rem 4rem 4rem;
-		background-image: url('/vangogh.png');
+		background-image: url('/vangogh.webp');
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
 		border-radius: 0.5rem;
 		position: relative;
+	}
+
+	/* Fallback for browsers that don't support WebP */
+	@supports not (background-image: url('/vangogh.webp')) {
+		.kontakt-container {
+			background-image: url('/vangogh.png');
+		}
 	}
 
 	.kontakt-container::before {
@@ -1096,6 +1250,39 @@ import Layout from '../layouts/Layout.astro';
 		stroke: #fff;
 	}
 
+	.kontakt-socials .fb-coming-soon {
+		position: relative;
+		cursor: not-allowed;
+		opacity: 0.7;
+	}
+
+	.kontakt-socials .fb-coming-soon:hover {
+		opacity: 1;
+	}
+
+	.kontakt-socials .fb-tooltip {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		background: rgba(0, 0, 0, 0.9);
+		color: #fff;
+		padding: 0.5rem 1rem;
+		border-radius: 0.25rem;
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.75rem;
+		white-space: nowrap;
+		margin-bottom: 0.5rem;
+		display: none;
+		z-index: 100;
+		pointer-events: none;
+	}
+
+	.kontakt-socials .fb-coming-soon:hover .fb-tooltip {
+		display: block;
+		animation: fadeIn 0.2s ease;
+	}
+
 	.kontakt-form-wrapper {
 		background: rgba(255, 255, 255, 0.3);
 		padding: 2.5rem;
@@ -1168,6 +1355,80 @@ import Layout from '../layouts/Layout.astro';
 		transform: translateY(-0.125rem);
 	}
 
+	.form-submit:disabled {
+		background: #666;
+		cursor: not-allowed;
+		transform: none;
+	}
+
+	.form-status {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		padding: 0.75rem 1rem;
+		border-radius: 0.25rem;
+		margin-bottom: 1rem;
+		display: none;
+	}
+
+	.form-status.success {
+		display: block;
+		background: rgba(34, 197, 94, 0.2);
+		color: #fff;
+		border: 1px solid rgba(34, 197, 94, 0.5);
+	}
+
+	.form-status.error {
+		display: block;
+		background: rgba(239, 68, 68, 0.2);
+		color: #fff;
+		border: 1px solid rgba(239, 68, 68, 0.5);
+	}
+
+	.hidden {
+		display: none !important;
+	}
+
+	.form-checkbox {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		margin: 0;
+	}
+
+	.form-checkbox label {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		cursor: pointer;
+		color: #fff;
+		font-weight: 400;
+		text-transform: none;
+		letter-spacing: normal;
+		margin: 0;
+	}
+
+	.form-checkbox input[type="checkbox"] {
+		width: 1.25rem;
+		height: 1.25rem;
+		margin-top: 0.125rem;
+		cursor: pointer;
+		flex-shrink: 0;
+		accent-color: #fff;
+	}
+
+	.form-checkbox a {
+		color: #fff;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		transition: opacity 0.3s ease;
+	}
+
+	.form-checkbox a:hover {
+		opacity: 0.8;
+	}
+
 	/* ===== O MNIE ===== */
 
 	.omnie-section {
@@ -1202,23 +1463,44 @@ import Layout from '../layouts/Layout.astro';
 
 	.omnie-content {
 		display: grid;
-		grid-template-columns: 1.0fr 1.3fr;
+		grid-template-columns: 1fr 1.5fr;
 		gap: 4rem;
-		align-items: center;
+		align-items: flex-end;
+	}
+
+	.omnie-image-wrapper {
+		position: relative;
+		width: 80%;
+		aspect-ratio: 4 / 5;
+	}
+
+	.omnie-bg-rectangle {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 90%;
+		height: 100%;
+		background: #ec5538;
+		border-radius: 0.5rem;
+		z-index: 0;
 	}
 
 	.omnie-image {
+		position: relative;
 		width: 100%;
-		aspect-ratio: 4 / 5;
-		overflow: hidden;
-		border-radius: 0.5rem;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		height: 100%;
+		overflow: visible;
+		border-radius: 0;
+		box-shadow: none;
+		z-index: 1;
+		transform: translateX(1.5rem);
 	}
 
 	.omnie-image img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		display: block;
 	}
 
 	.omnie-text-wrapper {
@@ -1276,6 +1558,32 @@ import Layout from '../layouts/Layout.astro';
 		height: 0.25rem;
 		background: #111;
 	}
+
+	.webinary-image-link {
+		display: block;
+		width: 100%;
+		border-radius: 0.5rem;
+		overflow: hidden;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	.webinary-image-link:hover {
+		transform: translateY(-0.25rem);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+	}
+
+	.webinary-image-link img {
+		display: block;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+
+	/*
+	Stare karty webinarowe - zakomentowane do potencjalnego przywrócenia
 
 	.webinary-cards-grid {
 		display: grid;
@@ -1343,20 +1651,30 @@ import Layout from '../layouts/Layout.astro';
 		background: #333;
 		transform: translateY(-0.125rem);
 	}
+	-->
 
 	/* ===== FOOTER ===== */
 
 	.site-footer {
 		background-color: #3a3a3a;
 		background-image:
-			linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-			url('/museum.jpeg');
+			linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+			url('/museum.webp');
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
 		color: #fff;
 		padding: 6rem 0 3rem 0;
 		position: relative;
+	}
+
+	/* Fallback for browsers that don't support WebP */
+	@supports not (background-image: url('/museum.webp')) {
+		.site-footer {
+			background-image:
+				linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+				url('/museum.jpeg');
+		}
 	}
 
 	.footer-container {
@@ -1483,6 +1801,40 @@ import Layout from '../layouts/Layout.astro';
 
 	.footer-socials a:hover svg {
 		transform: scale(1.1);
+	}
+
+	.footer-socials .fb-coming-soon {
+		position: relative;
+		cursor: not-allowed;
+		opacity: 0.7;
+	}
+
+	.footer-socials .fb-coming-soon:hover {
+		opacity: 1;
+	}
+
+	.footer-socials .fb-tooltip {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		background: rgba(255, 255, 255, 0.1);
+		color: #fff;
+		padding: 0.5rem 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 0.25rem;
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.75rem;
+		white-space: nowrap;
+		margin-bottom: 0.5rem;
+		display: none;
+		z-index: 100;
+		pointer-events: none;
+	}
+
+	.footer-socials .fb-coming-soon:hover .fb-tooltip {
+		display: block;
+		animation: fadeIn 0.2s ease;
 	}
 
 	.footer-links {
@@ -1634,10 +1986,17 @@ import Layout from '../layouts/Layout.astro';
 			font-size: 1.125rem;
 		}
 
-		.hero-title {
-			font-size: 3rem;
+		.hero-titles {
 			bottom: 1.5rem;
 			left: 1.5rem;
+		}
+
+		.hero-title-primary {
+			font-size: 2.5rem;
+		}
+
+		.hero-title-secondary {
+			font-size: 1.25rem;
 		}
 
 		.hero-socials {
@@ -1654,9 +2013,6 @@ import Layout from '../layouts/Layout.astro';
 			height: 2.5rem;
 		}
 
-		.webinary-cards-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
 
 		.footer-container {
 			padding: 0 3rem;
@@ -1698,8 +2054,7 @@ import Layout from '../layouts/Layout.astro';
 		}
 
 		.oferta-cards-grid,
-		.opinie-cards-grid,
-		.webinary-cards-grid {
+		.opinie-cards-grid {
 			grid-template-columns: 1fr;
 		}
 
@@ -1727,6 +2082,19 @@ import Layout from '../layouts/Layout.astro';
 
 		.header-inner {
 			padding: 0 1.5rem;
+		}
+
+		.hero-titles {
+			bottom: 1rem;
+			left: 1rem;
+		}
+
+		.hero-title-primary {
+			font-size: 1.5rem;
+		}
+
+		.hero-title-secondary {
+			font-size: 0.875rem;
 		}
 
 		.hero-title {
