@@ -1,6 +1,4 @@
-// Testimonial carousel with infinite loop for 5 cards
-// Visible: 5 cards at a time (3 fully visible center + 2 fading on edges)
-// Scrolls 1 card at a time, loops infinitely
+// Testimonial carousel - desktop/tablet/mobile with infinite loop
 
 export const initTestimonialCarousel = (): void => {
 	if (document.readyState === 'loading') {
@@ -12,11 +10,12 @@ export const initTestimonialCarousel = (): void => {
 
 function init(): void {
 	const track = document.querySelector('.opinie-cards-track') as HTMLElement | null;
+	const carousel = document.querySelector('.opinie-carousel') as HTMLElement | null;
 	const prevBtn = document.querySelector('.opinie-nav-left') as HTMLButtonElement | null;
 	const nextBtn = document.querySelector('.opinie-nav-right') as HTMLButtonElement | null;
 	const dots = document.querySelectorAll('.opinie-dot') as NodeListOf<HTMLButtonElement>;
 
-	if (!track || !prevBtn || !nextBtn) return;
+	if (!track || !carousel || !prevBtn || !nextBtn) return;
 
 	if (track.dataset.carouselInit === 'true') return;
 	track.dataset.carouselInit = 'true';
@@ -26,7 +25,6 @@ function init(): void {
 
 	if (totalOriginal === 0) return;
 
-	// Clone the full set once before and once after the originals.
 	const clonesBefore: HTMLElement[] = [];
 	const clonesAfter: HTMLElement[] = [];
 
@@ -39,7 +37,6 @@ function init(): void {
 		clonesAfter.push(cloneAfter);
 	}
 
-	// Insert clones: [clone0..4] [original0..4] [clone0..4]
 	for (let i = clonesBefore.length - 1; i >= 0; i--) {
 		track.insertBefore(clonesBefore[i], track.firstChild);
 	}
@@ -53,21 +50,43 @@ function init(): void {
 	const computeStep = (): number => {
 		const card = allCards[0];
 		const style = getComputedStyle(track);
-		const gap = parseFloat(style.gap) || 24;
+		const gap = parseFloat(style.gap) || 16;
 		return card.offsetWidth + gap;
 	};
 
+	const computeCenterOffset = (): number => {
+		const carouselWidth = carousel.offsetWidth;
+		const card = allCards[0];
+		const cardWidth = card.offsetWidth;
+		const style = getComputedStyle(track);
+		const gap = parseFloat(style.gap) || 16;
+		const vw = window.innerWidth;
+
+		if (vw >= 768 && vw < 1024) {
+			return (carouselWidth - 2 * cardWidth - gap) / 2;
+		} else {
+			return (carouselWidth - cardWidth) / 2;
+		}
+	};
+
 	let step = computeStep();
+	let centerOffset = computeCenterOffset();
 	let transitionTimeout: number | undefined;
 
-	// position tracks the logical index in the track array.
-	// Start at the first original card (index = totalOriginal because we prepended totalOriginal clones).
-	let position = totalOriginal;
+	const getInitialPosition = (): number => {
+		const vw = window.innerWidth;
+		if (vw >= 768 && vw < 1024) {
+			return totalOriginal + 1;
+		}
+		return totalOriginal + Math.floor(totalOriginal / 2);
+	};
+
+	let position = getInitialPosition();
 	let isTransitioning = false;
 
 	const setTranslate = (animate: boolean): void => {
 		if (!track) return;
-		const offset = -(position * step);
+		const offset = -(position * step) + centerOffset;
 		if (animate) {
 			track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
 		} else {
@@ -83,11 +102,9 @@ function init(): void {
 		});
 	};
 
-	// Initial position (no animation)
 	setTranslate(false);
 	updateDots();
 
-	// After a transition ends, silently jump back to canonical range if needed
 	track.addEventListener('transitionend', () => {
 		isTransitioning = false;
 		if (transitionTimeout) {
@@ -120,6 +137,7 @@ function init(): void {
 		if (isTransitioning) return;
 		isTransitioning = true;
 		step = computeStep();
+		centerOffset = computeCenterOffset();
 		position++;
 		setTranslate(true);
 		updateDots();
@@ -130,6 +148,7 @@ function init(): void {
 		if (isTransitioning) return;
 		isTransitioning = true;
 		step = computeStep();
+		centerOffset = computeCenterOffset();
 		position--;
 		setTranslate(true);
 		updateDots();
@@ -140,6 +159,7 @@ function init(): void {
 		if (isTransitioning) return;
 		isTransitioning = true;
 		step = computeStep();
+		centerOffset = computeCenterOffset();
 		position = totalOriginal + index;
 		setTranslate(true);
 		updateDots();
@@ -182,6 +202,7 @@ function init(): void {
 	// Recalculate on window resize
 	window.addEventListener('resize', () => {
 		step = computeStep();
+		centerOffset = computeCenterOffset();
 		setTranslate(false);
 	});
 }
