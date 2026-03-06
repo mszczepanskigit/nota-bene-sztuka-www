@@ -582,8 +582,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		max-width: 65ch;
 	}
 
-	/* ===== HERO ===== */
-
 	.hero {
 		height: 92vh;
 		background-color: #000;
@@ -792,8 +790,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		visibility: hidden;
 	}
 
-	/* ===== OFERTA ===== */
-
 	.oferta-section {
 		background: #fffbf5;
 		padding: 5rem 0;
@@ -881,7 +877,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		transform: translateY(-0.125rem);
 	}
 
-	/* Benefits cards */
 	.oferta-cards-container {
 		background: #ec5538;
 		margin-top: 3rem;
@@ -936,22 +931,20 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		-ms-hyphens: auto;
 	}
 
-	/* ===== OPINIE ===== */
-
 	.opinie-section {
 		background: #fffbf5;
-		padding: 3.5rem 0;
+		padding: 2.5rem 0;
 		scroll-margin-top: calc(var(--header-height) - 8rem);
 	}
 
 	.opinie-container {
 		max-width: 90rem;
 		margin: 0 auto;
-		padding: 1rem 4rem 4rem 4rem;
+		padding: 1rem 4rem 3rem 4rem;
 	}
 
 	.opinie-header {
-		margin-bottom: 2.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.opinie-title {
@@ -968,18 +961,23 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		background: #111;
 	}
 
+	/* LAPTOP: wrapper shows 3 full cards + partial edges
+	   card=280px, gap=16px: 3×280 + 2×16 = 872px full
+	   + ~100px partial each side = 1072px viewport
+	   wrapper = viewport + 4rem button space each side */
 	.opinie-carousel-wrapper {
 		position: relative;
-		max-width: 1600px;
+		max-width: 1140px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 0 4rem;
 	}
 
 	.opinie-carousel {
-		--fade-size: 120px;
+		/* gradient fade covers partial left/right cards */
+		--fade-size: 90px;
 		overflow: hidden;
 		position: relative;
-		margin-bottom: 3rem;
+		margin-bottom: 1.5rem;
 		mask-image: linear-gradient(
 			to right,
 			transparent 0,
@@ -998,23 +996,24 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.opinie-cards-track {
 		display: flex;
-		gap: 1.5rem;
-		padding: 2rem 0;
+		gap: 1rem;
+		padding: 1.25rem 0;
 	}
 
+	/* Desktop/laptop: card 280px wide, 3 fully visible in center */
 	.opinie-card {
 		background: #fff;
-		padding: 2.5rem 2rem;
+		padding: 1.25rem 1.25rem;
 		border-radius: 1rem;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
-		width: 320px;
-		min-width: 320px;
-		max-width: 320px;
+		width: 280px;
+		min-width: 280px;
+		max-width: 280px;
 		flex-shrink: 0;
-		min-height: 420px;
+		min-height: 240px;
 	}
 
 	.opinie-card:hover {
@@ -1024,8 +1023,8 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.opinie-text {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.125rem;
-		line-height: 1.7;
+		font-size: 1rem;
+		line-height: 1.6;
 		color: #333;
 		margin: 0 0 1.5rem 0;
 		flex-grow: 1;
@@ -1041,7 +1040,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.opinie-author {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.125rem;
+		font-size: 1rem;
 		font-weight: 600;
 		color: #111;
 		margin: 0 0 0.5rem 0;
@@ -1087,11 +1086,11 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	}
 
 	.opinie-nav-left {
-		left: 0.5rem;
+		left: 0;
 	}
 
 	.opinie-nav-right {
-		right: 0.5rem;
+		right: 0;
 	}
 
 	/* Dot navigation */
@@ -1973,6 +1972,35 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 			grid-template-columns: repeat(2, 1fr);
 		}
 
+		.opinie-carousel-wrapper {
+			max-width: 600px;
+			padding: 0 2.5rem;
+		}
+
+		.opinie-carousel {
+			--fade-size: 64px;
+		}
+
+		.opinie-card {
+			width: 200px;
+			min-width: 200px;
+			max-width: 200px;
+			min-height: 260px;
+			padding: 1.1rem 0.9rem;
+		}
+
+		.opinie-cards-track {
+			gap: 0.875rem;
+		}
+
+		.opinie-nav-left {
+			left: -0.5rem;
+		}
+
+		.opinie-nav-right {
+			right: -0.5rem;
+		}
+
 		.kontakt-inner {
 			grid-template-columns: 1fr;
 			gap: 3rem;
@@ -2056,6 +2084,63 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		.oferta-cards-grid,
 		.opinie-cards-grid {
 			grid-template-columns: 1fr;
+		}
+
+		/* Mobile: 1 karta w centrum, strzałki po bokach, bez gradientu */
+		.opinie-carousel-wrapper {
+			max-width: 100%;
+			padding: 0 2rem;
+		}
+
+		.opinie-carousel {
+			/* brak gradientu - pełna widoczność środkowego kafelka */
+			--fade-size: 0px;
+			margin-bottom: 1.5rem;
+			mask-image: none;
+			-webkit-mask-image: none;
+		}
+
+		.opinie-cards-track {
+			gap: 0.75rem;
+			padding: 1rem 0;
+		}
+
+		.opinie-card {
+			width: calc(100vw - 4rem - 7rem);
+			min-width: calc(100vw - 4rem - 7rem);
+			max-width: calc(100vw - 4rem - 7rem);
+			min-height: 200px;
+			padding: 1rem 0.9rem;
+		}
+
+		.opinie-nav {
+			top: 50%;
+			transform: translateY(-50%);
+			width: 2.4rem;
+			height: 2.4rem;
+			font-size: 1.25rem;
+		}
+
+		.opinie-nav-left {
+			left: -0.6rem;
+		}
+
+		.opinie-nav-right {
+			right: -0.6rem;
+		}
+
+		.opinie-text {
+			font-size: 0.9rem;
+			line-height: 1.5;
+			margin: 0 0 0.8rem 0;
+		}
+
+		.opinie-author {
+			font-size: 0.9rem;
+		}
+
+		.opinie-role {
+			font-size: 0.75rem;
 		}
 
 		.oferta-text p {
