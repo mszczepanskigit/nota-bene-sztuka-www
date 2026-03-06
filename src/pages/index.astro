@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
-// Import images for content (backgrounds are in CSS)
 import pisaImg from '../../public/pisa.jpg';
 import orangeImg from '../../public/orange.png';
 import webinarImg from '../../public/webinar1.png';
@@ -17,6 +16,12 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		<div class="container header-inner">
 			<a class="nav-brand" href="#hero">NOTA<br>BENE<br>SZTUKA</a>
 
+			<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+
 			<nav class="nav">
 				<a href="#oferta">OFERTA</a>
 				<a href="#opinie">OPINIE</a>
@@ -27,6 +32,15 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 			</nav>
 		</div>
 	</header>
+
+	<div class="mobile-menu-backdrop"></div>
+	<nav class="nav-mobile">
+		<a href="#oferta">OFERTA</a>
+		<a href="#opinie">OPINIE</a>
+		<a href="#kontakt">KONTAKT</a>
+		<a href="#o-mnie">O MNIE</a>
+		<a href="#webinary">WEBINARY</a>
+	</nav>
 
 	<main>
 		<section class="section hero" id="hero" aria-label="Hero">
@@ -379,37 +393,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					loading="lazy"
 				/>
 			</a>
-
-				<!--
-				<div class="webinary-cards-grid">
-					<div class="webinary-card">
-						<div class="webinary-card-content">
-							<p class="webinary-date">15 marca 2026</p>
-							<p class="webinary-time">18:00 - 19:30</p>
-						</div>
-						<a href="#kontakt" class="webinary-button">Zapisuję się</a>
-					</div>
-
-					<div class="webinary-card">
-						<div class="webinary-card-content">
-							<p class="webinary-date">22 marca 2026</p>
-							<p class="webinary-time">18:00 - 19:30</p>
-						</div>
-						<a href="#kontakt" class="webinary-button">Zapisuję się</a>
-					</div>
-
-					<div class="webinary-card">
-						<div class="webinary-card-content">
-							<p class="webinary-date">29 marca 2026</p>
-							<p class="webinary-time">18:00 - 19:30</p>
-						</div>
-						<a href="#kontakt" class="webinary-button">Zapisuję się</a>
-					</div>
-				</div>
-				-->
-			</div>
-			<div id="bottom"></div>
-		</section>
+		</div>
+		<div id="bottom"></div>
+	</section>
 	</main>
 
 	<footer class="site-footer">
@@ -472,8 +458,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 </Layout>
 
 <style>
-	/* ===== HEADER ===== */
-
 	.site-header {
 		position: fixed;
 		top: 0;
@@ -508,6 +492,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		gap: 2rem;
 		padding: 0 2.5rem;
 		box-sizing: border-box;
+		flex: 1;
 	}
 
 	.nav-brand {
@@ -525,6 +510,39 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.nav-brand:hover {
 		opacity: 0.8;
+	}
+
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		width: 1.5rem;
+		height: 1.5rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		z-index: 11;
+		gap: 0.35rem;
+	}
+
+	.menu-toggle span {
+		width: 100%;
+		height: 0.2rem;
+		background: var(--text-color, #000);
+		border-radius: 0.1rem;
+		transition: all 0.3s ease;
+	}
+
+	.menu-toggle.active span:nth-child(1) {
+		transform: rotate(45deg) translate(0.5rem, 0.5rem);
+	}
+
+	.menu-toggle.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.menu-toggle.active span:nth-child(3) {
+		transform: rotate(-45deg) translate(0.35rem, -0.35rem);
 	}
 
 	.nav {
@@ -561,7 +579,73 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		transform: scale(1.2);
 	}
 
-	/* ===== SHARED ===== */
+	.mobile-menu-backdrop {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.3);
+		z-index: 19;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		pointer-events: none;
+	}
+
+	.mobile-menu-backdrop.active {
+		display: block;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.nav-mobile {
+		display: none;
+		position: fixed;
+		top: var(--header-height);
+		right: -100%;
+		width: auto;
+		max-width: 250px;
+		background: #fffbf5;
+		flex-direction: column;
+		gap: 0;
+		padding: 0.75rem 0;
+		z-index: 20;
+		transition: right 0.3s ease;
+		overflow: visible;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-radius: 0.5rem;
+		margin: 0.75rem;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+	}
+
+	.nav-mobile a {
+		text-decoration: none;
+		color: #000;
+		font-size: 1rem;
+		font-weight: 700;
+		font-family: 'Archivo Black', sans-serif;
+		padding: 0.75rem 1.5rem;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+		transition: color 0.3s ease, background 0.3s ease;
+		display: block;
+		white-space: nowrap;
+	}
+
+	.nav-mobile a:hover {
+		background: rgba(0, 0, 0, 0.03);
+		color: #666;
+	}
+
+	.nav-mobile a:last-child {
+		border-bottom: none;
+	}
+
+	.nav-mobile.active {
+		display: flex;
+		right: 0;
+	}
+
 
 	main {
 		padding-top: 0;
@@ -646,7 +730,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.hero-title-primary {
 		font-family: 'Playfair Display', serif;
-		font-size: 4.5rem;
+		font-size: 6rem;
 		font-weight: 800;
 		color: #fffbf5;
 		margin: 0;
@@ -658,7 +742,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.hero-title-secondary {
 		font-family: 'Playfair Display', serif;
-		font-size: 2rem;
+		font-size: 3rem;
 		font-weight: 700;
 		color: #fffbf5;
 		margin: 0;
@@ -670,7 +754,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.hero-socials {
 		position: absolute;
-		bottom: 2rem;
+		bottom: 4rem;
 		right: 2.5rem;
 		display: flex;
 		flex-direction: column;
@@ -688,8 +772,8 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	}
 
 	.hero-socials .social svg {
-		width: 5rem;
-		height: 5rem;
+		width: 4rem;
+		height: 4rem;
 		stroke: #fff;
 		transition: transform 0.3s ease;
 	}
@@ -748,7 +832,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.hero-scroll-down {
 		position: absolute;
-		bottom: 2rem;
+		bottom: 4rem;
 		left: 50%;
 		transform: translateX(-50%);
 		color: #fff;
@@ -961,10 +1045,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		background: #111;
 	}
 
-	/* LAPTOP: wrapper shows 3 full cards + partial edges
-	   card=280px, gap=16px: 3×280 + 2×16 = 872px full
-	   + ~100px partial each side = 1072px viewport
-	   wrapper = viewport + 4rem button space each side */
 	.opinie-carousel-wrapper {
 		position: relative;
 		max-width: 1140px;
@@ -973,7 +1053,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	}
 
 	.opinie-carousel {
-		/* gradient fade covers partial left/right cards */
 		--fade-size: 90px;
 		overflow: hidden;
 		position: relative;
@@ -1093,7 +1172,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		right: 0;
 	}
 
-	/* Dot navigation */
 	.opinie-dots {
 		display: flex;
 		justify-content: center;
@@ -1428,8 +1506,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		opacity: 0.8;
 	}
 
-	/* ===== O MNIE ===== */
-
 	.omnie-section {
 		background: #fffbf5;
 		padding: 0.5rem 0;
@@ -1526,8 +1602,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		margin-bottom: 0;
 	}
 
-	/* ===== WEBINARY ===== */
-
 	.webinary-section {
 		background: #fffbf5;
 		padding: 2.1rem 0;
@@ -1580,79 +1654,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		height: auto;
 		object-fit: cover;
 	}
-
-	/*
-	Stare karty webinarowe - zakomentowane do potencjalnego przywrócenia
-
-	.webinary-cards-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2.5rem;
-	}
-
-	.webinary-card {
-		background: rgba(255, 255, 255, 0.4);
-		padding: 3rem 2.5rem;
-		border-radius: 0.5rem;
-		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-		display: flex;
-		flex-direction: column;
-		gap: 2.5rem;
-		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
-	}
-
-	.webinary-card:hover {
-		transform: translateY(-0.25rem);
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-	}
-
-	.webinary-card-content {
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.webinary-date {
-		font-family: 'Outfit', sans-serif;
-		font-size: 1.5rem;
-		font-weight: 600;
-		color: #111;
-		margin: 0;
-	}
-
-	.webinary-time {
-		font-family: 'Outfit', sans-serif;
-		font-size: 1.25rem;
-		font-weight: 400;
-		color: #333;
-		margin: 0;
-	}
-
-	.webinary-button {
-		font-family: 'Outfit', sans-serif;
-		font-size: 1.125rem;
-		font-weight: 600;
-		padding: 1rem 2rem;
-		background: #111;
-		color: #fff;
-		text-decoration: none;
-		text-align: center;
-		border-radius: 0.25rem;
-		transition: background 0.3s ease, transform 0.2s ease;
-		border-top: 2px solid #333;
-		display: block;
-	}
-
-	.webinary-button:hover {
-		background: #333;
-		transform: translateY(-0.125rem);
-	}
-	-->
-
-	/* ===== FOOTER ===== */
 
 	.site-footer {
 		background-color: #3a3a3a;
@@ -1897,8 +1898,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		margin: 0;
 	}
 
-	/* ===== RESPONSIVE: 1400px ===== */
-
 	@media (max-width: 1400px) {
 		.oferta-container,
 		.opinie-container,
@@ -1927,21 +1926,44 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 	}
 
-	/* ===== RESPONSIVE: 1024px ===== */
-
 	@media (max-width: 1024px) {
+		.header-inner {
+			padding: 0 2rem;
+			gap: 1.5rem;
+		}
+
+		.nav {
+			gap: 1.5rem;
+		}
+
+		.nav a {
+			font-size: 1rem;
+		}
+
+		.arrow-down {
+			display: none;
+		}
+
+		.hero {
+			background-size: 250%;
+			background-position: 48% 46%;
+		}
+
 		.oferta-section {
-			scroll-margin-top: calc(var(--header-height) - 5rem);
+			scroll-margin-top: calc(var(--header-height) - 11.5rem);
 		}
 
 		.omnie-section {
-			scroll-margin-top: calc(var(--header-height) - 3rem);
+			scroll-margin-top: calc(var(--header-height) - 8rem);
 		}
 
 		.opinie-section,
-		.kontakt-section,
+		.kontakt-section {
+			scroll-margin-top: calc(var(--header-height) - 10.5rem);
+		}
+
 		.webinary-section {
-			scroll-margin-top: calc(var(--header-height) - 4rem);
+			scroll-margin-top: calc(var(--header-height) - 8rem);
 		}
 
 		.oferta-content,
@@ -2015,25 +2037,30 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-titles {
-			bottom: 1.5rem;
+			bottom: 5rem;
 			left: 1.5rem;
 		}
 
 		.hero-title-primary {
-			font-size: 2.5rem;
+			font-size: 4rem;
 		}
 
 		.hero-title-secondary {
-			font-size: 1.25rem;
+			font-size: 2rem;
 		}
 
 		.hero-socials {
-			bottom: 1.5rem;
+			bottom: 2.5rem;
 			right: 1.5rem;
 		}
 
+		.hero-socials .social svg {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
+
 		.hero-scroll-down {
-			bottom: 1.5rem;
+			bottom: 3rem;
 		}
 
 		.hero-scroll-down svg {
@@ -2047,21 +2074,43 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 	}
 
-	/* ===== RESPONSIVE: 768px ===== */
-
 	@media (max-width: 768px) {
+		.menu-toggle {
+			display: flex;
+		}
+
+		.nav {
+			display: none;
+		}
+
+		.header-inner {
+			padding: 0 1.5rem;
+		}
+
+		.nav-brand {
+			font-size: 0.75rem;
+		}
+
+		.hero {
+			background-size: 330%;
+			background-position: 48% 54%;
+		}
+
 		.oferta-section {
-			scroll-margin-top: calc(var(--header-height) - 2rem);
+			scroll-margin-top: calc(var(--header-height) - 12rem);
 		}
 
 		.omnie-section {
-			scroll-margin-top: calc(var(--header-height) - 1rem);
+			scroll-margin-top: calc(var(--header-height) - 7rem);
 		}
 
-		.opinie-section,
+		.opinie-section {
+			scroll-margin-top: calc(var(--header-height) - 8rem);
+		}
+
 		.kontakt-section,
 		.webinary-section {
-			scroll-margin-top: calc(var(--header-height) - 2rem);
+			scroll-margin-top: calc(var(--header-height) - 10rem);
 		}
 
 		.oferta-container,
@@ -2086,14 +2135,12 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 			grid-template-columns: 1fr;
 		}
 
-		/* Mobile: 1 karta w centrum, strzałki po bokach, bez gradientu */
 		.opinie-carousel-wrapper {
 			max-width: 100%;
-			padding: 0 2rem;
+			padding: 0 1.5rem;
 		}
 
 		.opinie-carousel {
-			/* brak gradientu - pełna widoczność środkowego kafelka */
 			--fade-size: 0px;
 			margin-bottom: 1.5rem;
 			mask-image: none;
@@ -2106,11 +2153,11 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.opinie-card {
-			width: calc(100vw - 4rem - 7rem);
-			min-width: calc(100vw - 4rem - 7rem);
-			max-width: calc(100vw - 4rem - 7rem);
+			width: calc(100vw - 3rem - 5.5rem);
+			min-width: calc(100vw - 3rem - 5.5rem);
+			max-width: calc(100vw - 3rem - 5.5rem);
 			min-height: 200px;
-			padding: 1rem 0.9rem;
+			padding: 0.875rem 0.75rem;
 		}
 
 		.opinie-nav {
@@ -2130,35 +2177,35 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.opinie-text {
-			font-size: 0.9rem;
-			line-height: 1.5;
-			margin: 0 0 0.8rem 0;
+			font-size: 0.85rem;
+			line-height: 1.45;
+			margin: 0 0 0.75rem 0;
 		}
 
 		.opinie-author {
-			font-size: 0.9rem;
+			font-size: 0.85rem;
 		}
 
 		.opinie-role {
-			font-size: 0.75rem;
+			font-size: 0.7rem;
 		}
 
 		.oferta-text p {
-			font-size: 1rem;
+			font-size: 0.95rem;
 		}
 
 		.kontakt-text p {
-			font-size: 1rem;
+			font-size: 0.95rem;
 		}
 
 		.cta-button {
-			padding: 1rem 2.25rem;
-			font-size: 1.125rem;
+			padding: 0.875rem 2rem;
+			font-size: 1rem;
 		}
 
 		.kontakt-form-wrapper,
 		.omnie-text-wrapper {
-			padding: 2rem;
+			padding: 1.75rem;
 		}
 
 		.nav a {
@@ -2170,16 +2217,16 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-titles {
-			bottom: 1rem;
+			bottom: 6rem;
 			left: 1rem;
 		}
 
 		.hero-title-primary {
-			font-size: 1.5rem;
+			font-size: 2.2rem;
 		}
 
 		.hero-title-secondary {
-			font-size: 0.875rem;
+			font-size: 1.3rem;
 		}
 
 		.hero-title {
@@ -2189,12 +2236,18 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-socials {
-			bottom: 1rem;
+			bottom: 3rem;
 			right: 1rem;
+			gap: 0.75rem;
+		}
+
+		.hero-socials .social svg {
+			width: 2rem;
+			height: 2rem;
 		}
 
 		.hero-scroll-down {
-			bottom: 1rem;
+			bottom: 3rem;
 		}
 
 		.hero-scroll-down svg {
@@ -2203,12 +2256,13 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.footer-container {
-			padding: 0 2rem;
+			padding: 0 1.5rem;
 		}
 
 		.footer-top {
 			flex-direction: column;
-			gap: 2rem;
+			gap: 1.5rem;
+			margin-bottom: 2rem;
 		}
 
 		.footer-contact {
@@ -2219,17 +2273,17 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		.footer-bottom {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 2rem;
+			gap: 1.5rem;
 		}
 
 		.footer-back-to-top {
 			margin-left: 0;
 		}
 
-		.footer-bottom_info {
+		.footer-bottom-info {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 1rem;
+			gap: 0.75rem;
 		}
 	}
 </style>
@@ -2238,9 +2292,11 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	import { initHeaderColor } from '../scripts/headerColor';
 	import { initTestimonialCarousel } from '../scripts/testimonialCarousel';
 	import { initContactForm } from '../scripts/contactForm';
+	import { initMobileMenu } from '../scripts/mobileMenu';
 
 	initHeaderColor();
 	initTestimonialCarousel();
 	initContactForm();
+	initMobileMenu();
 </script>
 

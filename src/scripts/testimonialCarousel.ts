@@ -1,7 +1,4 @@
-// Testimonial carousel
-// Desktop (≥1024px): 3 cards visible (CVB), X and N fading on edges
-// Tablet (768-1023px): 2 cards visible (CV), X and B fading on edges
-// Mobile (<768px): 1 card (V) visible, arrows on sides
+// Testimonial carousel - desktop/tablet/mobile with infinite loop
 
 export const initTestimonialCarousel = (): void => {
 	if (document.readyState === 'loading') {
@@ -28,7 +25,6 @@ function init(): void {
 
 	if (totalOriginal === 0) return;
 
-	// Clone the full set once before and once after the originals.
 	const clonesBefore: HTMLElement[] = [];
 	const clonesAfter: HTMLElement[] = [];
 
@@ -41,7 +37,6 @@ function init(): void {
 		clonesAfter.push(cloneAfter);
 	}
 
-	// Insert clones: [clone0..4] [original0..4] [clone0..4]
 	for (let i = clonesBefore.length - 1; i >= 0; i--) {
 		track.insertBefore(clonesBefore[i], track.firstChild);
 	}
@@ -59,12 +54,6 @@ function init(): void {
 		return card.offsetWidth + gap;
 	};
 
-	/**
-	 * Compute the centering offset based on viewport width.
-	 * Desktop (≥1024px): center single active card → offset = (carouselWidth - cardWidth) / 2
-	 * Tablet (768-1023px): center pair of cards (active & next) → offset = (carouselWidth - 2*cardWidth - gap) / 2
-	 * Mobile (<768px): center single active card → offset = (carouselWidth - cardWidth) / 2
-	 */
 	const computeCenterOffset = (): number => {
 		const carouselWidth = carousel.offsetWidth;
 		const card = allCards[0];
@@ -74,10 +63,8 @@ function init(): void {
 		const vw = window.innerWidth;
 
 		if (vw >= 768 && vw < 1024) {
-			// Tablet: center 2 cards (active + next)
 			return (carouselWidth - 2 * cardWidth - gap) / 2;
 		} else {
-			// Desktop & mobile: center 1 card
 			return (carouselWidth - cardWidth) / 2;
 		}
 	};
@@ -86,16 +73,12 @@ function init(): void {
 	let centerOffset = computeCenterOffset();
 	let transitionTimeout: number | undefined;
 
-	// position tracks the logical index in the track array.
-	// Clones before = totalOriginal cards, so original[i] is at track index (totalOriginal + i).
-	// Desktop/mobile: start at middle card (index 2 = V).
-	// Tablet: start at card index 1 (C) so that CV are centered.
 	const getInitialPosition = (): number => {
 		const vw = window.innerWidth;
 		if (vw >= 768 && vw < 1024) {
-			return totalOriginal + 1; // C
+			return totalOriginal + 1;
 		}
-		return totalOriginal + Math.floor(totalOriginal / 2); // V (middle)
+		return totalOriginal + Math.floor(totalOriginal / 2);
 	};
 
 	let position = getInitialPosition();
@@ -119,11 +102,9 @@ function init(): void {
 		});
 	};
 
-	// Initial position (no animation)
 	setTranslate(false);
 	updateDots();
 
-	// After a transition ends, silently jump back to canonical range if needed
 	track.addEventListener('transitionend', () => {
 		isTransitioning = false;
 		if (transitionTimeout) {
