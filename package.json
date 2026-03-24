@@ -10,8 +10,9 @@
     "convert-images": "bun run scripts/convert-images.ts"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "astro": "^5.17.1",
+    "@astrojs/check": "0.9.8",
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "6.0.8",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
