@@ -24,12 +24,10 @@ const jsonLd = {
 	name: 'Nota Bene Sztuka',
 	url: siteUrl,
 	logo: `${siteUrl}/favicon.png`,
-	description: 'Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia.',
+	description:
+		'Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia.',
 	email: CONTACT_EMAIL,
-	sameAs: [
-		INSTAGRAM_URL,
-		SUPERPROF_URL,
-	],
+	sameAs: [INSTAGRAM_URL, SUPERPROF_URL],
 	contactPoint: {
 		'@type': 'ContactPoint',
 		email: CONTACT_EMAIL,
@@ -45,7 +43,8 @@ const jsonLd = {
 				itemOffered: {
 					'@type': 'Service',
 					name: 'Korepetycje indywidualne z historii sztuki (online)',
-					description: 'Indywidualne lekcje 1:1 online z historii sztuki – matura, olimpiada, egzaminy wstępne.',
+					description:
+						'Indywidualne lekcje 1:1 online z historii sztuki – matura, olimpiada, egzaminy wstępne.',
 				},
 			},
 			{
@@ -95,7 +94,10 @@ const jsonLd = {
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
@@ -122,7 +124,11 @@ const jsonLd = {
 	body {
 		margin: 0;
 		min-height: 100vh;
-		font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Outfit',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		background: #dfd5c3;
 		color: #111;
 	}

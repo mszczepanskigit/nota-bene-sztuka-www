@@ -8,9 +8,9 @@ export function initHeaderColor(): void {
 		const heroBottom = hero!.getBoundingClientRect().bottom;
 
 		if (heroBottom > 0) {
-			header!.classList.replace('dark', 'light') || header!.classList.add('light');
+			if (!header!.classList.replace('dark', 'light')) header!.classList.add('light');
 		} else {
-			header!.classList.replace('light', 'dark') || header!.classList.add('dark');
+			if (!header!.classList.replace('light', 'dark')) header!.classList.add('dark');
 		}
 	}
 

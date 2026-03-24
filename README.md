@@ -4,11 +4,13 @@ Projekt: prosta, szybka strona-wizytówka dla "Nota Bene Sztuka" (Marta Miller).
 Cel: prezentacja oferty korepetycji, webinarów i kursów oraz zebranie kontaktów.
 
 Główne technologie:
+
 - Astro (SSG)
 - TypeScript
 - Bun (runtime / package manager)
 - Vercel & OVH (hosting / deploy previews)
-- tbc: Vitest, ESLint, Prettier (testy i jakość kodu)
+- Vitest (testy jednostkowe)
+- ESLint + Prettier (jakość i formatowanie kodu)
 
 Link produkcyjny: https://notabenesztuka.pl
 

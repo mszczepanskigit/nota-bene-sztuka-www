@@ -1,0 +1,15 @@
+# Build output
+dist/
+
+# Astro generated types
+.astro/
+
+# Dependencies
+node_modules/
+
+# Binary / generated assets
+public/
+
+# Lock file
+bun.lock
+
