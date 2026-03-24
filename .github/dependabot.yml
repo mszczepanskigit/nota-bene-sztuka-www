@@ -1,0 +1,29 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'npm' # reads package.json + bun.lock
+    directory: '/'
+    target-branch: 'test' # PR targets test, not master — merge to master manually when stable
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    open-pull-requests-limit: 1
+    labels:
+      - 'dependencies'
+    # Group all non-major bumps into a single PR to reduce noise
+    groups:
+      minor-and-patch:
+        update-types:
+          - 'minor'
+          - 'patch'
+
+  # Keep the CI actions themselves up to date
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'test' # same — validate in test before master
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    labels:
+      - 'dependencies'
+      - 'ci'

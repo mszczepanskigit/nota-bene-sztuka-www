@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [master, test]
+  pull_request:
+
+# Cancel any queued/in-progress run for the same branch when new commits arrive.
+# Pushes to protected branches are never cancelled (only PRs).
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # ── Quality gate ──────────────────────────────────────────────────────────
+  # Mirrors `bun run check` exactly — results are identical to running it locally.
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: bun audit
+
+      - name: Check (format · lint · typecheck · test)
+        run: bun run check
+
+  # ── Build ─────────────────────────────────────────────────────────────────
+  # Verifies `astro build` succeeds before Vercel takes over deployment.
+  # Only runs when quality passes — no point building broken code.
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: quality
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
