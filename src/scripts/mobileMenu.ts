@@ -12,7 +12,9 @@ function init(): void {
 	const menuToggle = document.querySelector('.menu-toggle') as HTMLButtonElement | null;
 	const navMobile = document.querySelector('.nav-mobile') as HTMLElement | null;
 	const backdrop = document.querySelector('.mobile-menu-backdrop') as HTMLElement | null;
-	const navMobileLinks = document.querySelectorAll('.nav-mobile a') as NodeListOf<HTMLAnchorElement>;
+	const navMobileLinks = document.querySelectorAll(
+		'.nav-mobile a'
+	) as NodeListOf<HTMLAnchorElement>;
 
 	if (!menuToggle || !navMobile || !backdrop) return;
 
@@ -48,4 +50,3 @@ function init(): void {
 		closeMenu();
 	});
 }
-

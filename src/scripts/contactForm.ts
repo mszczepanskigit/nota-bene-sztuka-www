@@ -55,7 +55,8 @@ export const initContactForm = (): void => {
 			// Error
 			if (statusDiv) {
 				statusDiv.className = 'form-status error';
-				statusDiv.textContent = 'Wystąpił błąd. Spróbuj ponownie lub skontaktuj się bezpośrednio przez e-mail.';
+				statusDiv.textContent =
+					'Wystąpił błąd. Spróbuj ponownie lub skontaktuj się bezpośrednio przez e-mail.';
 			}
 			console.error('Form submission error:', error);
 		} finally {
@@ -67,4 +68,3 @@ export const initContactForm = (): void => {
 		}
 	});
 };
-
