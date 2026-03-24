@@ -1,17 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { INSTAGRAM_URL, SUPERPROF_URL, CONTACT_EMAIL, WEBINAR_FORM_URL, WEB3FORMS_KEY } from '../config/links';
 
 import pisaImg from '../../public/pisa.jpg';
 import orangeImg from '../../public/orange.png';
 import webinarImg from '../../public/webinar1.png';
 
-const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+
 const currentYear = new Date().getFullYear();
-const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms.example.com';
 ---
 
-<Layout>
+<Layout
+	title={`Korepetycje z historii sztuki online | Matura ${currentYear}, olimpiada, egzaminy – Nota Bene Sztuka`}
+	description="Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia artystyczne. Indywidualne lekcje 1:1 i małe grupy. Sprawdź ofertę!"
+>
 	<header class="site-header">
 		<div class="container header-inner">
 			<a class="nav-brand" href="#hero">NOTA<br>BENE<br>SZTUKA</a>
@@ -52,7 +55,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 				</div>
 
 			<div class="hero-socials">
-				<a class="social" href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+				<a class="social" href={INSTAGRAM_URL} rel="noopener noreferrer" target="_blank" aria-label="Instagram">
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
 						<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -65,7 +68,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					</svg>
 					<span class="fb-tooltip">Już niedługo!</span>
 				</a>
-				<a class="social" href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
+				<a class="social" href={SUPERPROF_URL} rel="noopener noreferrer" target="_blank" aria-label="Superprof">
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<circle cx="12" cy="12" r="10"></circle>
 						<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
@@ -91,7 +94,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="oferta-image">
 						<Image
 							src={pisaImg}
-							alt="Historia sztuki"
+							alt="Korepetycje z historii sztuki – analiza dzieł i przygotowanie do matury"
 							quality={90}
 							format="webp"
 							loading="lazy"
@@ -250,7 +253,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					</div>
 
 					<p class="opinie-more">
-						Więcej opinii tutaj: <a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="More testimonials">Superprof</a>
+						Więcej opinii tutaj: <a href={SUPERPROF_URL} rel="noopener noreferrer" target="_blank" aria-label="More testimonials">Superprof</a>
 					</p>
 				</div>
 			</div>
@@ -269,10 +272,10 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 							Ewentualnie napisz do mnie na poniższy adres e-mail!
 						</p>
 						<p class="kontakt-email">
-							<a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a>
+							<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 						</p>
 						<div class="kontakt-socials">
-							<a href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+							<a href={INSTAGRAM_URL} rel="noopener noreferrer" target="_blank" aria-label="Instagram">
 								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
 									<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -285,7 +288,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 								</svg>
 								<span class="fb-tooltip">Już niedługo!</span>
 							</a>
-							<a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
+							<a href={SUPERPROF_URL} rel="noopener noreferrer" target="_blank" aria-label="Superprof">
 								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<circle cx="12" cy="12" r="10"></circle>
 									<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
@@ -296,7 +299,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 					<div class="kontakt-form-wrapper">
 						<form id="kontakt-form" class="kontakt-form" action="https://api.web3forms.com/submit" method="POST">
-							<input type="hidden" name="access_key" value={web3formsKey} />
+							<input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
 							<input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 							<input type="hidden" name="subject" value="Nowe zapytanie z formularza kontaktowego - Nota Bene Sztuka" />
 							<input type="hidden" name="redirect" value="https://web3forms.com/success" />
@@ -354,7 +357,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="omnie-image">
 						<Image
 							src={orangeImg}
-							alt="O mnie"
+							alt="Marta – historyczka sztuki i nauczycielka, Nota Bene Sztuka"
 							quality={90}
 							format="webp"
 							loading="lazy"
@@ -384,10 +387,10 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="webinary-line"></div>
 				</div>
 
-			<a href={webinarFormUrl} rel="noopener noreferrer" target="_blank" class="webinary-image-link">
+			<a href={WEBINAR_FORM_URL} rel="noopener noreferrer" target="_blank" class="webinary-image-link">
 				<Image
 					src={webinarImg}
-					alt="Webinary - kliknij aby się zapisać"
+					alt="Webinary z historii sztuki – kliknij, aby się zapisać na najbliższy webinar maturalny"
 					quality={90}
 					format="webp"
 					loading="lazy"
@@ -407,7 +410,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 				<div class="footer-contact">
 					<h3>Kontakt</h3>
-					<p><a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a></p>
+					<p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
 				</div>
 			</div>
 
@@ -417,7 +420,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 				<div class="footer-social-section">
 					<p class="footer-social-title">Zaobserwuj mnie!</p>
 				<div class="footer-socials">
-					<a href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+					<a href={INSTAGRAM_URL} rel="noopener noreferrer" target="_blank" aria-label="Instagram">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
 							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -430,7 +433,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 						</svg>
 						<span class="fb-tooltip">Już niedługo!</span>
 					</a>
-					<a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
+					<a href={SUPERPROF_URL} rel="noopener noreferrer" target="_blank" aria-label="Superprof">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<circle cx="12" cy="12" r="10"></circle>
 							<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
