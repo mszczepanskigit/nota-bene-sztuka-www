@@ -25,7 +25,16 @@
 	"overrides": {
 		"h3": "^1.15.6",
 		"svgo": "^4.0.1",
-		"rollup": "^4.59.0"
+		"rollup": "^4.59.0",
+		"smol-toml": "^1.6.1",
+		"yaml": "^2.8.3",
+		"picomatch": "^4.0.4",
+		"anymatch": {
+			"picomatch": "^2.3.2"
+		},
+		"micromatch": {
+			"picomatch": "^2.3.2"
+		}
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
