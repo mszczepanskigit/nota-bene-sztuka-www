@@ -1,14 +1,17 @@
-# Nota Bene Sztuka — strona-wizytówka
+# Nota Bene Sztuka — Strona internetowa
 
-Projekt: prosta, szybka strona-wizytówka dla "Nota Bene Sztuka" (Marta Miller).  
-Cel: prezentacja oferty korepetycji, webinarów i kursów oraz zebranie kontaktów.
+[![CI](https://github.com/mszczepanskigit/nbs/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/mszczepanskigit/nbs/actions/workflows/ci.yml)
+
+Projekt: Internetowa strona dla "Nota Bene Sztuka" (Marta Miller).
 
 Główne technologie:
+
 - Astro (SSG)
 - TypeScript
 - Bun (runtime / package manager)
-- Vercel & OVH (hosting / deploy previews)
-- tbc: Vitest, ESLint, Prettier (testy i jakość kodu)
+- Vercel (hosting, auto-deploy z `master`)
+- Vitest (testy jednostkowe)
+- ESLint + Prettier (jakość i formatowanie kodu)
 
 Link produkcyjny: https://notabenesztuka.pl
 

@@ -1,20 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import {
+	INSTAGRAM_URL,
+	SUPERPROF_URL,
+	CONTACT_EMAIL,
+	WEBINAR_FORM_URL,
+	WEB3FORMS_KEY,
+} from '../config/links';
 
-import pisaImg from '../../public/pisa.jpg';
-import orangeImg from '../../public/orange.png';
-import webinarImg from '../../public/webinar1.png';
+import pisaImg from '../../public/pisa.webp';
+import orangeImg from '../../public/orange.webp';
+import webinarImg from '../../public/webinar2.webp';
 
-const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 const currentYear = new Date().getFullYear();
-const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms.example.com';
 ---
 
-<Layout>
+<Layout
+	title={`Korepetycje z historii sztuki online | Matura ${currentYear}, olimpiada, egzaminy – Nota Bene Sztuka`}
+	description="Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia artystyczne. Indywidualne lekcje 1:1 i małe grupy. Sprawdź ofertę!"
+>
 	<header class="site-header">
 		<div class="container header-inner">
-			<a class="nav-brand" href="#hero">NOTA<br>BENE<br>SZTUKA</a>
+			<a class="nav-brand" href="#hero">NOTA<br />BENE<br />SZTUKA</a>
 
 			<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
 				<span></span>
@@ -46,38 +54,102 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		<section class="section hero" id="hero" aria-label="Hero">
 			<div class="hero-content">
 				<div class="hero-titles">
-					<h1 class="hero-title-primary">KOREPETYCJE Z<br>HISTORII SZTUKI</h1>
-					<h2 class="hero-title-secondary">MATURA <span id="current-year">{currentYear}</span><br>OLIMPIADA<br>EGZAMINY NA STUDIA<br>DLA PASJONATÓW</h2>
+					<h1 class="hero-title-primary">KOREPETYCJE Z<br />HISTORII SZTUKI</h1>
+					<h2 class="hero-title-secondary">
+						MATURA <span id="current-year">{currentYear}</span><br />OLIMPIADA<br />EGZAMINY NA
+						STUDIA<br />DLA PASJONATÓW
+					</h2>
 				</div>
-				</div>
+			</div>
 
 			<div class="hero-socials">
-				<a class="social" href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
-					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<a
+					class="social"
+					href={INSTAGRAM_URL}
+					rel="noopener noreferrer"
+					target="_blank"
+					aria-label="Instagram"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="48"
+						height="48"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
 						<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
 						<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
 						<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
 					</svg>
 				</a>
 				<a class="social fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
-					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="48"
+						height="48"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
 						<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
 					</svg>
 					<span class="fb-tooltip">Już niedługo!</span>
 				</a>
-				<a class="social" href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
-					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<a
+					class="social"
+					href={SUPERPROF_URL}
+					rel="noopener noreferrer"
+					target="_blank"
+					aria-label="Superprof"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="48"
+						height="48"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
 						<circle cx="12" cy="12" r="10"></circle>
-						<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
+						<text
+							x="12"
+							y="16"
+							text-anchor="middle"
+							fill="currentColor"
+							stroke="none"
+							font-size="12"
+							font-weight="bold"
+							font-family="Arial, sans-serif">S</text
+						>
 					</svg>
 				</a>
 			</div>
 
-				<a href="#oferta" class="hero-scroll-down" aria-label="Scroll to offer">
-					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="6 9 12 15 18 9"></polyline>
-					</svg>
-				</a>
+			<a href="#oferta" class="hero-scroll-down" aria-label="Scroll to offer">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="40"
+					height="40"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</a>
 		</section>
 
 		<section id="oferta" class="section oferta-section">
@@ -91,21 +163,20 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="oferta-image">
 						<Image
 							src={pisaImg}
-							alt="Historia sztuki"
+							alt="Korepetycje z historii sztuki – analiza dzieł i przygotowanie do matury"
 							quality={90}
-							format="webp"
 							loading="lazy"
 						/>
 					</div>
 
 					<div class="oferta-text">
 						<p>
-							Jeśli tak – to idealnie trafiłeś/trafiłaś!<br>
-							Tu Marta, Twoja (już wkrótce) ulubiona<br>
-							historyczka sztuki.<br><br>
-							Pomagam uczniom ogarnąć<br>
-							przygotowania do matury z historii<br>
-							sztuki (nawet jeśli zostały nam trzy<br>
+							Jeśli tak – to idealnie trafiłeś/trafiłaś!<br />
+							Tu Marta, Twoja (już wkrótce) ulubiona<br />
+							historyczka sztuki.<br /><br />
+							Pomagam uczniom ogarnąć<br />
+							przygotowania do matury z historii<br />
+							sztuki (nawet jeśli zostały nam trzy<br />
 							miesiące do matury). Gotowy/a?
 						</p>
 						<a href="#kontakt" class="cta-button">Zapisz się!</a>
@@ -119,32 +190,53 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 				<div class="oferta-cards-grid">
 					<div class="oferta-card">
 						<h3>Epoki i kontekst</h3>
-						<p>Przerabiamy epoki w oparciu o kontekst historyczny i kulturowy (tak, on naprawdę robi różnicę). Dzieła z kanonu omawiamy na podstawie moich autorskich prezentacji, więc nie potrzebujesz dodatkowych książek – wszystko już przygotowałam.</p>
+						<p>
+							Przerabiamy epoki w oparciu o kontekst historyczny i kulturowy (tak, on naprawdę robi
+							różnicę). Dzieła z kanonu omawiamy na podstawie moich autorskich prezentacji, więc nie
+							potrzebujesz dodatkowych książek – wszystko już przygotowałam.
+						</p>
 					</div>
 
 					<div class="oferta-card">
 						<h3>Analiza formalna</h3>
-						<p>Analizy nie da się nauczyć na pamięć – dlatego uczymy się jej praktycznie. Tak, żebyś potrafił/potrafiła samodzielnie przeanalizować każde dzieło, nawet takie, którego wcześniej nie widziałeś/aś.</p>
+						<p>
+							Analizy nie da się nauczyć na pamięć – dlatego uczymy się jej praktycznie. Tak, żebyś
+							potrafił/potrafiła samodzielnie przeanalizować każde dzieło, nawet takie, którego
+							wcześniej nie widziałeś/aś.
+						</p>
 					</div>
 
 					<div class="oferta-card">
 						<h3>Zadania maturalne</h3>
-						<p>Ćwiczymy realne zadania maturalne. Dostajesz konkretne tipy egzaminacyjne i pracujesz na kartach pracy zgodnych z CKE, dzięki czemu wiesz, jak pisać, żeby zdobywać punkty.</p>
+						<p>
+							Ćwiczymy realne zadania maturalne. Dostajesz konkretne tipy egzaminacyjne i pracujesz
+							na kartach pracy zgodnych z CKE, dzięki czemu wiesz, jak pisać, żeby zdobywać punkty.
+						</p>
 					</div>
 
 					<div class="oferta-card">
 						<h3>Wypracowanie maturalne</h3>
-						<p>Uczymy się pisać wypracowanie krok po kroku. Pokazuję, jak sprawdza je egzaminator, co musi się w nim znaleźć i jak nie tracić punktów – a to aż ⅓ wyniku z matury.</p>
+						<p>
+							Uczymy się pisać wypracowanie krok po kroku. Pokazuję, jak sprawdza je egzaminator, co
+							musi się w nim znaleźć i jak nie tracić punktów – a to aż ⅓ wyniku z matury.
+						</p>
 					</div>
 
 					<div class="oferta-card">
 						<h3>Forma zajęć</h3>
-						<p>Zajęcia prowadzę indywidualnie (1:1) lub w małych grupach online. Pracujemy w Twoim tempie i robimy tyle powtórek, ile naprawdę potrzebujesz – bez presji. Plan zależy od czasu jaki pozostał nam do matury.</p>
+						<p>
+							Zajęcia prowadzę indywidualnie (1:1) lub w małych grupach online. Pracujemy w Twoim
+							tempie i robimy tyle powtórek, ile naprawdę potrzebujesz – bez presji. Plan zależy od
+							czasu jaki pozostał nam do matury.
+						</p>
 					</div>
 
 					<div class="oferta-card">
 						<h3>Webinary i wyjścia do muzeów</h3>
-						<p>Regularnie organizuję webinary maturalne oraz wspólne wyjścia do muzeów – bo historia sztuki najlepiej działa wtedy, gdy oglądamy dzieła na żywo 😉</p>
+						<p>
+							Regularnie organizuję webinary maturalne oraz wspólne wyjścia do muzeów – bo historia
+							sztuki najlepiej działa wtedy, gdy oglądamy dzieła na żywo 😉
+						</p>
 					</div>
 				</div>
 			</div>
@@ -165,18 +257,10 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 						<div class="opinie-cards-track">
 							<div class="opinie-card">
 								<p class="opinie-text">
-									Pani Marta to doskonała
-									korepetytorka, która potrafi
-									idealnie dopasować materiał do
-									wymogów egzaminu. Z ogromną
-									pasją i zaangażowaniem
-									przygotowała córkę do
-									egzaminu wstępnego do
-									Liceum Plastycznego. Córka
-									zaliczyła egzamin teoretyczny z
-									historii sztuki i wiedzy o sztuce
-									z maksymalną liczbą punktów!
-									Gorąco polecam.
+									Pani Marta to doskonała korepetytorka, która potrafi idealnie dopasować materiał
+									do wymogów egzaminu. Z ogromną pasją i zaangażowaniem przygotowała córkę do
+									egzaminu wstępnego do Liceum Plastycznego. Córka zaliczyła egzamin teoretyczny z
+									historii sztuki i wiedzy o sztuce z maksymalną liczbą punktów! Gorąco polecam.
 								</p>
 								<div class="opinie-card-line"></div>
 								<p class="opinie-author">Mama Dominiki</p>
@@ -184,15 +268,8 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 							<div class="opinie-card">
 								<p class="opinie-text">
-									Bardzo dobre zajęcia
-									indywidualne –
-									wszystko było jasno
-									wytłumaczone i
-									pomogło mi przy
-									wypracowaniu. Webinar
-									też był super, ciekawy i
-									dobrze poprowadzony.
-									Polecam!
+									Bardzo dobre zajęcia indywidualne – wszystko było jasno wytłumaczone i pomogło mi
+									przy wypracowaniu. Webinar też był super, ciekawy i dobrze poprowadzony. Polecam!
 								</p>
 								<div class="opinie-card-line"></div>
 								<p class="opinie-author">Julia</p>
@@ -201,20 +278,12 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 							<div class="opinie-card">
 								<p class="opinie-text">
-									Naukę z historii sztuki zaczęłam
-									chwilę tuż przy rozpoczęciu klasy
-									maturalnej, czasu było mało by wpoić
-									tak dużą dawkę wiedzy ale maturę
-									udało mi się zdac na wynik
-									zadawalający! Pani Marta świetnie
-									umie dopasować harmonogram i
-									rozłożyć materiał tak by każdemu
-									nauka przychodziła bez wiekszego
-									stresu. Zajęcia są urozmaicone o
-									prezentację, dostęp do przeróżnych
-									testów czy sprawdzenia z
-									wypracowań. Z całego serduszka
-									polecam!!
+									Naukę z historii sztuki zaczęłam chwilę tuż przy rozpoczęciu klasy maturalnej,
+									czasu było mało by wpoić tak dużą dawkę wiedzy ale maturę udało mi się zdac na
+									wynik zadawalający! Pani Marta świetnie umie dopasować harmonogram i rozłożyć
+									materiał tak by każdemu nauka przychodziła bez wiekszego stresu. Zajęcia są
+									urozmaicone o prezentację, dostęp do przeróżnych testów czy sprawdzenia z
+									wypracowań. Z całego serduszka polecam!!
 								</p>
 								<div class="opinie-card-line"></div>
 								<p class="opinie-author">Klaudia</p>
@@ -223,7 +292,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 							<div class="opinie-card">
 								<p class="opinie-text">
-									Pani Marta prowadzi lekcje w bardzo przyjemnej, profesjonalniej atmosferze. Zajęcia są ciekawe i zawsze dużo się z nich wynosi. Dzięki tym korepetycjom nauka stała się bardzo przyjemna i skuteczna.
+									Pani Marta prowadzi lekcje w bardzo przyjemnej, profesjonalniej atmosferze.
+									Zajęcia są ciekawe i zawsze dużo się z nich wynosi. Dzięki tym korepetycjom nauka
+									stała się bardzo przyjemna i skuteczna.
 								</p>
 								<div class="opinie-card-line"></div>
 								<p class="opinie-author">Klaudia</p>
@@ -232,25 +303,59 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 							<div class="opinie-card">
 								<p class="opinie-text">
-									Bardzo polecam! Oprócz przekazania wiedzy Marta umie zarazić entuzjazmem i uśmiechem co sprawia, że lekcje to sama przyjemność
+									Bardzo polecam! Oprócz przekazania wiedzy Marta umie zarazić entuzjazmem i
+									uśmiechem co sprawia, że lekcje to sama przyjemność
 								</p>
 								<div class="opinie-card-line"></div>
 								<p class="opinie-author">Maciej</p>
 								<p class="opinie-role">Maturzysta 2025</p>
 							</div>
+
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Marta jest profesjonalna, empatyczna i cierpliwa. Prowadzone lekcje są
+									zróżnicowane i ciekawe. Bardzo sobie cenię elastyczność oraz podejście do ucznia w
+									indywidualny sposób, zwracając szczególną uwagę na jego potrzeby. Współpracę z
+									Martą uważam za owocną. Moja niechęć do przedmiotu zamieniła się w
+									zainteresowanie! Serdecznie Polecam
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Natalia</p>
+								<p class="opinie-role">Maturzystka 2025</p>
+							</div>
+
+							<div class="opinie-card">
+								<p class="opinie-text">
+									Idealnie! Świetnie zostało mi wytłumaczone jak napisać wypracowanie z historii
+									sztuki, bardzo pomocne wskazówki, przygotowywałam się z Panią Martą tydzień przed
+									maturą w ciągu jedynie dwóch spotkań a dostałam z wypracowania na maturze 18/20
+									punktów! Bardzo polecam
+								</p>
+								<div class="opinie-card-line"></div>
+								<p class="opinie-author">Liliana</p>
+								<p class="opinie-role">Maturzystka 2025</p>
+							</div>
 						</div>
 					</div>
 
 					<div class="opinie-dots">
-						<button class="opinie-dot active" data-index="0" aria-label="Go to testimonial 1"></button>
+						<button class="opinie-dot active" data-index="0" aria-label="Go to testimonial 1"
+						></button>
 						<button class="opinie-dot" data-index="1" aria-label="Go to testimonial 2"></button>
 						<button class="opinie-dot" data-index="2" aria-label="Go to testimonial 3"></button>
 						<button class="opinie-dot" data-index="3" aria-label="Go to testimonial 4"></button>
 						<button class="opinie-dot" data-index="4" aria-label="Go to testimonial 5"></button>
+						<button class="opinie-dot" data-index="5" aria-label="Go to testimonial 6"></button>
+						<button class="opinie-dot" data-index="6" aria-label="Go to testimonial 7"></button>
 					</div>
 
 					<p class="opinie-more">
-						Więcej opinii tutaj: <a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="More testimonials">Superprof</a>
+						Więcej opinii tutaj: <a
+							href={SUPERPROF_URL}
+							rel="noopener noreferrer"
+							target="_blank"
+							aria-label="More testimonials">Superprof</a
+						>
 					</p>
 				</div>
 			</div>
@@ -262,43 +367,100 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="kontakt-text">
 						<h2 class="kontakt-title">Skontaktuj się ze mną</h2>
 						<p>
-							Masz pytania dotyczące zajęć? Chcesz umówić się na pierwsze spotkanie?
-							Wypełnij formularz, a odezwę się do Ciebie najszybciej jak to możliwe.
+							Masz pytania dotyczące zajęć? Chcesz umówić się na pierwsze spotkanie? Wypełnij
+							formularz, a odezwę się do Ciebie najszybciej jak to możliwe.
 						</p>
-						<p>
-							Ewentualnie napisz do mnie na poniższy adres e-mail!
-						</p>
+						<p>Ewentualnie napisz do mnie na poniższy adres e-mail!</p>
 						<p class="kontakt-email">
-							<a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a>
+							<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 						</p>
 						<div class="kontakt-socials">
-							<a href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
-								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<a
+								href={INSTAGRAM_URL}
+								rel="noopener noreferrer"
+								target="_blank"
+								aria-label="Instagram"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="28"
+									height="28"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
 									<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
 									<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
 									<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
 								</svg>
 							</a>
 							<a class="fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
-								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="28"
+									height="28"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+									></path>
 								</svg>
 								<span class="fb-tooltip">Już niedługo!</span>
 							</a>
-							<a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
-								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<a
+								href={SUPERPROF_URL}
+								rel="noopener noreferrer"
+								target="_blank"
+								aria-label="Superprof"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="28"
+									height="28"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
 									<circle cx="12" cy="12" r="10"></circle>
-									<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
+									<text
+										x="12"
+										y="16"
+										text-anchor="middle"
+										fill="currentColor"
+										stroke="none"
+										font-size="12"
+										font-weight="bold"
+										font-family="Arial, sans-serif">S</text
+									>
 								</svg>
 							</a>
 						</div>
 					</div>
 
 					<div class="kontakt-form-wrapper">
-						<form id="kontakt-form" class="kontakt-form" action="https://api.web3forms.com/submit" method="POST">
-							<input type="hidden" name="access_key" value={web3formsKey} />
+						<form
+							id="kontakt-form"
+							class="kontakt-form"
+							action="https://api.web3forms.com/submit"
+							method="POST"
+						>
+							<input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
 							<input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
-							<input type="hidden" name="subject" value="Nowe zapytanie z formularza kontaktowego - Nota Bene Sztuka" />
+							<input
+								type="hidden"
+								name="subject"
+								value="Nowe zapytanie z formularza kontaktowego - Nota Bene Sztuka"
+							/>
 							<input type="hidden" name="redirect" value="https://web3forms.com/success" />
 							<div class="form-group">
 								<label for="name">Imię i nazwisko</label>
@@ -322,13 +484,15 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 							<div class="form-group form-checkbox">
 								<label for="consent-combined">
-									<input
-										type="checkbox"
-										id="consent-combined"
-										name="consent_combined"
-										required
-									/>
-									<span>Akceptuję <a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">politykę prywatności</a> i <a href="/regulamin" target="_blank" rel="noopener noreferrer">regulamin</a>. Oświadczam, że ukończyłem 18 lat lub jestem pełnoprawnym opiekunem.</span>
+									<input type="checkbox" id="consent-combined" name="consent_combined" required />
+									<span
+										>Akceptuję <a
+											href="/polityka-prywatnosci"
+											target="_blank"
+											rel="noopener noreferrer">politykę prywatności</a
+										> i <a href="/regulamin" target="_blank" rel="noopener noreferrer">regulamin</a
+										>. Oświadczam, że ukończyłem 18 lat lub jestem pełnoprawnym opiekunem.</span
+									>
 								</label>
 							</div>
 
@@ -348,32 +512,37 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="omnie-line"></div>
 				</div>
 
-			<div class="omnie-content">
-				<div class="omnie-image-wrapper">
-					<div class="omnie-bg-rectangle"></div>
-					<div class="omnie-image">
-						<Image
-							src={orangeImg}
-							alt="O mnie"
-							quality={90}
-							format="webp"
-							loading="lazy"
-						/>
+				<div class="omnie-content">
+					<div class="omnie-image-wrapper">
+						<div class="omnie-bg-rectangle"></div>
+						<div class="omnie-image">
+							<Image
+								src={orangeImg}
+								alt="Marta – historyczka sztuki i nauczycielka, Nota Bene Sztuka"
+								quality={90}
+								loading="lazy"
+							/>
+						</div>
+					</div>
+
+					<div class="omnie-text-wrapper">
+						<p>
+							Nazywam się Marta i jestem historyczką sztuki oraz nauczycielką z przygotowaniem
+							pedagogicznym. Od 5 lat edukuję, popularyzuję wiedzę o sztuce oraz przygotowuję
+							uczniów do matur, olimpiad i egzaminów wstępnych, pomagając im uporządkować materiał i
+							nauczyć się analizy dzieł w sposób wymagany na egzaminach.
+						</p>
+						<p>
+							Moje zajęcia wyróżniają się nie tylko skutecznym przygotowaniem merytorycznym, ale
+							także zarażaniem pasją do sztuki. Oprócz regularnych lekcji organizuję webinary oraz
+							cykliczne wyjścia do muzeów, które pozwalają zobaczyć omawiane dzieła na żywo i lepiej
+							je zrozumieć.
+						</p>
+						<p>
+							Sprawdź aktualną ofertę zajęć i wybierz formę przygotowań dopasowaną do Twojego celu.
+						</p>
 					</div>
 				</div>
-
-				<div class="omnie-text-wrapper">
-					<p>
-						Nazywam się Marta i jestem historyczką sztuki oraz nauczycielką z przygotowaniem pedagogicznym. Od 5 lat edukuję, popularyzuję wiedzę o sztuce oraz przygotowuję uczniów do matur, olimpiad i egzaminów wstępnych, pomagając im uporządkować materiał i nauczyć się analizy dzieł w sposób wymagany na egzaminach.
-					</p>
-					<p>
-						Moje zajęcia wyróżniają się nie tylko skutecznym przygotowaniem merytorycznym, ale także zarażaniem pasją do sztuki. Oprócz regularnych lekcji organizuję webinary oraz cykliczne wyjścia do muzeów, które pozwalają zobaczyć omawiane dzieła na żywo i lepiej je zrozumieć.
-					</p>
-					<p>
-						Sprawdź aktualną ofertę zajęć i wybierz formę przygotowań dopasowaną do Twojego celu.
-					</p>
-				</div>
-			</div>
 			</div>
 		</section>
 
@@ -384,30 +553,34 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 					<div class="webinary-line"></div>
 				</div>
 
-			<a href={webinarFormUrl} rel="noopener noreferrer" target="_blank" class="webinary-image-link">
-				<Image
-					src={webinarImg}
-					alt="Webinary - kliknij aby się zapisać"
-					quality={90}
-					format="webp"
-					loading="lazy"
-				/>
-			</a>
-		</div>
-		<div id="bottom"></div>
-	</section>
+				<a
+					href={WEBINAR_FORM_URL}
+					rel="noopener noreferrer"
+					target="_blank"
+					class="webinary-image-link"
+				>
+					<Image
+						src={webinarImg}
+						alt="Webinary z historii sztuki – kliknij, aby się zapisać na najbliższy webinar maturalny"
+						quality={90}
+						loading="lazy"
+					/>
+				</a>
+			</div>
+			<div id="bottom"></div>
+		</section>
 	</main>
 
 	<footer class="site-footer">
 		<div class="footer-container">
 			<div class="footer-top">
 				<div class="footer-brand">
-					<a href="#hero">NOTA<br>BENE<br>SZTUKA</a>
+					<a href="#hero">NOTA<br />BENE<br />SZTUKA</a>
 				</div>
 
 				<div class="footer-contact">
 					<h3>Kontakt</h3>
-					<p><a href="mailto:kontakt@notabenesztuka.pl">kontakt@notabenesztuka.pl</a></p>
+					<p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
 				</div>
 			</div>
 
@@ -416,32 +589,83 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 			<div class="footer-bottom">
 				<div class="footer-social-section">
 					<p class="footer-social-title">Zaobserwuj mnie!</p>
-				<div class="footer-socials">
-					<a href="https://www.instagram.com/notabenesztuka" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-						</svg>
-					</a>
-					<a class="fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-						</svg>
-						<span class="fb-tooltip">Już niedługo!</span>
-					</a>
-					<a href="https://www.superprof.pl/nauczycielka-historii-sztuki-korepetycje-matura-2026-egzaminy-studia-dla-pasjonatow-szkoly-plastyczne.html" rel="noopener noreferrer" target="_blank" aria-label="Superprof">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<circle cx="12" cy="12" r="10"></circle>
-							<text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="12" font-weight="bold" font-family="Arial, sans-serif">S</text>
-						</svg>
-					</a>
-				</div>
+					<div class="footer-socials">
+						<a
+							href={INSTAGRAM_URL}
+							rel="noopener noreferrer"
+							target="_blank"
+							aria-label="Instagram"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+								<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+								<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+							</svg>
+						</a>
+						<a class="fb-coming-soon" href="#" rel="noopener noreferrer" aria-label="Facebook">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+							</svg>
+							<span class="fb-tooltip">Już niedługo!</span>
+						</a>
+						<a
+							href={SUPERPROF_URL}
+							rel="noopener noreferrer"
+							target="_blank"
+							aria-label="Superprof"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="12" cy="12" r="10"></circle>
+								<text
+									x="12"
+									y="16"
+									text-anchor="middle"
+									fill="currentColor"
+									stroke="none"
+									font-size="12"
+									font-weight="bold"
+									font-family="Arial, sans-serif">S</text
+								>
+							</svg>
+						</a>
+					</div>
 				</div>
 
 				<div class="footer-links">
 					<a href="/regulamin" target="_blank" rel="noopener noreferrer">Regulamin</a>
-					<a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>
+					<a href="/polityka-prywatnosci" target="_blank" rel="noopener noreferrer"
+						>Polityka prywatności</a
+					>
 				</div>
 
 				<div class="footer-back-to-top">
@@ -450,7 +674,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 			</div>
 
 			<div class="footer-bottom-info">
-				<p class="footer-copyright">© {currentYear} Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
+				<p class="footer-copyright">
+					© {currentYear} Nota Bene Sztuka. Wszelkie prawa zastrzeżone.
+				</p>
 				<p class="footer-nip">NIP: 8982329532</p>
 			</div>
 		</div>
@@ -504,7 +730,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		font-weight: 900;
 		text-decoration: none;
 		color: var(--text-color, #000);
-		transition: color 0.3s ease, opacity 0.3s ease;
+		transition:
+			color 0.3s ease,
+			opacity 0.3s ease;
 		flex-shrink: 0;
 	}
 
@@ -571,7 +799,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		color: var(--text-color, #000);
 		font-size: 1.75rem;
 		line-height: 1;
-		transition: color 0.3s ease, transform 0.2s ease;
+		transition:
+			color 0.3s ease,
+			transform 0.2s ease;
 		display: inline-block;
 	}
 
@@ -627,7 +857,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		font-family: 'Archivo Black', sans-serif;
 		padding: 0.75rem 1.5rem;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-		transition: color 0.3s ease, background 0.3s ease;
+		transition:
+			color 0.3s ease,
+			background 0.3s ease;
 		display: block;
 		white-space: nowrap;
 	}
@@ -645,7 +877,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		display: flex;
 		right: 0;
 	}
-
 
 	main {
 		padding-top: 0;
@@ -670,8 +901,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		height: 92vh;
 		background-color: #000;
 		background-image:
-			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-			url('/monalisa.webp');
+			linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/monalisa.webp');
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -683,8 +913,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	@supports not (background-image: url('/monalisa.webp')) {
 		.hero {
 			background-image:
-				linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-				url('/monalisa.png');
+				linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/monalisa.png');
 		}
 	}
 
@@ -730,7 +959,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.hero-title-primary {
 		font-family: 'Playfair Display', serif;
-		font-size: 6rem;
+		font-size: 5.4rem;
 		font-weight: 800;
 		color: #fffbf5;
 		margin: 0;
@@ -742,7 +971,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.hero-title-secondary {
 		font-family: 'Playfair Display', serif;
-		font-size: 3rem;
+		font-size: 2.7rem;
 		font-weight: 700;
 		color: #fffbf5;
 		margin: 0;
@@ -772,8 +1001,8 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	}
 
 	.hero-socials .social svg {
-		width: 4rem;
-		height: 4rem;
+		width: 3.6rem;
+		height: 3.6rem;
 		stroke: #fff;
 		transition: transform 0.3s ease;
 	}
@@ -840,7 +1069,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: transform 0.3s ease, opacity 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			opacity 0.3s ease;
 		animation: bounce 2s infinite;
 		cursor: pointer;
 	}
@@ -858,7 +1089,11 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	}
 
 	@keyframes bounce {
-		0%, 20%, 50%, 80%, 100% {
+		0%,
+		20%,
+		50%,
+		80%,
+		100% {
 			transform: translateX(-50%) translateY(0);
 		}
 		40% {
@@ -952,7 +1187,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		font-size: 1.25rem;
 		font-weight: 600;
 		border-radius: 0.25rem;
-		transition: background 0.3s ease, transform 0.2s ease;
+		transition:
+			background 0.3s ease,
+			transform 0.2s ease;
 		margin-top: 0.75rem;
 	}
 
@@ -986,7 +1223,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		padding: 2rem;
 		border-radius: 0.5rem;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 	}
 
 	.oferta-card:hover {
@@ -1085,7 +1324,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		padding: 1.25rem 1.25rem;
 		border-radius: 1rem;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
 		width: 280px;
@@ -1313,7 +1554,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: opacity 0.3s ease, transform 0.3s ease;
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
 	}
 
 	.kontakt-socials a:hover {
@@ -1423,7 +1666,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		border: none;
 		border-radius: 0.25rem;
 		cursor: pointer;
-		transition: background 0.3s ease, transform 0.2s ease;
+		transition:
+			background 0.3s ease,
+			transform 0.2s ease;
 		align-self: flex-start;
 	}
 
@@ -1486,7 +1731,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		margin: 0;
 	}
 
-	.form-checkbox input[type="checkbox"] {
+	.form-checkbox input[type='checkbox'] {
 		width: 1.25rem;
 		height: 1.25rem;
 		margin-top: 0.125rem;
@@ -1638,7 +1883,9 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		border-radius: 0.5rem;
 		overflow: hidden;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 		cursor: pointer;
 		text-decoration: none;
 	}
@@ -1657,9 +1904,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 
 	.site-footer {
 		background-color: #3a3a3a;
-		background-image:
-			linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-			url('/museum.webp');
+		background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/museum.webp');
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -1672,8 +1917,7 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	@supports not (background-image: url('/museum.webp')) {
 		.site-footer {
 			background-image:
-				linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-				url('/museum.jpeg');
+				linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/museum.jpeg');
 		}
 	}
 
@@ -2042,11 +2286,11 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-title-primary {
-			font-size: 4rem;
+			font-size: 3.6rem;
 		}
 
 		.hero-title-secondary {
-			font-size: 2rem;
+			font-size: 1.8rem;
 		}
 
 		.hero-socials {
@@ -2055,8 +2299,8 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-socials .social svg {
-			width: 2.5rem;
-			height: 2.5rem;
+			width: 2.25rem;
+			height: 2.25rem;
 		}
 
 		.hero-scroll-down {
@@ -2067,7 +2311,6 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 			width: 2.5rem;
 			height: 2.5rem;
 		}
-
 
 		.footer-container {
 			padding: 0 3rem;
@@ -2222,11 +2465,11 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-title-primary {
-			font-size: 2.2rem;
+			font-size: 1.98rem;
 		}
 
 		.hero-title-secondary {
-			font-size: 1.3rem;
+			font-size: 1.17rem;
 		}
 
 		.hero-title {
@@ -2242,8 +2485,8 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 		}
 
 		.hero-socials .social svg {
-			width: 2rem;
-			height: 2rem;
+			width: 1.8rem;
+			height: 1.8rem;
 		}
 
 		.hero-scroll-down {
@@ -2299,4 +2542,3 @@ const webinarFormUrl = import.meta.env.PUBLIC_WEBINAR_FORM_URL || 'https://forms
 	initContactForm();
 	initMobileMenu();
 </script>
-

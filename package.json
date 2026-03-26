@@ -1,20 +1,50 @@
 {
-  "name": "nbs",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "convert-images": "bun run scripts/convert-images.ts"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "astro": "^5.17.1",
-    "typescript": "^5.9.3"
-  },
-  "devDependencies": {
-    "sharp": "^0.34.5"
-  }
+	"name": "nbs",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"convert-images": "bun run scripts/convert-images.ts",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"typecheck": "astro check",
+		"test": "vitest run",
+		"check": "bun run format:check && bun run lint && bun run typecheck && bun run test"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.8",
+		"@astrojs/sitemap": "^3.7.1",
+		"astro": "^6.0.8",
+		"typescript": "^5.9.3"
+	},
+	"overrides": {
+		"h3": "^1.15.6",
+		"svgo": "^4.0.1",
+		"rollup": "^4.59.0",
+		"smol-toml": "^1.6.1",
+		"yaml": "^2.8.3",
+		"picomatch": "^4.0.4",
+		"anymatch": {
+			"picomatch": "^2.3.2"
+		},
+		"micromatch": {
+			"picomatch": "^2.3.2"
+		}
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"eslint": "^10.1.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-astro": "^1.6.0",
+		"prettier": "^3.8.1",
+		"prettier-plugin-astro": "^0.14.1",
+		"sharp": "^0.34.5",
+		"typescript-eslint": "^8.57.2",
+		"vitest": "^4.1.1"
+	}
 }

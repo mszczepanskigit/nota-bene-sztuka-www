@@ -1,13 +1,63 @@
 ---
+import { INSTAGRAM_URL, SUPERPROF_URL, CONTACT_EMAIL } from '../config/links';
+
 interface Props {
 	title?: string;
 	description?: string;
+	ogImage?: string;
 }
 
 const {
-	title = 'Nota Bene Sztuka',
-	description = 'Korepetycje z historii sztuki — indywidualne podejście, przygotowanie do matury i egzaminów.',
+	title = 'Korepetycje z historii sztuki online | Matura, olimpiada – Nota Bene Sztuka',
+	description = 'Korepetycje z historii sztuki online – skuteczne przygotowanie do matury, olimpiady i egzaminów wstępnych. Indywidualne lekcje 1:1, małe grupy, webinary. Sprawdź ofertę!',
+	ogImage = '/favicon.png',
 } = Astro.props;
+
+const siteUrl = 'https://notabenesztuka.pl';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageURL = new URL(ogImage, siteUrl).href;
+const ogImageAlt = 'Nota Bene Sztuka - Korepetycje z historii sztuki';
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'EducationalOrganization',
+	name: 'Nota Bene Sztuka',
+	url: siteUrl,
+	logo: `${siteUrl}/favicon.png`,
+	description:
+		'Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia.',
+	email: CONTACT_EMAIL,
+	sameAs: [INSTAGRAM_URL, SUPERPROF_URL],
+	contactPoint: {
+		'@type': 'ContactPoint',
+		email: CONTACT_EMAIL,
+		contactType: 'customer service',
+		availableLanguage: 'Polish',
+	},
+	hasOfferCatalog: {
+		'@type': 'OfferCatalog',
+		name: 'Korepetycje z historii sztuki',
+		itemListElement: [
+			{
+				'@type': 'Offer',
+				itemOffered: {
+					'@type': 'Service',
+					name: 'Korepetycje indywidualne z historii sztuki (online)',
+					description:
+						'Indywidualne lekcje 1:1 online z historii sztuki – matura, olimpiada, egzaminy wstępne.',
+				},
+			},
+			{
+				'@type': 'Offer',
+				itemOffered: {
+					'@type': 'Service',
+					name: 'Webinary maturalne z historii sztuki',
+					description: 'Webinary z historii sztuki przygotowujące do matury 2026.',
+				},
+			},
+		],
+	},
+};
 ---
 
 <!doctype html>
@@ -16,6 +66,26 @@ const {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Canonical -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:locale" content="pl_PL" />
+		<meta property="og:site_name" content="Nota Bene Sztuka" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
 
 		<!-- Favicons -->
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
@@ -24,9 +94,15 @@ const {
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- JSON-LD Structured Data -->
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
 	<body>
 		<slot />
@@ -48,7 +124,11 @@ const {
 	body {
 		margin: 0;
 		min-height: 100vh;
-		font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+		font-family:
+			'Outfit',
+			system-ui,
+			-apple-system,
+			sans-serif;
 		background: #dfd5c3;
 		color: #111;
 	}
