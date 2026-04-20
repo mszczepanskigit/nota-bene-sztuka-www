@@ -10,7 +10,7 @@ interface Props {
 const {
 	title = 'Korepetycje z historii sztuki online | Matura, olimpiada – Nota Bene Sztuka',
 	description = 'Korepetycje z historii sztuki online – skuteczne przygotowanie do matury, olimpiady i egzaminów wstępnych. Indywidualne lekcje 1:1, małe grupy, webinary. Sprawdź ofertę!',
-	ogImage = '/favicon.png',
+	ogImage = '/og-image.webp',
 } = Astro.props;
 
 const siteUrl = 'https://notabenesztuka.pl';
@@ -82,7 +82,7 @@ const jsonLd = {
 		<meta property="og:site_name" content="Nota Bene Sztuka" />
 
 		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
