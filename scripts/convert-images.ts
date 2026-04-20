@@ -1,6 +1,6 @@
 import sharp from 'sharp';
 import { unlink } from 'node:fs/promises';
-import { resolve, dirname, basename } from 'node:path';
+import { resolve, basename } from 'node:path';
 
 const publicDir = './public';
 
