@@ -1,5 +1,6 @@
 import sharp from 'sharp';
 import { unlink } from 'node:fs/promises';
+import { resolve, dirname, basename } from 'node:path';
 
 const publicDir = './public';
 
@@ -12,24 +13,24 @@ const inlineImages: string[] = ['pisa.jpg', 'orange.png', 'webinar2.png'];
 // Obsolete images – convert to webp and DELETE the original (will never be used directly)
 const obsoleteImages: string[] = ['obsolete/webinar1.png'];
 
+async function convertFile(inputPath: string, deleteOriginal = false): Promise<void> {
+	const outputPath = inputPath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+	try {
+		await sharp(inputPath).webp({ quality: 90, effort: 6 }).toFile(outputPath);
+		console.log(`  ✓  ${basename(inputPath)} → ${basename(outputPath)}`);
+		if (deleteOriginal) {
+			await unlink(inputPath);
+			console.log(`  🗑  Deleted original: ${basename(inputPath)}`);
+		}
+	} catch (error) {
+		const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+		console.error(`  ✗  Failed to convert ${basename(inputPath)}: ${errorMessage}`);
+	}
+}
+
 async function convertToWebP(images: string[], deleteOriginal = false): Promise<void> {
 	for (const image of images) {
-		const inputPath = `${publicDir}/${image}`;
-		const outputPath = `${publicDir}/${image.replace(/\.(png|jpg|jpeg)$/, '.webp')}`;
-
-		try {
-			await sharp(inputPath).webp({ quality: 90, effort: 6 }).toFile(outputPath);
-			const outputFilename = outputPath.split('/').pop();
-			console.log(`  ✓  ${image} → ${outputFilename}`);
-
-			if (deleteOriginal) {
-				await unlink(inputPath);
-				console.log(`  🗑  Deleted original: ${image}`);
-			}
-		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-			console.error(`  ✗  Failed to convert ${image}: ${errorMessage}`);
-		}
+		await convertFile(`${publicDir}/${image}`, deleteOriginal);
 	}
 }
 
@@ -46,4 +47,16 @@ async function main(): Promise<void> {
 	console.log('\nDone.\n');
 }
 
-main();
+const cliArgs = process.argv.slice(2);
+
+if (cliArgs.length > 0) {
+	// CLI mode: convert the given file paths
+	(async () => {
+		for (const arg of cliArgs) {
+			await convertFile(resolve(arg));
+		}
+		console.log('\nDone.\n');
+	})();
+} else {
+	main();
+}

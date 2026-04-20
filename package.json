@@ -20,7 +20,7 @@
 		"@astrojs/check": "^0.9.8",
 		"@astrojs/sitemap": "^3.7.1",
 		"astro": "^6.0.8",
-		"typescript": "^5.9.3"
+		"typescript": "^6.0.2"
 	},
 	"overrides": {
 		"h3": "^1.15.6",
@@ -28,13 +28,7 @@
 		"rollup": "^4.59.0",
 		"smol-toml": "^1.6.1",
 		"yaml": "^2.8.3",
-		"picomatch": "^4.0.4",
-		"anymatch": {
-			"picomatch": "^2.3.2"
-		},
-		"micromatch": {
-			"picomatch": "^2.3.2"
-		}
+		"picomatch": "^4.0.4"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
