@@ -10,10 +10,10 @@ interface Props {
 const {
 	title = 'Korepetycje z historii sztuki online | Matura, olimpiada – Nota Bene Sztuka',
 	description = 'Korepetycje z historii sztuki online – skuteczne przygotowanie do matury, olimpiady i egzaminów wstępnych. Indywidualne lekcje 1:1, małe grupy, webinary. Sprawdź ofertę!',
-	ogImage = '/favicon.png',
+	ogImage = '/og-image.webp',
 } = Astro.props;
 
-const siteUrl = 'https://notabenesztuka.pl';
+const siteUrl = import.meta.env.SITE;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageURL = new URL(ogImage, siteUrl).href;
 const ogImageAlt = 'Nota Bene Sztuka - Korepetycje z historii sztuki';
@@ -52,7 +52,7 @@ const jsonLd = {
 				itemOffered: {
 					'@type': 'Service',
 					name: 'Webinary maturalne z historii sztuki',
-					description: 'Webinary z historii sztuki przygotowujące do matury 2026.',
+					description: 'Webinary z historii sztuki przygotowujące do matury.',
 				},
 			},
 		],
@@ -82,7 +82,7 @@ const jsonLd = {
 		<meta property="og:site_name" content="Nota Bene Sztuka" />
 
 		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
@@ -98,7 +98,6 @@ const jsonLd = {
 			href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
 			rel="stylesheet"
 		/>
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
 		<!-- JSON-LD Structured Data -->
