@@ -14,12 +14,14 @@ import pisaImg from '../../public/pisa.webp';
 import orangeImg from '../../public/orange.webp';
 import webinarImg from '../../public/webinar4.webp';
 
-const currentYear = new Date().getFullYear();
+const now = new Date();
+const currentYear = now.getFullYear();
+const maturaYear = now.getMonth() >= 7 ? currentYear + 1 : currentYear;
 const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE);
 ---
 
 <Layout
-	title={`Korepetycje z historii sztuki online | Matura ${currentYear}, olimpiada, egzaminy – Nota Bene Sztuka`}
+	title={`Korepetycje z historii sztuki online | Matura z historii sztuki ${maturaYear}, olimpiada, egzaminy – Nota Bene Sztuka`}
 	description="Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia artystyczne. Indywidualne lekcje 1:1 i małe grupy. Sprawdź ofertę!"
 	structuredData={homepageStructuredData}
 >
@@ -43,8 +45,8 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 				<a href="#oferta">OFERTA</a>
 				<a href="#opinie">OPINIE</a>
 				<a href="#kontakt">KONTAKT</a>
-				<a href="#o-mnie">O MNIE</a>
 				<a href="#webinary">WEBINARY</a>
+				<a href="/o-mnie/">O MNIE</a>
 				<a class="arrow-down" href="#bottom" aria-label="Przejdź na dół strony">↓</a>
 			</nav>
 		</div>
@@ -61,8 +63,8 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 		<a href="#oferta">OFERTA</a>
 		<a href="#opinie">OPINIE</a>
 		<a href="#kontakt">KONTAKT</a>
-		<a href="#o-mnie">O MNIE</a>
 		<a href="#webinary">WEBINARY</a>
+		<a href="/o-mnie/">O MNIE</a>
 	</nav>
 
 	<main>
@@ -71,8 +73,8 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 				<div class="hero-titles">
 					<h1 class="hero-title-primary">KOREPETYCJE Z<br />HISTORII SZTUKI</h1>
 					<h2 class="hero-title-secondary">
-						MATURA <span id="current-year">{currentYear}</span><br />OLIMPIADA<br />EGZAMINY NA
-						STUDIA<br />DLA PASJONATÓW
+						MATURA Z HISTORII SZTUKI <span id="current-year">{maturaYear}</span><br />OLIMPIADA<br
+						/>EGZAMINY NA STUDIA<br />DLA PASJONATÓW
 					</h2>
 				</div>
 			</div>
@@ -258,6 +260,32 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 							sztuki najlepiej działa wtedy, gdy oglądamy dzieła na żywo 😉
 						</p>
 					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section autorka-section" aria-label="Osoba prowadząca zajęcia">
+			<div class="autorka-container">
+				<div class="autorka-bar">
+					<div class="autorka-photo">
+						<Image
+							src={orangeImg}
+							alt="Marta Miller – historyczka sztuki prowadząca korepetycje online"
+							quality={90}
+							loading="lazy"
+						/>
+					</div>
+
+					<div class="autorka-text">
+						<p class="autorka-name">Marta Miller</p>
+						<p class="autorka-role">Historyczka sztuki i nauczycielka</p>
+						<p class="autorka-summary">
+							Od 5 lat przygotowuję uczniów do matury, olimpiady i egzaminów wstępnych na studia –
+							online i w Twoim tempie.
+						</p>
+					</div>
+
+					<a href="/o-mnie/" class="autorka-link">Więcej o mnie →</a>
 				</div>
 			</div>
 		</section>
@@ -545,47 +573,6 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 
 							<button type="submit" class="form-submit">Wyślij wiadomość</button>
 						</form>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="o-mnie" class="section omnie-section">
-			<div class="omnie-container">
-				<div class="omnie-header">
-					<h2 class="omnie-title">O mnie</h2>
-					<div class="omnie-line"></div>
-				</div>
-
-				<div class="omnie-content">
-					<div class="omnie-image-wrapper">
-						<div class="omnie-bg-rectangle"></div>
-						<div class="omnie-image">
-							<Image
-								src={orangeImg}
-								alt="Marta – historyczka sztuki i nauczycielka, Nota Bene Sztuka"
-								quality={90}
-								loading="lazy"
-							/>
-						</div>
-					</div>
-
-					<div class="omnie-text-wrapper">
-						<p>
-							Nazywam się Marta i jestem historyczką sztuki oraz nauczycielką z przygotowaniem
-							pedagogicznym. Od 5 lat edukuję, popularyzuję wiedzę o sztuce oraz przygotowuję
-							uczniów do matur, olimpiad i egzaminów wstępnych, pomagając im uporządkować materiał i
-							nauczyć się analizy dzieł w sposób wymagany na egzaminach.
-						</p>
-						<p>
-							Moje zajęcia wyróżniają się nie tylko skutecznym przygotowaniem merytorycznym, ale
-							także zarażaniem pasją do sztuki. Oprócz regularnych lekcji organizuję webinary oraz
-							cykliczne wyjścia do muzeów, które pozwalają zobaczyć omawiane dzieła na żywo i lepiej
-							je zrozumieć.
-						</p>
-						<p>
-							Sprawdź aktualną ofertę zajęć i wybierz formę przygotowań dopasowaną do Twojego celu.
-						</p>
 					</div>
 				</div>
 			</div>
@@ -1813,100 +1800,99 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 		opacity: 0.8;
 	}
 
-	.omnie-section {
+	.autorka-section {
 		background: #fffbf5;
-		padding: 0.5rem 0;
-		scroll-margin-top: calc(var(--header-height) - 6rem);
+		padding: 0.5rem 0 1.5rem 0;
 	}
 
-	.omnie-container {
+	.autorka-container {
 		max-width: 65rem;
 		margin: 0 auto;
-		padding: 1rem 4rem 4rem 4rem;
+		padding: 0 4rem;
 	}
 
-	.omnie-header {
-		margin-bottom: 1.25rem;
-	}
-
-	.omnie-title {
-		font-family: 'Outfit', sans-serif;
-		font-size: 3.5rem;
-		font-weight: 600;
-		margin: 0 0 1.5rem 0;
-		color: #111;
-	}
-
-	.omnie-line {
-		width: 8.75rem;
-		height: 0.25rem;
-		background: #111;
-	}
-
-	.omnie-content {
+	.autorka-bar {
 		display: grid;
-		grid-template-columns: 1fr 1.5fr;
-		gap: 4rem;
-		align-items: flex-end;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 2rem;
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		border-left: 0.375rem solid #ec5538;
+		border-radius: 0.75rem;
+		padding: 1.5rem 2rem;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 	}
 
-	.omnie-image-wrapper {
-		position: relative;
-		width: 80%;
-		aspect-ratio: 4 / 5;
-	}
-
-	.omnie-bg-rectangle {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 90%;
-		height: 100%;
+	.autorka-photo {
+		width: 7rem;
+		height: 7rem;
+		border-radius: 50%;
+		overflow: hidden;
 		background: #ec5538;
-		border-radius: 0.5rem;
-		z-index: 0;
 	}
 
-	.omnie-image {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		overflow: visible;
-		border-radius: 0;
-		box-shadow: none;
-		z-index: 1;
-		transform: translateX(1.5rem);
-	}
-
-	.omnie-image img {
+	.autorka-photo img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		object-position: 50% 8%;
 		display: block;
 	}
 
-	.omnie-text-wrapper {
-		background: #ec5538;
-		padding: 3rem;
-		border-radius: 0.5rem;
-		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+	.autorka-text {
+		min-width: 0;
 	}
 
-	.omnie-text-wrapper p {
+	.autorka-name {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.125rem;
-		line-height: 1.8;
-		color: #fff;
-		margin: 0 0 1.5rem 0;
-		max-width: 100%;
-		text-align: justify;
-		hyphens: auto;
-		-webkit-hyphens: auto;
-		-ms-hyphens: auto;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #111;
+		margin: 0;
 	}
 
-	.omnie-text-wrapper p:last-child {
-		margin-bottom: 0;
+	.autorka-role {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: #ec5538;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin: 0.25rem 0 0.75rem 0;
+	}
+
+	.autorka-summary {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: #333;
+		margin: 0;
+	}
+
+	.autorka-link {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		white-space: nowrap;
+		color: #111;
+		padding: 0.75rem 1.5rem;
+		border: 2px solid #111;
+		border-radius: 0.25rem;
+		transition:
+			background 0.3s ease,
+			color 0.3s ease;
+	}
+
+	.autorka-link:hover {
+		background: #111;
+		color: #fff;
+	}
+
+	.autorka-link:focus-visible {
+		outline: 3px solid #ec5538;
+		outline-offset: 3px;
 	}
 
 	.webinary-section {
@@ -2207,15 +2193,18 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 	@media (max-width: 1400px) {
 		.oferta-container,
 		.opinie-container,
-		.kontakt-container,
-		.omnie-container {
+		.kontakt-container {
 			max-width: 85%;
 			padding: 0.875rem 3.75rem 3.75rem 3.75rem;
 		}
 
+		.autorka-container {
+			max-width: 85%;
+			padding: 0 3.75rem;
+		}
+
 		.oferta-title,
-		.opinie-title,
-		.omnie-title {
+		.opinie-title {
 			font-size: 3rem;
 		}
 
@@ -2259,10 +2248,6 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 			scroll-margin-top: calc(var(--header-height) - 11.5rem);
 		}
 
-		.omnie-section {
-			scroll-margin-top: calc(var(--header-height) - 8rem);
-		}
-
 		.opinie-section,
 		.kontakt-section {
 			scroll-margin-top: calc(var(--header-height) - 10.5rem);
@@ -2272,8 +2257,7 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 			scroll-margin-top: calc(var(--header-height) - 8rem);
 		}
 
-		.oferta-content,
-		.omnie-content {
+		.oferta-content {
 			grid-template-columns: 1fr;
 			gap: 3rem;
 		}
@@ -2281,15 +2265,18 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 		.oferta-container,
 		.opinie-container,
 		.kontakt-container,
-		.omnie-container,
 		.webinary-container {
 			max-width: 90%;
 			padding: 0.75rem 3rem 3rem 3rem;
 		}
 
+		.autorka-container {
+			max-width: 90%;
+			padding: 0 3rem;
+		}
+
 		.oferta-title,
 		.opinie-title,
-		.omnie-title,
 		.oferta-cards-title,
 		.webinary-title {
 			font-size: 2.5rem;
@@ -2405,10 +2392,6 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 			scroll-margin-top: calc(var(--header-height) - 12rem);
 		}
 
-		.omnie-section {
-			scroll-margin-top: calc(var(--header-height) - 7rem);
-		}
-
 		.opinie-section {
 			scroll-margin-top: calc(var(--header-height) - 8rem);
 		}
@@ -2421,14 +2404,24 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 		.oferta-container,
 		.opinie-container,
 		.kontakt-container,
-		.omnie-container,
 		.webinary-container {
 			padding: 0.625rem 2rem 2rem 2rem;
 		}
 
+		.autorka-container {
+			padding: 0 2rem;
+		}
+
+		.autorka-bar {
+			grid-template-columns: 1fr;
+			justify-items: center;
+			text-align: center;
+			gap: 1.25rem;
+			padding: 1.75rem 1.5rem;
+		}
+
 		.oferta-title,
 		.opinie-title,
-		.omnie-title,
 		.kontakt-title,
 		.oferta-cards-title,
 		.webinary-title {
@@ -2508,8 +2501,7 @@ const homepageStructuredData = createHomepageStructuredData(import.meta.env.SITE
 			font-size: 1rem;
 		}
 
-		.kontakt-form-wrapper,
-		.omnie-text-wrapper {
+		.kontakt-form-wrapper {
 			padding: 1.75rem;
 		}
 

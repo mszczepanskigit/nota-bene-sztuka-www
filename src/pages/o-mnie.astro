@@ -1,0 +1,383 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { createAboutPageStructuredData } from '../config/structuredData';
+import { INSTAGRAM_URL, SUPERPROF_URL, CONTACT_EMAIL } from '../config/links';
+
+import portraitImg from '../../public/orange.webp';
+
+const aboutStructuredData = createAboutPageStructuredData(import.meta.env.SITE);
+---
+
+<Layout
+	title="O mnie – Marta Miller | Nota Bene Sztuka"
+	description="Marta Miller – historyczka sztuki i nauczycielka. Korepetycje online z historii sztuki: matura, olimpiada i egzaminy wstępne na studia artystyczne."
+	structuredData={aboutStructuredData}
+>
+	<div class="about-page">
+		<header class="about-header">
+			<a class="about-brand" href="/">NOTA<br />BENE<br />SZTUKA</a>
+			<a class="about-back" href="/">← Wróć do strony głównej</a>
+		</header>
+
+		<main class="about-content">
+			<section class="about-intro">
+				<div class="about-portrait">
+					<Image
+						src={portraitImg}
+						alt="Marta Miller – historyczka sztuki i nauczycielka, Nota Bene Sztuka"
+						quality={90}
+						loading="eager"
+					/>
+				</div>
+
+				<div class="about-intro-text">
+					<p class="about-eyebrow">Poznajmy się</p>
+					<h1>Cześć, tu Marta!</h1>
+					<p class="about-lead">
+						Jestem historyczką sztuki i nauczycielką z przygotowaniem pedagogicznym. Od 5 lat
+						przygotowuję uczniów do matury, olimpiady i egzaminów wstępnych na studia.
+					</p>
+
+					<div class="about-actions">
+						<a class="about-cta" href="/#kontakt">Umów pierwsze zajęcia</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="about-facts" aria-label="Najważniejsze informacje">
+				<article class="about-fact">
+					<p class="about-fact-value">5 lat</p>
+					<p class="about-fact-label">doświadczenia w nauczaniu historii sztuki</p>
+				</article>
+				<article class="about-fact">
+					<p class="about-fact-value">1:1 i grupy</p>
+					<p class="about-fact-label">zajęcia online, także w małych grupach</p>
+				</article>
+				<article class="about-fact">
+					<p class="about-fact-value">Matura i olimpiada</p>
+					<p class="about-fact-label">oraz egzaminy wstępne na studia artystyczne</p>
+				</article>
+			</section>
+
+			<section class="about-story">
+				<h2>Jak pracuję</h2>
+				<p>
+					Uczę tak, żeby historia sztuki miała sens – zamiast wkuwania dat pokazuję kontekst epok i
+					uczę analizy dzieł w sposób wymagany na egzaminie. Materiał układamy w Twoim tempie, a
+					plan zależy od tego, ile czasu zostało do egzaminu.
+				</p>
+				<p>
+					Pracujemy na moich autorskich prezentacjach i kartach pracy zgodnych z wymaganiami CKE,
+					więc nie potrzebujesz dodatkowych książek. Krok po kroku ćwiczymy też wypracowanie
+					maturalne, które odpowiada aż za ⅓ wyniku.
+				</p>
+				<p>
+					Poza regularnymi lekcjami organizuję webinary maturalne oraz wspólne wyjścia do muzeów –
+					bo sztukę najlepiej ogląda się na żywo.
+				</p>
+			</section>
+
+			<section class="about-contact">
+				<h2>Napisz do mnie</h2>
+				<p>
+					Masz pytanie o zajęcia albo nie wiesz, od czego zacząć? Odezwij się – wspólnie ustalimy
+					plan przygotowań.
+				</p>
+				<p class="about-email">
+					<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+				</p>
+				<p class="about-links">
+					<a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">Instagram</a>
+					<span aria-hidden="true">·</span>
+					<a href={SUPERPROF_URL} target="_blank" rel="noopener noreferrer">Superprof</a>
+				</p>
+			</section>
+		</main>
+
+		<footer class="about-footer">
+			<p>© {new Date().getFullYear()} Nota Bene Sztuka. Wszelkie prawa zastrzeżone.</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.about-page {
+		max-width: 60rem;
+		margin: 0 auto;
+		padding: 3rem 2rem 4rem;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		background: #fffbf5;
+	}
+
+	.about-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 3rem;
+		border-bottom: 2px solid #111;
+		margin-bottom: 3rem;
+	}
+
+	.about-brand {
+		font-family: 'Archivo Black', sans-serif;
+		font-size: 0.875rem;
+		line-height: 1.1;
+		letter-spacing: 0.05em;
+		font-weight: 900;
+		text-decoration: none;
+		color: #111;
+		transition: opacity 0.3s ease;
+	}
+
+	.about-brand:hover {
+		opacity: 0.7;
+	}
+
+	.about-back {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #111;
+		padding: 0.75rem 1.5rem;
+		border: 2px solid #111;
+		border-radius: 0.25rem;
+		transition:
+			background 0.3s ease,
+			color 0.3s ease;
+	}
+
+	.about-back:hover {
+		background: #111;
+		color: #fff;
+	}
+
+	.about-content {
+		flex-grow: 1;
+	}
+
+	.about-intro {
+		display: grid;
+		grid-template-columns: 16rem 1fr;
+		gap: 3rem;
+		align-items: center;
+		margin-bottom: 3.5rem;
+	}
+
+	.about-portrait {
+		width: 16rem;
+		height: 16rem;
+		border-radius: 50%;
+		overflow: hidden;
+		background: #ec5538;
+	}
+
+	.about-portrait img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 50% 8%;
+		display: block;
+	}
+
+	.about-eyebrow {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.95rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #ec5538;
+		margin: 0 0 0.5rem 0;
+	}
+
+	.about-content h1 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 3rem;
+		font-weight: 700;
+		color: #111;
+		margin: 0 0 1rem 0;
+	}
+
+	.about-lead {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.25rem;
+		line-height: 1.7;
+		color: #333;
+		margin: 0 0 1.75rem 0;
+	}
+
+	.about-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.about-cta {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #fff;
+		background: #ec5538;
+		padding: 0.875rem 2rem;
+		border: 2px solid #ec5538;
+		border-radius: 0.25rem;
+		transition:
+			background 0.3s ease,
+			color 0.3s ease,
+			transform 0.2s ease;
+	}
+
+	.about-cta:hover {
+		transform: translateY(-0.125rem);
+	}
+
+	.about-cta:focus-visible {
+		outline: 3px solid #111;
+		outline-offset: 3px;
+	}
+
+	.about-facts {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		margin-bottom: 3.5rem;
+	}
+
+	.about-fact {
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		border-top: 0.25rem solid #ec5538;
+		border-radius: 0.5rem;
+		padding: 1.5rem;
+	}
+
+	.about-fact-value {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #111;
+		margin: 0 0 0.5rem 0;
+	}
+
+	.about-fact-label {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: #555;
+		margin: 0;
+	}
+
+	.about-content h2 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: #111;
+		margin: 0 0 1rem 0;
+	}
+
+	.about-story {
+		margin-bottom: 3.5rem;
+	}
+
+	.about-content p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.0625rem;
+		line-height: 1.8;
+		color: #333;
+		margin: 0 0 1rem 0;
+	}
+
+	.about-contact {
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+		border-left: 0.375rem solid #ec5538;
+		border-radius: 0.75rem;
+		padding: 2rem;
+	}
+
+	.about-email a,
+	.about-links a {
+		color: #ec5538;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		font-weight: 600;
+	}
+
+	.about-email a:hover,
+	.about-links a:hover {
+		opacity: 0.8;
+	}
+
+	.about-links {
+		display: flex;
+		gap: 0.75rem;
+		margin: 0;
+	}
+
+	.about-footer {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(0, 0, 0, 0.15);
+	}
+
+	.about-footer p {
+		font-family: 'Outfit', sans-serif;
+		font-size: 0.875rem;
+		color: rgba(0, 0, 0, 0.5);
+		margin: 0;
+	}
+
+	@media (max-width: 900px) {
+		.about-intro {
+			grid-template-columns: 1fr;
+			justify-items: center;
+			text-align: center;
+			gap: 2rem;
+		}
+
+		.about-actions {
+			justify-content: center;
+		}
+
+		.about-links {
+			justify-content: flex-start;
+		}
+
+		.about-facts {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-page {
+			padding: 2rem 1.5rem 3rem;
+		}
+
+		.about-header {
+			flex-direction: column;
+			gap: 1.5rem;
+			align-items: flex-start;
+		}
+
+		.about-portrait {
+			width: 12rem;
+			height: 12rem;
+		}
+
+		.about-content h1 {
+			font-size: 2rem;
+		}
+
+		.about-lead {
+			font-size: 1.125rem;
+		}
+
+		.about-content h2 {
+			font-size: 1.5rem;
+		}
+	}
+</style>

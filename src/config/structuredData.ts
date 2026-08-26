@@ -50,26 +50,48 @@ export function createBaseStructuredData(siteUrl: string): JsonLdNode[] {
 	];
 }
 
-export function createHomepageStructuredData(siteUrl: string): JsonLdNode[] {
-	const businessId = getBusinessId(siteUrl);
-	const personId = `${siteUrl}${PERSON_ID_SUFFIX}`;
+function createPersonNode(siteUrl: string): JsonLdNode {
+	return {
+		'@type': 'Person',
+		'@id': `${siteUrl}${PERSON_ID_SUFFIX}`,
+		name: 'Marta Miller',
+		jobTitle: 'Historyczka sztuki i nauczycielka',
+		worksFor: {
+			'@id': getBusinessId(siteUrl),
+		},
+		knowsAbout: [
+			'historia sztuki',
+			'przygotowanie do matury z historii sztuki',
+			'analiza dzieła sztuki',
+			'olimpiada z historii sztuki',
+		],
+	};
+}
 
+export function createAboutPageStructuredData(siteUrl: string): JsonLdNode[] {
 	return [
 		{
-			'@type': 'Person',
-			'@id': personId,
-			name: 'Marta Miller',
-			jobTitle: 'Historyczka sztuki i nauczycielka',
-			worksFor: {
-				'@id': businessId,
+			'@type': 'AboutPage',
+			'@id': `${siteUrl}/o-mnie/#page`,
+			url: `${siteUrl}/o-mnie/`,
+			name: 'O mnie – Marta Miller, Nota Bene Sztuka',
+			inLanguage: 'pl-PL',
+			isPartOf: {
+				'@id': `${siteUrl}${WEB_SITE_ID_SUFFIX}`,
 			},
-			knowsAbout: [
-				'historia sztuki',
-				'przygotowanie do matury z historii sztuki',
-				'analiza dzieła sztuki',
-				'olimpiada z historii sztuki',
-			],
+			mainEntity: {
+				'@id': `${siteUrl}${PERSON_ID_SUFFIX}`,
+			},
 		},
+		createPersonNode(siteUrl),
+	];
+}
+
+export function createHomepageStructuredData(siteUrl: string): JsonLdNode[] {
+	const businessId = getBusinessId(siteUrl);
+
+	return [
+		createPersonNode(siteUrl),
 		{
 			'@type': 'OfferCatalog',
 			'@id': `${siteUrl}#offer-catalog`,
