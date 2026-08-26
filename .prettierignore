@@ -1,15 +1,17 @@
-# Build output
-dist/
-
-# Astro generated types
-.astro/
-
-# Dependencies
+# Dependencies and generated output
 node_modules/
+dist/
+.astro/
+coverage/
+.vercel/
 
-# Binary / generated assets
+# Generated or binary assets
 public/
-
-# Lock file
 bun.lock
 
+# Local configuration
+.env
+.env.*
+.envrc
+.idea/
+.vscode/

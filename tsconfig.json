@@ -1,8 +1,14 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
-		"types": ["vitest/globals"]
+		"types": ["vitest/globals", "node"]
 	},
-	"include": ["src/**/*.ts", "src/**/*.astro", ".astro/types.d.ts", "vitest.config.ts"],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.astro",
+		"scripts/**/*.ts",
+		".astro/types.d.ts",
+		"vitest.config.ts"
+	],
 	"exclude": ["dist"]
 }

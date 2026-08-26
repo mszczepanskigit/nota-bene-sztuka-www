@@ -1,5 +1,29 @@
+# Public pages are available to search engines and AI assistants.
 User-agent: *
 Allow: /
 
-Sitemap: https://notabenesztuka.pl/sitemap-index.xml
+# ChatGPT Search and OpenAI model training
+User-agent: OAI-SearchBot
+Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+# Claude and Perplexity discovery
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Gemini grounding and future model improvement
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://notabenesztuka.pl/sitemap-index.xml

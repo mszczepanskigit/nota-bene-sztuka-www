@@ -1,208 +1,240 @@
-// Testimonial carousel - desktop/tablet/mobile with infinite loop
+type Cleanup = () => void;
 
-export const initTestimonialCarousel = (): void => {
+export const initTestimonialCarousel = (): Cleanup => {
+	let cleanup: Cleanup | undefined;
+
+	const initialize = (): void => {
+		cleanup = initializeTestimonialCarousel();
+	};
+
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', init);
+		document.addEventListener('DOMContentLoaded', initialize, { once: true });
 	} else {
-		init();
+		initialize();
 	}
+
+	return () => {
+		document.removeEventListener('DOMContentLoaded', initialize);
+		cleanup?.();
+	};
 };
 
-function init(): void {
-	const track = document.querySelector('.opinie-cards-track') as HTMLElement | null;
-	const carousel = document.querySelector('.opinie-carousel') as HTMLElement | null;
-	const prevBtn = document.querySelector('.opinie-nav-left') as HTMLButtonElement | null;
-	const nextBtn = document.querySelector('.opinie-nav-right') as HTMLButtonElement | null;
-	const dots = document.querySelectorAll('.opinie-dot') as NodeListOf<HTMLButtonElement>;
+function initializeTestimonialCarousel(): Cleanup | undefined {
+	const track = document.querySelector<HTMLElement>('.opinie-cards-track');
+	const carousel = document.querySelector<HTMLElement>('.opinie-carousel');
+	const previousButton = document.querySelector<HTMLButtonElement>('.opinie-nav-left');
+	const nextButton = document.querySelector<HTMLButtonElement>('.opinie-nav-right');
+	const dots = Array.from(document.querySelectorAll<HTMLButtonElement>('.opinie-dot'));
+	const wrapper = document.querySelector<HTMLElement>('.opinie-carousel-wrapper');
 
-	if (!track || !carousel || !prevBtn || !nextBtn) return;
-
-	if (track.dataset.carouselInit === 'true') return;
-	track.dataset.carouselInit = 'true';
-
-	const originalCards = Array.from(track.querySelectorAll('.opinie-card')) as HTMLElement[];
-	const totalOriginal = originalCards.length;
-
-	if (totalOriginal === 0) return;
-
-	const clonesBefore: HTMLElement[] = [];
-	const clonesAfter: HTMLElement[] = [];
-
-	for (let i = 0; i < totalOriginal; i++) {
-		const cloneBefore = originalCards[i].cloneNode(true) as HTMLElement;
-		const cloneAfter = originalCards[i].cloneNode(true) as HTMLElement;
-		cloneBefore.setAttribute('aria-hidden', 'true');
-		cloneAfter.setAttribute('aria-hidden', 'true');
-		clonesBefore.push(cloneBefore);
-		clonesAfter.push(cloneAfter);
+	if (
+		!track ||
+		!carousel ||
+		!previousButton ||
+		!nextButton ||
+		track.dataset.carouselInitialized === 'true'
+	) {
+		return;
 	}
 
-	for (let i = clonesBefore.length - 1; i >= 0; i--) {
-		track.insertBefore(clonesBefore[i], track.firstChild);
-	}
-	for (const clone of clonesAfter) {
-		track.appendChild(clone);
+	const originalCards = Array.from(track.querySelectorAll<HTMLElement>('.opinie-card'));
+	const totalOriginalCards = originalCards.length;
+
+	if (totalOriginalCards === 0) return;
+
+	track.dataset.carouselInitialized = 'true';
+
+	const cloneCard = (card: HTMLElement): HTMLElement => {
+		const clone = card.cloneNode(true);
+
+		if (!(clone instanceof HTMLElement)) {
+			throw new TypeError('Expected a cloned testimonial card to be an HTMLElement');
+		}
+
+		return clone;
+	};
+
+	const clonesBefore = originalCards.map(cloneCard);
+	const clonesAfter = originalCards.map(cloneCard);
+
+	[...clonesBefore, ...clonesAfter].forEach((clone) => {
+		clone.setAttribute('aria-hidden', 'true');
+	});
+
+	for (let index = clonesBefore.length - 1; index >= 0; index--) {
+		track.insertBefore(clonesBefore[index], track.firstChild);
 	}
 
-	// Measure card width + gap
-	const allCards = Array.from(track.querySelectorAll('.opinie-card')) as HTMLElement[];
+	clonesAfter.forEach((clone) => track.appendChild(clone));
+
+	const allCards = Array.from(track.querySelectorAll<HTMLElement>('.opinie-card'));
 
 	const computeStep = (): number => {
-		const card = allCards[0];
-		const style = getComputedStyle(track);
-		const gap = parseFloat(style.gap) || 16;
-		return card.offsetWidth + gap;
+		const gap = Number.parseFloat(getComputedStyle(track).gap) || 16;
+		return allCards[0].offsetWidth + gap;
 	};
 
 	const computeCenterOffset = (): number => {
-		const carouselWidth = carousel.offsetWidth;
-		const card = allCards[0];
-		const cardWidth = card.offsetWidth;
-		const style = getComputedStyle(track);
-		const gap = parseFloat(style.gap) || 16;
-		const vw = window.innerWidth;
+		const cardWidth = allCards[0].offsetWidth;
+		const gap = Number.parseFloat(getComputedStyle(track).gap) || 16;
 
-		if (vw >= 768 && vw < 1024) {
-			return (carouselWidth - 2 * cardWidth - gap) / 2;
-		} else {
-			return (carouselWidth - cardWidth) / 2;
+		if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+			return (carousel.offsetWidth - 2 * cardWidth - gap) / 2;
 		}
+
+		return (carousel.offsetWidth - cardWidth) / 2;
+	};
+
+	const getInitialPosition = (): number => {
+		if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+			return totalOriginalCards + 1;
+		}
+
+		return totalOriginalCards + Math.floor(totalOriginalCards / 2);
 	};
 
 	let step = computeStep();
 	let centerOffset = computeCenterOffset();
-	let transitionTimeout: number | undefined;
-
-	const getInitialPosition = (): number => {
-		const vw = window.innerWidth;
-		if (vw >= 768 && vw < 1024) {
-			return totalOriginal + 1;
-		}
-		return totalOriginal + Math.floor(totalOriginal / 2);
-	};
-
 	let position = getInitialPosition();
 	let isTransitioning = false;
+	let transitionTimeout: number | undefined;
+	let autoPlayInterval: number | undefined;
 
 	const setTranslate = (animate: boolean): void => {
-		if (!track) return;
 		const offset = -(position * step) + centerOffset;
-		if (animate) {
-			track.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-		} else {
-			track.style.transition = 'none';
-		}
+		track.style.transition = animate
+			? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+			: 'none';
 		track.style.transform = `translateX(${offset}px)`;
 	};
 
 	const updateDots = (): void => {
-		const realIndex = ((position % totalOriginal) + totalOriginal) % totalOriginal;
-		dots.forEach((dot, i) => {
-			dot.classList.toggle('active', i === realIndex);
+		const realIndex = ((position % totalOriginalCards) + totalOriginalCards) % totalOriginalCards;
+
+		dots.forEach((dot, index) => {
+			const isActive = index === realIndex;
+			dot.classList.toggle('active', isActive);
+
+			if (isActive) {
+				dot.setAttribute('aria-current', 'true');
+			} else {
+				dot.removeAttribute('aria-current');
+			}
 		});
+	};
+
+	const finishTransition = (): void => {
+		isTransitioning = false;
+
+		if (transitionTimeout !== undefined) {
+			window.clearTimeout(transitionTimeout);
+			transitionTimeout = undefined;
+		}
+
+		if (position >= totalOriginalCards * 2) {
+			position -= totalOriginalCards;
+			setTranslate(false);
+		} else if (position < totalOriginalCards) {
+			position += totalOriginalCards;
+			setTranslate(false);
+		}
+
+		updateDots();
+	};
+
+	const beginTransition = (): void => {
+		if (transitionTimeout !== undefined) {
+			window.clearTimeout(transitionTimeout);
+		}
+
+		transitionTimeout = window.setTimeout(finishTransition, 950);
+	};
+
+	const goToPosition = (nextPosition: number): void => {
+		if (isTransitioning) return;
+
+		isTransitioning = true;
+		step = computeStep();
+		centerOffset = computeCenterOffset();
+		position = nextPosition;
+		setTranslate(true);
+		updateDots();
+		beginTransition();
+	};
+
+	const goNext = (): void => goToPosition(position + 1);
+	const goPrevious = (): void => goToPosition(position - 1);
+
+	const stopAutoPlay = (): void => {
+		if (autoPlayInterval !== undefined) {
+			window.clearInterval(autoPlayInterval);
+			autoPlayInterval = undefined;
+		}
+	};
+
+	const startAutoPlay = (): void => {
+		stopAutoPlay();
+		autoPlayInterval = window.setInterval(goNext, 8000);
+	};
+
+	const handleNextClick = (): void => {
+		goNext();
+		startAutoPlay();
+	};
+
+	const handlePreviousClick = (): void => {
+		goPrevious();
+		startAutoPlay();
+	};
+
+	const dotHandlers = dots.map((dot) => {
+		const handler = (): void => {
+			const targetIndex = Number.parseInt(dot.dataset.index ?? '0', 10);
+			goToPosition(totalOriginalCards + targetIndex);
+			startAutoPlay();
+		};
+
+		dot.addEventListener('click', handler);
+		return { dot, handler };
+	});
+
+	const handleMouseEnter = (): void => stopAutoPlay();
+	const handleMouseLeave = (): void => startAutoPlay();
+
+	const handleResize = (): void => {
+		step = computeStep();
+		centerOffset = computeCenterOffset();
+		setTranslate(false);
 	};
 
 	setTranslate(false);
 	updateDots();
 
-	track.addEventListener('transitionend', () => {
-		isTransitioning = false;
-		if (transitionTimeout) {
-			window.clearTimeout(transitionTimeout);
-			transitionTimeout = undefined;
-		}
+	track.addEventListener('transitionend', finishTransition);
+	nextButton.addEventListener('click', handleNextClick);
+	previousButton.addEventListener('click', handlePreviousClick);
+	wrapper?.addEventListener('mouseenter', handleMouseEnter);
+	wrapper?.addEventListener('mouseleave', handleMouseLeave);
+	window.addEventListener('resize', handleResize);
+	startAutoPlay();
 
-		if (position >= totalOriginal * 2) {
-			position -= totalOriginal;
-			setTranslate(false);
-		} else if (position < totalOriginal) {
-			position += totalOriginal;
-			setTranslate(false);
-		}
+	return () => {
+		stopAutoPlay();
 
-		updateDots();
-	});
-
-	const beginTransition = (): void => {
-		if (transitionTimeout) {
+		if (transitionTimeout !== undefined) {
 			window.clearTimeout(transitionTimeout);
 		}
-		transitionTimeout = window.setTimeout(() => {
-			isTransitioning = false;
-			updateDots();
-		}, 950);
+
+		track.removeEventListener('transitionend', finishTransition);
+		nextButton.removeEventListener('click', handleNextClick);
+		previousButton.removeEventListener('click', handlePreviousClick);
+		dotHandlers.forEach(({ dot, handler }) => dot.removeEventListener('click', handler));
+		wrapper?.removeEventListener('mouseenter', handleMouseEnter);
+		wrapper?.removeEventListener('mouseleave', handleMouseLeave);
+		window.removeEventListener('resize', handleResize);
+		[...clonesBefore, ...clonesAfter].forEach((clone) => clone.remove());
+		track.style.removeProperty('transition');
+		track.style.removeProperty('transform');
+		delete track.dataset.carouselInitialized;
 	};
-
-	const goNext = (): void => {
-		if (isTransitioning) return;
-		isTransitioning = true;
-		step = computeStep();
-		centerOffset = computeCenterOffset();
-		position++;
-		setTranslate(true);
-		updateDots();
-		beginTransition();
-	};
-
-	const goPrev = (): void => {
-		if (isTransitioning) return;
-		isTransitioning = true;
-		step = computeStep();
-		centerOffset = computeCenterOffset();
-		position--;
-		setTranslate(true);
-		updateDots();
-		beginTransition();
-	};
-
-	const goTo = (index: number): void => {
-		if (isTransitioning) return;
-		isTransitioning = true;
-		step = computeStep();
-		centerOffset = computeCenterOffset();
-		position = totalOriginal + index;
-		setTranslate(true);
-		updateDots();
-		beginTransition();
-	};
-
-	nextBtn.addEventListener('click', () => {
-		goNext();
-		resetAutoPlay();
-	});
-
-	prevBtn.addEventListener('click', () => {
-		goPrev();
-		resetAutoPlay();
-	});
-
-	dots.forEach((dot) => {
-		dot.addEventListener('click', () => {
-			const targetIndex = parseInt(dot.getAttribute('data-index') || '0', 10);
-			goTo(targetIndex);
-			resetAutoPlay();
-		});
-	});
-
-	// Auto-play
-	let autoPlayInterval = setInterval(goNext, 8000);
-
-	function resetAutoPlay(): void {
-		clearInterval(autoPlayInterval);
-		autoPlayInterval = setInterval(goNext, 8000);
-	}
-
-	// Pause on hover
-	const wrapper = document.querySelector('.opinie-carousel-wrapper') as HTMLElement | null;
-	if (wrapper) {
-		wrapper.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-		wrapper.addEventListener('mouseleave', () => resetAutoPlay());
-	}
-
-	// Recalculate on window resize
-	window.addEventListener('resize', () => {
-		step = computeStep();
-		centerOffset = computeCenterOffset();
-		setTranslate(false);
-	});
 }
