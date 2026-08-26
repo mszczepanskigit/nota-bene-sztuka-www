@@ -2,9 +2,10 @@
 	"name": "nbs",
 	"type": "module",
 	"version": "0.0.1",
+	"packageManager": "bun@1.4.0",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro build",
+		"build": "bun run validate-env && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
 		"convert-images": "bun run scripts/convert-images.ts",
@@ -14,34 +15,25 @@
 		"lint:fix": "eslint . --fix",
 		"typecheck": "astro check",
 		"test": "vitest run",
-		"check": "bun run format:check && bun run lint && bun run typecheck && bun run test"
+		"check": "bun run format:check && bun run lint && bun run typecheck && bun run test",
+		"validate-env": "bun run scripts/validate-environment.ts"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.8",
-		"@astrojs/sitemap": "^3.7.1",
-		"astro": "^6.0.8",
-		"typescript": "^6.0.2"
-	},
-	"overrides": {
-		"h3": "^1.15.6",
-		"svgo": "^4.0.1",
-		"rollup": "^4.59.0",
-		"smol-toml": "^1.6.1",
-		"yaml": "^2.8.3",
-		"picomatch": "^4.0.4",
-		"brace-expansion": "^5.0.5",
-		"defu": "^6.1.7",
-		"vite": "^7.3.2"
+		"@astrojs/check": "^0.9.10",
+		"@astrojs/sitemap": "^3.7.3",
+		"astro": "^7.2.7",
+		"typescript": "^6.0.3"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"eslint": "^10.1.0",
+		"eslint": "^10.9.1",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-astro": "^1.6.0",
-		"prettier": "^3.8.1",
+		"eslint-plugin-astro": "^3.1.0",
+		"happy-dom": "^20.11.6",
+		"prettier": "^3.9.6",
 		"prettier-plugin-astro": "^0.14.1",
-		"sharp": "^0.34.5",
-		"typescript-eslint": "^8.57.2",
-		"vitest": "^4.1.1"
+		"sharp": "^0.35.4",
+		"typescript-eslint": "^8.68.0",
+		"vitest": "^4.1.11"
 	}
 }

@@ -1,36 +1,39 @@
-// Contact form handler with Web3Forms integration
-export const initContactForm = (): void => {
-	const form = document.querySelector('#kontakt-form') as HTMLFormElement | null;
-	if (!form) return;
+interface Web3FormsResponse {
+	success: boolean;
+	message?: string;
+}
 
-	// Prevent double initialization
-	if (form.dataset.submitHandler === 'true') return;
+function isWeb3FormsResponse(value: unknown): value is Web3FormsResponse {
+	return (
+		typeof value === 'object' &&
+		value !== null &&
+		'success' in value &&
+		typeof value.success === 'boolean' &&
+		(!('message' in value) || value.message === undefined || typeof value.message === 'string')
+	);
+}
+
+export const initContactForm = (): (() => void) | undefined => {
+	const form = document.querySelector<HTMLFormElement>('#kontakt-form');
+	const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+	const status = document.querySelector<HTMLDivElement>('#form-status');
+
+	if (!form || !submitButton || !status || form.dataset.submitHandler === 'true') return;
+
 	form.dataset.submitHandler = 'true';
+	const initialButtonText = submitButton.textContent;
 
-	const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-	const statusDiv = document.querySelector('#form-status') as HTMLDivElement;
-
-	form.addEventListener('submit', async (event) => {
+	const handleSubmit = async (event: SubmitEvent): Promise<void> => {
 		event.preventDefault();
-
-		// Disable submit button to prevent double submission
-		if (submitButton) {
-			submitButton.disabled = true;
-			submitButton.textContent = 'Wysyłanie...';
-		}
-
-		// Clear previous status
-		if (statusDiv) {
-			statusDiv.className = 'form-status';
-			statusDiv.textContent = '';
-		}
+		submitButton.disabled = true;
+		submitButton.textContent = 'Wysyłanie...';
+		status.className = 'form-status';
+		status.textContent = '';
 
 		try {
 			const formData = new FormData(form);
 
-			// Check honeypot (spam protection)
-			const botcheck = formData.get('botcheck');
-			if (botcheck) {
+			if (formData.get('botcheck')) {
 				throw new Error('Spam detected');
 			}
 
@@ -38,33 +41,34 @@ export const initContactForm = (): void => {
 				method: 'POST',
 				body: formData,
 			});
+			const responseData: unknown = await response.json();
 
-			const data = await response.json();
-
-			if (response.ok && data.success) {
-				// Success
-				if (statusDiv) {
-					statusDiv.className = 'form-status success';
-					statusDiv.textContent = 'Dziękujemy! Wiadomość została wysłana. Odezwiemy się wkrótce.';
-				}
-				form.reset();
-			} else {
-				throw new Error(data.message || 'Błąd wysyłania formularza');
+			if (!isWeb3FormsResponse(responseData)) {
+				throw new Error('Invalid Web3Forms response');
 			}
+
+			if (!response.ok || !responseData.success) {
+				throw new Error(responseData.message || 'Contact form submission failed');
+			}
+
+			status.className = 'form-status success';
+			status.textContent = 'Dziękujemy! Wiadomość została wysłana. Odezwiemy się wkrótce.';
+			form.reset();
 		} catch (error) {
-			// Error
-			if (statusDiv) {
-				statusDiv.className = 'form-status error';
-				statusDiv.textContent =
-					'Wystąpił błąd. Spróbuj ponownie lub skontaktuj się bezpośrednio przez e-mail.';
-			}
+			status.className = 'form-status error';
+			status.textContent =
+				'Wystąpił błąd. Spróbuj ponownie lub skontaktuj się bezpośrednio przez e-mail.';
 			console.error('Form submission error:', error);
 		} finally {
-			// Re-enable submit button
-			if (submitButton) {
-				submitButton.disabled = false;
-				submitButton.textContent = 'Wyślij wiadomość';
-			}
+			submitButton.disabled = false;
+			submitButton.textContent = initialButtonText;
 		}
-	});
+	};
+
+	form.addEventListener('submit', handleSubmit);
+
+	return () => {
+		form.removeEventListener('submit', handleSubmit);
+		delete form.dataset.submitHandler;
+	};
 };

@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   # ── Quality gate ──────────────────────────────────────────────────────────
-  # Mirrors `bun run check` exactly — results are identical to running it locally.
+  # Runs the dependency audit before the repository's local quality gate.
   quality:
     name: Quality
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version-file: '.bun-version'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -55,7 +55,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version-file: '.bun-version'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile

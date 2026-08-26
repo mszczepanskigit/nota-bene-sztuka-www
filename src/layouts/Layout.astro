@@ -1,62 +1,27 @@
 ---
-import { INSTAGRAM_URL, SUPERPROF_URL, CONTACT_EMAIL } from '../config/links';
+import { createBaseStructuredData, type JsonLdNode } from '../config/structuredData';
 
 interface Props {
 	title?: string;
 	description?: string;
 	ogImage?: string;
+	structuredData?: JsonLdNode[];
 }
 
 const {
 	title = 'Korepetycje z historii sztuki online | Matura, olimpiada – Nota Bene Sztuka',
-	description = 'Korepetycje z historii sztuki online – skuteczne przygotowanie do matury, olimpiady i egzaminów wstępnych. Indywidualne lekcje 1:1, małe grupy, webinary. Sprawdź ofertę!',
-	ogImage = '/og-image.webp',
+	description = 'Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych. Indywidualne lekcje 1:1, małe grupy i webinary.',
+	ogImage = '/og-image.jpg',
+	structuredData = [],
 } = Astro.props;
 
 const siteUrl = import.meta.env.SITE;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageURL = new URL(ogImage, siteUrl).href;
 const ogImageAlt = 'Nota Bene Sztuka - Korepetycje z historii sztuki';
-
 const jsonLd = {
 	'@context': 'https://schema.org',
-	'@type': 'EducationalOrganization',
-	name: 'Nota Bene Sztuka',
-	url: siteUrl,
-	logo: `${siteUrl}/favicon.png`,
-	description:
-		'Korepetycje z historii sztuki online – przygotowanie do matury, olimpiady i egzaminów wstępnych na studia.',
-	email: CONTACT_EMAIL,
-	sameAs: [INSTAGRAM_URL, SUPERPROF_URL],
-	contactPoint: {
-		'@type': 'ContactPoint',
-		email: CONTACT_EMAIL,
-		contactType: 'customer service',
-		availableLanguage: 'Polish',
-	},
-	hasOfferCatalog: {
-		'@type': 'OfferCatalog',
-		name: 'Korepetycje z historii sztuki',
-		itemListElement: [
-			{
-				'@type': 'Offer',
-				itemOffered: {
-					'@type': 'Service',
-					name: 'Korepetycje indywidualne z historii sztuki (online)',
-					description:
-						'Indywidualne lekcje 1:1 online z historii sztuki – matura, olimpiada, egzaminy wstępne.',
-				},
-			},
-			{
-				'@type': 'Offer',
-				itemOffered: {
-					'@type': 'Service',
-					name: 'Webinary maturalne z historii sztuki',
-					description: 'Webinary z historii sztuki przygotowujące do matury.',
-				},
-			},
-		],
-	},
+	'@graph': [...createBaseStructuredData(siteUrl), ...structuredData],
 };
 ---
 
@@ -66,7 +31,7 @@ const jsonLd = {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
 		<!-- Canonical -->
 		<link rel="canonical" href={canonicalURL} />
@@ -77,6 +42,10 @@ const jsonLd = {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:secure_url" content={ogImageURL} />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content={ogImageAlt} />
 		<meta property="og:locale" content="pl_PL" />
 		<meta property="og:site_name" content="Nota Bene Sztuka" />
@@ -86,11 +55,14 @@ const jsonLd = {
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
 
-		<!-- Favicons -->
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+		<!-- Site identity -->
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#dfd5c3" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
