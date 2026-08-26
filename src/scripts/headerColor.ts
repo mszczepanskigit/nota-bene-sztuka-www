@@ -1,16 +1,21 @@
-export function initHeaderColor(): void {
+export function initHeaderColor(): (() => void) | undefined {
 	const header = document.querySelector<HTMLElement>('.site-header');
 
-	if (!header) return;
+	if (!header || header.dataset.headerColorInitialized === 'true') return;
 
-	function updateHeaderColor(): void {
-		if (window.scrollY === 0) {
-			if (!header!.classList.replace('dark', 'light')) header!.classList.add('light');
-		} else {
-			if (!header!.classList.replace('light', 'dark')) header!.classList.add('dark');
-		}
-	}
+	header.dataset.headerColorInitialized = 'true';
+
+	const updateHeaderColor = (): void => {
+		const isAtTop = window.scrollY === 0;
+		header.classList.toggle('light', isAtTop);
+		header.classList.toggle('dark', !isAtTop);
+	};
 
 	window.addEventListener('scroll', updateHeaderColor, { passive: true });
 	updateHeaderColor();
+
+	return () => {
+		window.removeEventListener('scroll', updateHeaderColor);
+		delete header.dataset.headerColorInitialized;
+	};
 }

@@ -1,62 +1,86 @@
-import sharp from 'sharp';
-import { unlink } from 'node:fs/promises';
-import { resolve, basename } from 'node:path';
+import process from 'node:process';
+import { resolve } from 'node:path';
+import {
+	convertImages,
+	createJpegImage,
+	ImageConversionBatchError,
+	type ImageConversionFailure,
+	type ImageConversionRequest,
+} from '../src/lib/imageConversion';
 
-const publicDir = './public';
+const publicDirectory = './public';
+const openGraphImage = {
+	inputPath: `${publicDirectory}/og-image.webp`,
+	outputPath: `${publicDirectory}/og-image.jpg`,
+};
 
-// Background images (CSS url references) – keep originals as @supports fallback
-const backgroundImages: string[] = ['monalisa.png', 'vangogh.png', 'museum.jpeg'];
+const imageGroups: Array<{
+	title: string;
+	requests: ImageConversionRequest[];
+}> = [
+	{
+		title: 'Converting background images (originals kept as fallback)',
+		requests: ['monalisa.png', 'vangogh.png', 'museum.jpeg'].map((image) => ({
+			inputPath: `${publicDirectory}/${image}`,
+		})),
+	},
+	{
+		title: 'Converting inline images (originals kept as fallback)',
+		requests: ['pisa.jpg', 'orange.png', 'webinar4.png'].map((image) => ({
+			inputPath: `${publicDirectory}/${image}`,
+		})),
+	},
+];
 
-// Inline images (used via <Image> component) – originals kept as fallback, webp used as primary
-const inlineImages: string[] = ['pisa.jpg', 'orange.png', 'webinar2.png'];
+async function runDefaultConversion(): Promise<void> {
+	const failures: ImageConversionFailure[] = [];
 
-// Obsolete images – convert to webp and DELETE the original (will never be used directly)
-const obsoleteImages: string[] = ['obsolete/webinar1.png'];
+	for (const group of imageGroups) {
+		console.log(`\n=== ${group.title} ===`);
 
-async function convertFile(inputPath: string, deleteOriginal = false): Promise<void> {
-	const outputPath = inputPath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-	try {
-		await sharp(inputPath).webp({ quality: 90, effort: 6 }).toFile(outputPath);
-		console.log(`  ✓  ${basename(inputPath)} → ${basename(outputPath)}`);
-		if (deleteOriginal) {
-			await unlink(inputPath);
-			console.log(`  🗑  Deleted original: ${basename(inputPath)}`);
+		try {
+			await convertImages(group.requests);
+		} catch (error) {
+			if (error instanceof ImageConversionBatchError) {
+				failures.push(...error.failures);
+			} else {
+				throw error;
+			}
 		}
+	}
+
+	console.log('\n=== Converting Open Graph share image ===');
+	try {
+		await createJpegImage(openGraphImage.inputPath, openGraphImage.outputPath);
 	} catch (error) {
-		const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-		console.error(`  ✗  Failed to convert ${basename(inputPath)}: ${errorMessage}`);
+		if (error instanceof ImageConversionBatchError) {
+			failures.push(...error.failures);
+		} else {
+			throw error;
+		}
+	}
+
+	if (failures.length > 0) {
+		throw new ImageConversionBatchError(failures);
 	}
 }
 
-async function convertToWebP(images: string[], deleteOriginal = false): Promise<void> {
-	for (const image of images) {
-		await convertFile(`${publicDir}/${image}`, deleteOriginal);
+async function runCli(): Promise<void> {
+	const cliArguments = process.argv.slice(2);
+
+	if (cliArguments.length > 0) {
+		await convertImages(cliArguments.map((argument) => ({ inputPath: resolve(argument) })));
+	} else {
+		await runDefaultConversion();
 	}
-}
-
-async function main(): Promise<void> {
-	console.log('\n=== Converting background images (originals kept as fallback) ===');
-	await convertToWebP(backgroundImages);
-
-	console.log('\n=== Converting inline images (originals kept as fallback) ===');
-	await convertToWebP(inlineImages);
-
-	console.log('\n=== Converting obsolete images (originals deleted) ===');
-	await convertToWebP(obsoleteImages, true);
 
 	console.log('\nDone.\n');
 }
 
-const cliArgs = process.argv.slice(2);
-
-if (cliArgs.length > 0) {
-	// CLI mode: convert the given file paths
-	(async () => {
-		for (const arg of cliArgs) {
-			await convertFile(resolve(arg));
-		}
-		console.log('\nDone.\n');
-	})();
-} else {
-	main();
+try {
+	await runCli();
+} catch (error) {
+	const message = error instanceof Error ? error.message : 'Unknown image conversion error';
+	console.error(`\nImage conversion failed: ${message}\n`);
+	process.exitCode = 1;
 }

@@ -1,20 +1,20 @@
-# Nota Bene Sztuka — Strona internetowa
+# Nota Bene Sztuka — Website
 
-[![CI](https://github.com/mszczepanskigit/nbs/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/mszczepanskigit/nbs/actions/workflows/ci.yml)
+[![CI](https://github.com/mszczepanskigit/nota-bene-sztuka-www/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/mszczepanskigit/nota-bene-sztuka-www/actions/workflows/ci.yml)
 
-Projekt: Internetowa strona dla "Nota Bene Sztuka" (Marta Miller).
+Website for Nota Bene Sztuka, operated by Marta Miller.
 
-Główne technologie:
+Technology:
 
-- Astro (SSG)
+- Astro
 - TypeScript
-- Bun (runtime / package manager)
-- Vercel (hosting, auto-deploy z `master`)
-- Vitest (testy jednostkowe)
-- ESLint + Prettier (jakość i formatowanie kodu)
+- Bun
+- Vercel
+- Vitest
+- ESLint and Prettier
 
-Link produkcyjny: https://notabenesztuka.pl
+Production: <https://notabenesztuka.pl>
 
-Nota Bene Sztuka [Marta Miller](mailto:kontakt@notabenesztuka.pl)
+Nota Bene Sztuka: [Marta Miller](mailto:kontakt@notabenesztuka.pl)
 
-Projekt i Development: [Mateusz Szczepański](mailto:mateusz.szczepanski.kontakt@gmail.com)
+Project and development: [Mateusz Szczepański](mailto:mateusz.szczepanski.kontakt@gmail.com)
