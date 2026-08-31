@@ -22,7 +22,7 @@
 		"@astrojs/check": "^0.9.10",
 		"@astrojs/sitemap": "^3.7.3",
 		"astro": "^7.2.7",
-		"typescript": "^6.0.3"
+		"typescript": "^7.0.2"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
